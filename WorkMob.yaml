@@ -9,9 +9,7 @@ proxy-providers:
 # 服务提供商-1:
 # url: http://your-service-provider
 # interval: 600
-# 服务提供商-2:
-#   url: http://your-another-service-provider
-#   interval: 600
+
 proxy-groups:
   # 功能分组
   - name: 选择代理
@@ -22,8 +20,6 @@ proxy-groups:
       - RELAY
       - RELAY2
       - RELAY3
-      - 备用线路HyJP
-      - 备用线路vmessJP
       - 自动选择
       - DIRECT
       - REJECT
@@ -42,7 +38,7 @@ proxy-groups:
   - name: RELAY
     type: relay
     benchmark-url: http://www.apple.com # 建议只使用HTTP协议
-    benchmark-timeout: 5 # 延迟测试超时，单位：秒
+    benchmark-timeout: 3 # 延迟测试超时，单位：秒
     # 流量: stash <-> http <-> vmess <-> ss1 <-> ss2 <-> 互联网
     proxies:
       - vmessUSLos
@@ -51,8 +47,7 @@ proxy-groups:
   - name: RELAY2
     type: relay
     benchmark-url: http://www.apple.com # 建议只使用HTTP协议
-    benchmark-timeout: 5 # 延迟测试超时，单位：秒
-    # 流量: stash <-> http <-> vmess <-> ss1 <-> ss2 <-> 互联网
+    benchmark-timeout: 3 # 延迟测试超时，单位：秒
     proxies:
       - vmessUSLos
       - USsocks_residential_2
@@ -60,8 +55,7 @@ proxy-groups:
   - name: RELAY3
     type: relay
     benchmark-url: http://www.apple.com # 建议只使用HTTP协议
-    benchmark-timeout: 5 # 延迟测试超时，单位：秒
-    # 流量: stash <-> http <-> vmess <-> ss1 <-> ss2 <-> 互联网
+    benchmark-timeout: 3 # 延迟测试超时，单位：秒
     proxies:
       - vmessUSLos
       - US1socks
@@ -266,45 +260,14 @@ dns:
     - +.stun.*.*.*.*
     - +.stun.*.*.*.*.*
     - lens.l.google.com
-    # - '*.n.n.srv.nintendo.net'
-    # - +.stun.playstation.net
-    # - xbox.*.*.microsoft.com
-    # - '*.*.xboxlive.com'
-    # - '*.msftncsi.com'
-    # - '*.msftconnecttest.com'
-    # - '*.mcdn.bilivideo.cn'
+    - '*.n.n.srv.nintendo.net'
+    - +.stun.playstation.net
+    - xbox.*.*.microsoft.com
+    - '*.*.xboxlive.com'
+    - '*.msftncsi.com'
+    - '*.msftconnecttest.com'
+    - '*.mcdn.bilivideo.cn'
 proxies:
-  # - name: HySG
-  #   type: hysteria2
-  #   server: 94.237.78.54
-  #   port: 37707
-  #   password: 66facf5e
-  #   sni: www.bing.com
-  #   skip-cert-verify: true
-  #   auth: 66facf5e
-  #   down-speed: 150
-  #   up-speed: 150
-  #   fast-open: true
-  #   servername: www.bing.com
-  
-  # - name: 'vmessSG'
-  #   type: vmess
-  #   server: weixin.digis.cyou
-  #   port: 443
-  #   benchmark-url: http://www.apple.com
-  #   benchmark-timeout: 2
-  #   uuid: 9e583b45-dde7-4a91-a460-fed2763f2305
-  #   alterId: 0
-  #   cipher: auto
-  #   tls: true
-  #   skip-cert-verify: false
-  #   servername: weixin.digis.cyou # 优先级高于 wss host
-  #   network: ws
-  #   ws-opts:
-  #     path: "/9e583b45-dde7-4a91-a460-fed2763f2305"
-  #     headers:
-  #       Host: weixin.digis.cyou
-
 
   - name: '备用线路vmessJP'
     type: vmess

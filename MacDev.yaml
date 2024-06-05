@@ -266,45 +266,14 @@ dns:
     - +.stun.*.*.*.*
     - +.stun.*.*.*.*.*
     - lens.l.google.com
-    # - '*.n.n.srv.nintendo.net'
-    # - +.stun.playstation.net
-    # - xbox.*.*.microsoft.com
-    # - '*.*.xboxlive.com'
-    # - '*.msftncsi.com'
-    # - '*.msftconnecttest.com'
-    # - '*.mcdn.bilivideo.cn'
+    - '*.n.n.srv.nintendo.net'
+    - +.stun.playstation.net
+    - xbox.*.*.microsoft.com
+    - '*.*.xboxlive.com'
+    - '*.msftncsi.com'
+    - '*.msftconnecttest.com'
+    - '*.mcdn.bilivideo.cn'
 proxies:
-  # - name: HySG
-  #   type: hysteria2
-  #   server: 94.237.78.54
-  #   port: 37707
-  #   password: 66facf5e
-  #   sni: www.bing.com
-  #   skip-cert-verify: true
-  #   auth: 66facf5e
-  #   down-speed: 150
-  #   up-speed: 150
-  #   fast-open: true
-  #   servername: www.bing.com
-  
-  # - name: 'vmessSG'
-  #   type: vmess
-  #   server: weixin.digis.cyou
-  #   port: 443
-  #   benchmark-url: http://www.apple.com
-  #   benchmark-timeout: 2
-  #   uuid: 9e583b45-dde7-4a91-a460-fed2763f2305
-  #   alterId: 0
-  #   cipher: auto
-  #   tls: true
-  #   skip-cert-verify: false
-  #   servername: weixin.digis.cyou # 优先级高于 wss host
-  #   network: ws
-  #   ws-opts:
-  #     path: "/9e583b45-dde7-4a91-a460-fed2763f2305"
-  #     headers:
-  #       Host: weixin.digis.cyou
-
 
   - name: '备用线路vmessJP'
     type: vmess
