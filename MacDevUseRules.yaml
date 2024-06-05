@@ -1,0 +1,372 @@
+port: 7890
+socks-port: 7891
+allow-lan: true
+mode: Rule
+log-level: info
+# external-controller: :9090
+
+proxy-providers:
+# 服务提供商-1:
+# url: http://your-service-provider
+# interval: 600
+# 服务提供商-2:
+#   url: http://your-another-service-provider
+#   interval: 600
+proxy-groups:
+  # 功能分组
+  - name: 选择代理
+    type: select
+    proxies: &proxies
+      - RELAY
+      - RELAY2
+      - RELAY3
+      - HyJP
+      - vmessJP
+      - HySG
+      - NY_socks
+      - vmessSG
+      - 自动选择
+      - DIRECT
+      - REJECT
+
+  - name: mob代理
+    type: select
+    proxies: &proxies
+      - RELAY
+      - RELAY2
+      - HySG
+      - NY_socks
+      - vmessSG
+      - 自动选择
+      - DIRECT
+      - REJECT
+
+
+  - name: RELAY
+    type: relay
+    benchmark-url: http://www.apple.com # 建议只使用HTTP协议
+    benchmark-timeout: 5 # 延迟测试超时，单位：秒
+    # 流量: stash <-> http <-> vmess <-> ss1 <-> ss2 <-> 互联网
+    proxies:
+      - vmessJP
+      - NY_socks
+
+  - name: RELAY2
+    type: relay
+    benchmark-url: http://www.apple.com # 建议只使用HTTP协议
+    benchmark-timeout: 5 # 延迟测试超时，单位：秒
+    # 流量: stash <-> http <-> vmess <-> ss1 <-> ss2 <-> 互联网
+    proxies:
+      - vmessJP
+      - USsocks_residential_2
+
+  - name: RELAY3
+    type: relay
+    benchmark-url: http://www.apple.com # 建议只使用HTTP协议
+    benchmark-timeout: 5 # 延迟测试超时，单位：秒
+    # 流量: stash <-> http <-> vmess <-> ss1 <-> ss2 <-> 互联网
+    proxies:
+      - vmessJP
+      - US1socks
+
+
+
+  - name: 自动选择
+    interval: 120
+    lazy: true
+    tolerance: 50
+    type: url-test
+    # include-all: true
+    proxies:
+      - vmessSG
+      - vmessJP
+      - HySG
+      - HyJP
+
+  - name: 默认
+    type: select
+    proxies:
+      - 选择代理
+      - DIRECT
+      - REJECT
+
+  - name: Forbiden
+    type: select
+    proxies:
+      - REJECT
+rules:
+  # 内网IP配置
+  - SCRIPT,ip6,mob代理
+  # - SCRIPT,ipX,mob代理
+
+  
+  - DOMAIN-SUFFIX,v2ex.com,选择代理 #v2ex
+  # godot资源站
+  - DOMAIN-SUFFIX,godotengine.org,选择代理 #godot
+  - DOMAIN-SUFFIX,itch.zone,选择代理 #godot
+  - DOMAIN-SUFFIX,githubusercontent.com,选择代理 #godot
+  - DOMAIN-SUFFIX,imgur.com,选择代理 #godot
+  - DOMAIN-SUFFIX,openai.com,选择代理 #OPENAI
+  - DOMAIN-SUFFIX,sentry.io,选择代理 #OPENAI
+  - DOMAIN-SUFFIX,pay.openai.com,选择代理 #OPENAI
+  - DOMAIN-SUFFIX,identrust.com,选择代理 #OPENAI
+  - DOMAIN-SUFFIX,openaiapi-site.azureedge.net,选择代理 #OPENAI
+  - DOMAIN-SUFFIX,chat.openai.com,选择代理 #OPENAI
+  - DOMAIN-SUFFIX,challenges.cloudflare.com,选择代理 #OPENAI
+  - DOMAIN-SUFFIX,auth0.openai.com,选择代理 #OPENAI
+  - DOMAIN-SUFFIX,platform.openai.com,选择代理 #OPENAI
+  - DOMAIN-SUFFIX,okx.com,选择代理 #okx
+  - GEOSITE,github,选择代理 # GitHub
+
+  - DOMAIN-SUFFIX,feishu.cn,DIRECT #feishu
+
+  # Telegram
+  - IP-ASN,62014,选择代理,no-resolve
+  - IP-ASN,59930,选择代理,no-resolve
+  - IP-ASN,44907,选择代理,no-resolve
+  - IP-ASN,211157,选择代理,no-resolve
+  - PROCESS-NAME,Telegram,选择代理
+  - GEOSITE,telegram,选择代理
+  # YouTube
+  - GEOSITE,youtube,选择代理
+  # Google
+  - GEOSITE,google,选择代理
+  # Twitter
+  - GEOSITE,twitter,选择代理
+  - DOMAIN-SUFFIX,tapbots.com,选择代理
+  # Instagram
+  - GEOSITE,instagram,选择代理
+  # Facebook
+  - GEOSITE,facebook,RELAY
+
+  # Other SAAS
+  - DOMAIN-SUFFIX,anydesk.com,DIRECT
+  - DOMAIN-SUFFIX,proton.me,选择代理
+  - DOMAIN-SUFFIX,figma.com,DIRECT
+  - DOMAIN-SUFFIX,recraft.ai,选择代理
+  - DOMAIN-SUFFIX,photopea.com,选择代理
+  - DOMAIN-SUFFIX,teamviewer.com,DIRECT
+  
+  # Steam
+  # - GEOSITE,steam@cn,DIRECT
+  - GEOSITE,steam,选择代理
+  # Apple LBS
+  - DOMAIN-SUFFIX,iphone-ld.apple.com,DIRECT
+  - DOMAIN-SUFFIX,lcdn-locator.apple.com,DIRECT
+  - DOMAIN-SUFFIX,lcdn-registration.apple.com,DIRECT
+  - DOMAIN-SUFFIX,push.apple.com,DIRECT
+  - DOMAIN,timestamp.apple.com,DIRECT
+  - DOMAIN,seed-sequoia.siri.apple.com,DIRECT
+  # Apple OCSP
+  - PROCESS-NAME,trustd,选择代理
+  # Microsoft
+  - GEOSITE,microsoft@cn,DIRECT
+  - GEOSITE,microsoft,选择代理
+  - GEOSITE,xbox,选择代理
+
+  # 根据指纹浏览器进程名选择自动代理网络,日本或新加坡中转
+  - PROCESS-NAME,SunBrowser,自动选择
+
+  # common proxy utils
+  - PROCESS-NAME,Surge,DIRECT
+  - PROCESS-NAME,privoxy,DIRECT
+  - PROCESS-NAME,naive,DIRECT
+  - PROCESS-NAME,CloudflareWARP,DIRECT
+  - PROCESS-NAME,Cloudflare WARP,DIRECT
+  - PROCESS-NAME,p4pclient,DIRECT
+  - PROCESS-NAME,Thunder,DIRECT
+  - PROCESS-NAME,DownloadService,DIRECT
+  - PROCESS-NAME,qbittorrent,DIRECT
+  - PROCESS-NAME,Transmission,DIRECT
+  - PROCESS-NAME,fdm,DIRECT
+  - PROCESS-NAME,aria2c,DIRECT
+  - PROCESS-NAME,Folx,DIRECT
+  - PROCESS-NAME,NetTransport,DIRECT
+  - PROCESS-NAME,uTorrent,DIRECT
+  - PROCESS-NAME,WebTorrent,DIRECT
+  # Lan
+  - DOMAIN,asusrouter.com,DIRECT
+  - DOMAIN,cp.cloudflare.com,DIRECT
+  - DOMAIN,detectportal.firefox.com,DIRECT
+  - DOMAIN,instant.arubanetworks.com,DIRECT
+  - DOMAIN,router.asus.com,DIRECT
+  - DOMAIN,setmeup.arubanetworks.com,DIRECT
+  - DOMAIN,www.asusrouter.com,DIRECT
+  - DOMAIN-SUFFIX,home.arpa,DIRECT
+  - DOMAIN-SUFFIX,a.e.f.ip6.arpa,DIRECT
+  - DOMAIN-SUFFIX,acl4.ssr,DIRECT
+  - DOMAIN-SUFFIX,b.e.f.ip6.arpa,DIRECT
+  - DOMAIN-SUFFIX,captive.apple.com,DIRECT
+  - DOMAIN-SUFFIX,connectivitycheck.gstatic.com,DIRECT
+  - DOMAIN-SUFFIX,d.f.ip6.arpa,DIRECT
+  - DOMAIN-SUFFIX,hiwifi.com,DIRECT
+  - DOMAIN-SUFFIX,home.arpa,DIRECT
+  - DOMAIN-SUFFIX,leike.cc,DIRECT
+  - DOMAIN-SUFFIX,localhost.ptlogin2.qq.com,DIRECT
+  - DOMAIN-SUFFIX,localhost.sec.qq.com,DIRECT
+  - IP-CIDR,162.159.193.0/24,no-resolve
+  - IP-CIDR,0.0.0.0/8,no-resolve
+  - IP-CIDR,10.0.0.0/8,no-resolve
+  - IP-CIDR,100.64.0.0/10,no-resolve
+  - IP-CIDR,127.0.0.0/8,no-resolve
+  - IP-CIDR,169.254.0.0/16,no-resolve
+  - IP-CIDR,172.16.0.0/12,no-resolve
+  - IP-CIDR,192.0.0.0/24,no-resolve
+  - IP-CIDR,192.0.2.0/24,no-resolve
+  - IP-CIDR,192.168.0.0/16,no-resolve
+  - IP-CIDR,192.88.99.0/24,no-resolve
+  - IP-CIDR,198.18.0.0/15,no-resolve
+  - IP-CIDR,198.51.100.0/24,no-resolve
+  - IP-CIDR,203.0.113.0/24,no-resolve
+  - IP-CIDR,224.0.0.0/3,no-resolve
+  - IP-CIDR,::/127,no-resolve
+  - IP-CIDR,fc00::/7,no-resolve
+  - IP-CIDR,fe80::/10,no-resolve
+  - IP-CIDR,ff00::/8,no-resolve
+  # 禁用 QUIC 协议 HTTP3 / QUIC 协议基于 UDP, 在目前的网络环境下较为低效
+  # - SCRIPT,quic,REJECT
+  - GEOIP,US,选择代理
+  - GEOIP,LAN,DIRECT
+  - GEOIP,CN,DIRECT
+  - MATCH,默认
+rule-providers:
+# TikTok:
+#   behavior: domain
+#   format: text
+#   interval: 86400
+#   url: https://raw.githubusercontent.com/Semporia/TikTok-Unlock/master/Surge/TikTok.list
+script:
+  shortcuts:
+    quic: network == 'udp' and dst_port == 443
+    ip6: src_ip == '192.168.1.87' # - SCRIPT,ip75,Forbiden
+    ipX: src_ip == '192.168.1.248' # - SCRIPT,ip75,Forbiden
+
+    # quic: network == 'udp' and (dst_port == 443 or dst_port == 4483 or dst_port == 9305)
+dns:
+  enable: true
+  ipv6: true
+  listen: 0.0.0.0:53
+  default-nameserver:
+    - 223.5.5.5
+    - 114.114.115.115
+    - 119.29.29.29
+    # - system
+  enhanced-mode: fake-ip
+  fake-ip-range: 198.18.0.1/16
+  nameserver:
+    - https://doh.pub/dns-query
+    - https://dns.alidns.com/dns-query
+  nameserver-policy:
+    'www.baidu.com': 223.5.5.5
+    '+.internal.crop.com': system
+  skip-cert-verify: true
+  # 在以下列表的域名将不会被解析为 fake ip，这些域名相关的解析请求将会返回它们真实的 IP 地址
+  fake-ip-filter:
+    - '*.lan'
+    - localhost.ptlogin2.qq.com
+    - '+.srv.nintendo.net'
+    - '+.stun.playstation.net'
+    - '+.msftconnecttest.com'
+    - '+.msftncsi.com'
+    - '+.xboxlive.com'
+    - 'msftconnecttest.com'
+    - 'xbox.*.microsoft.com'
+    - '*.battlenet.com.cn'
+    - '*.battlenet.com'
+    - '*.blzstatic.cn'
+    - '*.battle.net'
+    - +.stun.*.*
+    - +.stun.*.*.*
+    - +.stun.*.*.*.*
+    - +.stun.*.*.*.*.*
+    - lens.l.google.com
+    # - '*.n.n.srv.nintendo.net'
+    # - +.stun.playstation.net
+    # - xbox.*.*.microsoft.com
+    # - '*.*.xboxlive.com'
+    # - '*.msftncsi.com'
+    # - '*.msftconnecttest.com'
+    # - '*.mcdn.bilivideo.cn'
+proxies:
+  - name: HySG
+    type: hysteria2
+    server: 94.237.78.54
+    port: 37707
+    password: 66facf5e
+    sni: www.bing.com
+    skip-cert-verify: true
+    auth: 66facf5e
+    down-speed: 150
+    up-speed: 150
+    fast-open: true
+    servername: www.bing.com
+  
+  - name: 'vmessSG'
+    type: vmess
+    server: weixin.digis.cyou
+    port: 443
+    benchmark-url: http://www.apple.com
+    benchmark-timeout: 2
+    uuid: 9e583b45-dde7-4a91-a460-fed2763f2305
+    alterId: 0
+    cipher: auto
+    tls: true
+    skip-cert-verify: false
+    servername: weixin.digis.cyou # 优先级高于 wss host
+    network: ws
+    ws-opts:
+      path: "/9e583b45-dde7-4a91-a460-fed2763f2305"
+      headers:
+        Host: weixin.digis.cyou
+
+
+  - name: 'vmessJP'
+    type: vmess
+    server: 89.233.104.165
+    port: 38056
+    benchmark-url: http://www.apple.com
+    benchmark-timeout: 2
+    uuid: 01735c02-9ca1-4470-b63a-3e40ce81a93e
+    alterId: 0
+    cipher: auto
+    tls: false
+    skip-cert-verify: true
+    network: tcp
+ 
+  - name: HyJP
+    type: hysteria2
+    server: 89.233.104.165
+    port: 59789
+    auth: 120f72d9
+    sni: www.bing.com
+    skip-cert-verify: true
+    down-speed: 500
+    up-speed: 500
+    fast-open: true
+    servername: www.bing.com
+
+  - name: NY_socks
+    type: socks5
+    server: 168.158.20.101
+    port: 50101
+    username: handawei
+    password: QURJIEe2Z5
+
+  - name: USsocks_residential_2
+    type: socks5
+    server: 168.158.228.103
+    port: 50101
+    username: handawei
+    password: QURJIEe2Z5
+
+
+
+  - name: US1socks
+    type: socks5
+    server: proxyus.rola.vip
+    # server: gate7.rola.info
+    port: 2079
+    username: simon_static_5
+    password: Simon@pwd@123
+
+  
