@@ -17,14 +17,13 @@ proxy-groups:
   - name: 选择代理
     type: select
     proxies: &proxies
+      - vmessUSLos
+      - HyUSLos
       - RELAY
       - RELAY2
       - RELAY3
-      - HyJP
-      - vmessJP
-      - HySG
-      - NY_socks
-      - vmessSG
+      - 备用线路HyJP
+      - 备用线路vmessJP
       - 自动选择
       - DIRECT
       - REJECT
@@ -34,9 +33,7 @@ proxy-groups:
     proxies: &proxies
       - RELAY
       - RELAY2
-      - HySG
       - NY_socks
-      - vmessSG
       - 自动选择
       - DIRECT
       - REJECT
@@ -48,7 +45,7 @@ proxy-groups:
     benchmark-timeout: 5 # 延迟测试超时，单位：秒
     # 流量: stash <-> http <-> vmess <-> ss1 <-> ss2 <-> 互联网
     proxies:
-      - vmessJP
+      - vmessUSLos
       - NY_socks
 
   - name: RELAY2
@@ -57,7 +54,7 @@ proxy-groups:
     benchmark-timeout: 5 # 延迟测试超时，单位：秒
     # 流量: stash <-> http <-> vmess <-> ss1 <-> ss2 <-> 互联网
     proxies:
-      - vmessJP
+      - vmessUSLos
       - USsocks_residential_2
 
   - name: RELAY3
@@ -66,7 +63,7 @@ proxy-groups:
     benchmark-timeout: 5 # 延迟测试超时，单位：秒
     # 流量: stash <-> http <-> vmess <-> ss1 <-> ss2 <-> 互联网
     proxies:
-      - vmessJP
+      - vmessUSLos
       - US1socks
 
 
@@ -78,10 +75,8 @@ proxy-groups:
     type: url-test
     # include-all: true
     proxies:
-      - vmessSG
-      - vmessJP
-      - HySG
-      - HyJP
+      - vmessUSLos
+      - HyUSLos
 
   - name: 默认
     type: select
@@ -96,14 +91,10 @@ proxy-groups:
       - REJECT
 rules:
   # 内网IP配置
-  - SCRIPT,ip6,mob代理
-  # - SCRIPT,ipX,mob代理
+  # - SCRIPT,ip6,mob代理
 
   
   - DOMAIN-SUFFIX,v2ex.com,选择代理 #v2ex
-  # godot资源站
-  - DOMAIN-SUFFIX,godotengine.org,选择代理 #godot
-  - DOMAIN-SUFFIX,itch.zone,选择代理 #godot
   - DOMAIN-SUFFIX,githubusercontent.com,选择代理 #godot
   - DOMAIN-SUFFIX,imgur.com,选择代理 #godot
   - DOMAIN-SUFFIX,openai.com,选择代理 #OPENAI
@@ -147,9 +138,6 @@ rules:
   - DOMAIN-SUFFIX,photopea.com,选择代理
   - DOMAIN-SUFFIX,teamviewer.com,DIRECT
   
-  # Steam
-  # - GEOSITE,steam@cn,DIRECT
-  - GEOSITE,steam,选择代理
   # Apple LBS
   - DOMAIN-SUFFIX,iphone-ld.apple.com,DIRECT
   - DOMAIN-SUFFIX,lcdn-locator.apple.com,DIRECT
@@ -164,7 +152,7 @@ rules:
   - GEOSITE,microsoft,选择代理
   - GEOSITE,xbox,选择代理
 
-  # 根据指纹浏览器进程名选择自动代理网络,日本或新加坡中转
+  # 根据指纹浏览器进程名选择自动代理网络,中转
   - PROCESS-NAME,SunBrowser,自动选择
 
   # common proxy utils
@@ -237,11 +225,9 @@ rule-providers:
 #   url: https://raw.githubusercontent.com/Semporia/TikTok-Unlock/master/Surge/TikTok.list
 script:
   shortcuts:
-    quic: network == 'udp' and dst_port == 443
-    ip6: src_ip == '192.168.1.87' # - SCRIPT,ip75,Forbiden
-    ipX: src_ip == '192.168.1.248' # - SCRIPT,ip75,Forbiden
+    # quic: network == 'udp' and dst_port == 443
+    # ip6: src_ip == '192.168.1.87' # - SCRIPT,ip75,Forbiden
 
-    # quic: network == 'udp' and (dst_port == 443 or dst_port == 4483 or dst_port == 9305)
 dns:
   enable: true
   ipv6: true
@@ -250,7 +236,7 @@ dns:
     - 223.5.5.5
     - 114.114.115.115
     - 119.29.29.29
-    # - system
+    - system
   enhanced-mode: fake-ip
   fake-ip-range: 198.18.0.1/16
   nameserver:
@@ -288,39 +274,39 @@ dns:
     # - '*.msftconnecttest.com'
     # - '*.mcdn.bilivideo.cn'
 proxies:
-  - name: HySG
-    type: hysteria2
-    server: 94.237.78.54
-    port: 37707
-    password: 66facf5e
-    sni: www.bing.com
-    skip-cert-verify: true
-    auth: 66facf5e
-    down-speed: 150
-    up-speed: 150
-    fast-open: true
-    servername: www.bing.com
+  # - name: HySG
+  #   type: hysteria2
+  #   server: 94.237.78.54
+  #   port: 37707
+  #   password: 66facf5e
+  #   sni: www.bing.com
+  #   skip-cert-verify: true
+  #   auth: 66facf5e
+  #   down-speed: 150
+  #   up-speed: 150
+  #   fast-open: true
+  #   servername: www.bing.com
   
-  - name: 'vmessSG'
-    type: vmess
-    server: weixin.digis.cyou
-    port: 443
-    benchmark-url: http://www.apple.com
-    benchmark-timeout: 2
-    uuid: 9e583b45-dde7-4a91-a460-fed2763f2305
-    alterId: 0
-    cipher: auto
-    tls: true
-    skip-cert-verify: false
-    servername: weixin.digis.cyou # 优先级高于 wss host
-    network: ws
-    ws-opts:
-      path: "/9e583b45-dde7-4a91-a460-fed2763f2305"
-      headers:
-        Host: weixin.digis.cyou
+  # - name: 'vmessSG'
+  #   type: vmess
+  #   server: weixin.digis.cyou
+  #   port: 443
+  #   benchmark-url: http://www.apple.com
+  #   benchmark-timeout: 2
+  #   uuid: 9e583b45-dde7-4a91-a460-fed2763f2305
+  #   alterId: 0
+  #   cipher: auto
+  #   tls: true
+  #   skip-cert-verify: false
+  #   servername: weixin.digis.cyou # 优先级高于 wss host
+  #   network: ws
+  #   ws-opts:
+  #     path: "/9e583b45-dde7-4a91-a460-fed2763f2305"
+  #     headers:
+  #       Host: weixin.digis.cyou
 
 
-  - name: 'vmessJP'
+  - name: '备用线路vmessJP'
     type: vmess
     server: 89.233.104.165
     port: 38056
@@ -333,7 +319,7 @@ proxies:
     skip-cert-verify: true
     network: tcp
  
-  - name: HyJP
+  - name: 备用线路HyJP
     type: hysteria2
     server: 89.233.104.165
     port: 59789
@@ -359,8 +345,6 @@ proxies:
     username: handawei
     password: QURJIEe2Z5
 
-
-
   - name: US1socks
     type: socks5
     server: proxyus.rola.vip
@@ -369,4 +353,32 @@ proxies:
     username: simon_static_5
     password: Simon@pwd@123
 
-  
+  - name: 'vmessUSLos'
+    type: vmess
+    server: alicdn.digis.cyou
+    port: 443
+    benchmark-url: http://www.apple.com
+    benchmark-timeout: 2
+    uuid: 6c89672c-af2c-4bcf-b0e7-061992893525
+    alterId: 0
+    cipher: auto
+    tls: true
+    skip-cert-verify: false
+    servername: alicdn.digis.cyou # 优先级高于 wss host
+    network: ws
+    ws-opts:
+      path: "/6c89672c-af2c-4bcf-b0e7-061992893525"
+      headers:
+        Host: alicdn.digis.cyou
+        
+  - name: HyUSLos
+    type: hysteria2
+    server: 154.21.92.129
+    port: 39620
+    auth: f91fd01f
+    sni: www.bing.com
+    skip-cert-verify: true
+    down-speed: 300
+    up-speed: 300
+    fast-open: true
+    servername: www.bing.com
