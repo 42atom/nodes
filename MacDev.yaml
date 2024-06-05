@@ -22,8 +22,8 @@ proxy-groups:
       - RELAY
       - RELAY2
       - RELAY3
-      - HyJP
-      - vmessJP
+      - 备用线路HyJP
+      - 备用线路vmessJP
       - 自动选择
       - DIRECT
       - REJECT
@@ -77,7 +77,7 @@ proxy-groups:
     proxies:
       - vmessUSLos
       - HyUSLos
-      - HyJP
+      - 备用线路HyJP
 
   - name: 默认
     type: select
@@ -310,7 +310,7 @@ proxies:
   #       Host: weixin.digis.cyou
 
 
-  - name: 'vmessJP'
+  - name: '备用线路vmessJP'
     type: vmess
     server: 89.233.104.165
     port: 38056
@@ -323,7 +323,7 @@ proxies:
     skip-cert-verify: true
     network: tcp
  
-  - name: HyJP
+  - name: 备用线路HyJP
     type: hysteria2
     server: 89.233.104.165
     port: 59789
