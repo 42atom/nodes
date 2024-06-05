@@ -310,18 +310,18 @@ proxies:
   #       Host: weixin.digis.cyou
 
 
-  # - name: 'vmessJP'
-  #   type: vmess
-  #   server: 89.233.104.165
-  #   port: 38056
-  #   benchmark-url: http://www.apple.com
-  #   benchmark-timeout: 2
-  #   uuid: 01735c02-9ca1-4470-b63a-3e40ce81a93e
-  #   alterId: 0
-  #   cipher: auto
-  #   tls: false
-  #   skip-cert-verify: true
-  #   network: tcp
+  - name: 'vmessJP'
+    type: vmess
+    server: 89.233.104.165
+    port: 38056
+    benchmark-url: http://www.apple.com
+    benchmark-timeout: 2
+    uuid: 01735c02-9ca1-4470-b63a-3e40ce81a93e
+    alterId: 0
+    cipher: auto
+    tls: false
+    skip-cert-verify: true
+    network: tcp
  
   - name: HyJP
     type: hysteria2
