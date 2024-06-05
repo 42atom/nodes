@@ -77,7 +77,6 @@ proxy-groups:
     proxies:
       - vmessUSLos
       - HyUSLos
-      - 备用线路HyJP
 
   - name: 默认
     type: select
@@ -93,7 +92,6 @@ proxy-groups:
 rules:
   # 内网IP配置
   # - SCRIPT,ip6,mob代理
-  # - SCRIPT,ipX,mob代理
 
   
   - DOMAIN-SUFFIX,v2ex.com,选择代理 #v2ex
@@ -229,9 +227,7 @@ script:
   shortcuts:
     # quic: network == 'udp' and dst_port == 443
     # ip6: src_ip == '192.168.1.87' # - SCRIPT,ip75,Forbiden
-    # ipX: src_ip == '192.168.1.248' # - SCRIPT,ip75,Forbiden
 
-    # quic: network == 'udp' and (dst_port == 443 or dst_port == 4483 or dst_port == 9305)
 dns:
   enable: true
   ipv6: true
