@@ -18,7 +18,7 @@
         .container {
             text-align: center;
         }
-        .download-btn {
+        .download-btn, .copy-btn {
             display: inline-block;
             margin-top: 20px;
             padding: 10px 20px;
@@ -28,8 +28,9 @@
             border: none;
             border-radius: 5px;
             text-decoration: none;
+            cursor: pointer;
         }
-        .download-btn:hover {
+        .download-btn:hover, .copy-btn:hover {
             background-color: #0056b3;
         }
     </style>
@@ -37,7 +38,21 @@
 <body>
     <div class="container">
         <h1>专为移动设备打造</h1>
-        <a href="./NodesForWorkMob.yaml" class="download-btn">下载</a>
+        <a href="/your_file_path" class="download-btn">下载</a>
+        <button class="copy-btn" onclick="copyToClipboard('./macDev.yaml')">复制DEVMAC配置地址</button>
+        <button class="copy-btn" onclick="copyToClipboard('./WorkMob.yaml')">复制WorkMob配置地址</button>
     </div>
+
+    <script>
+        function copyToClipboard(text) {
+            const tempInput = document.createElement('input');
+            tempInput.value = window.location.origin + '/' + text;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            document.execCommand('copy');
+            document.body.removeChild(tempInput);
+            alert('复制成功: ' + tempInput.value);
+        }
+    </script>
 </body>
 </html>
