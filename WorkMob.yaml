@@ -15,11 +15,11 @@ proxy-groups:
   - name: 选择代理
     type: select
     proxies: &proxies
-      - vmessUSLos
-      - HyUSLos
-      - RELAY
-      - RELAY2
-      - RELAY3
+      - 美机房高速1vmess
+      - 美机房高速1hy
+      - RELAY美住M1
+      - RELAY美住M2
+      - RELAY美住M3
       - 自动选择
       - DIRECT
       - REJECT
@@ -27,40 +27,40 @@ proxy-groups:
   - name: mob代理
     type: select
     proxies: &proxies
-      - RELAY
-      - RELAY2
-      - NY_socks
+      # - RELAY
+      # - RELAY2
+      # - NY_socks
       - 自动选择
       - DIRECT
       - REJECT
 
 
-  - name: RELAY
-    type: relay
-    benchmark-url: http://www.apple.com # 建议只使用HTTP协议
-    benchmark-timeout: 3 # 延迟测试超时，单位：秒
-    # 流量: stash <-> http <-> vmess <-> ss1 <-> ss2 <-> 互联网
-    proxies:
-      - vmessUSLos
-      - NY_socks
-
-  - name: RELAY2
+  # 流量: stash <-> http <-> vmess <-> ss1 <-> ss2 <-> 互联网
+  - name: RELAY美住M1
     type: relay
     benchmark-url: http://www.apple.com # 建议只使用HTTP协议
     benchmark-timeout: 3 # 延迟测试超时，单位：秒
     proxies:
-      - vmessUSLos
-      - USsocks_residential_2
-
-  - name: RELAY3
+      - 美机房高速1vmess
+      - 美住M1
+      
+  - name: RELAY美住M2
     type: relay
     benchmark-url: http://www.apple.com # 建议只使用HTTP协议
     benchmark-timeout: 3 # 延迟测试超时，单位：秒
     proxies:
-      - vmessUSLos
-      - US1socks
+      - 美机房高速1vmess
+      - 美住M2
+      
+  - name: RELAY美住M3
+    type: relay
+    benchmark-url: http://www.apple.com # 建议只使用HTTP协议
+    benchmark-timeout: 3 # 延迟测试超时，单位：秒
+    proxies:
+      - 美机房高速1vmess
+      - 美住M3
 
-
+  
 
   - name: 自动选择
     interval: 120
@@ -69,8 +69,8 @@ proxy-groups:
     type: url-test
     # include-all: true
     proxies:
-      - vmessUSLos
-      - HyUSLos
+      - 美机房高速1vmess
+      - 美机房高速1hy
 
   - name: 默认
     type: select
@@ -102,7 +102,6 @@ rules:
   - DOMAIN-SUFFIX,platform.openai.com,选择代理 #OPENAI
   - DOMAIN-SUFFIX,okx.com,选择代理 #okx
   - GEOSITE,github,选择代理 # GitHub
-
   - DOMAIN-SUFFIX,feishu.cn,DIRECT #feishu
 
   # Telegram
@@ -220,7 +219,6 @@ rule-providers:
 script:
   shortcuts:
     # quic: network == 'udp' and dst_port == 443
-    # ip6: src_ip == '192.168.1.87' # - SCRIPT,ip75,Forbiden
 
 dns:
   enable: true
@@ -294,29 +292,28 @@ proxies:
     fast-open: true
     servername: www.bing.com
 
-  - name: NY_socks
+  - name: 美住M1
     type: socks5
     server: 168.158.20.101
     port: 50101
     username: handawei
     password: QURJIEe2Z5
 
-  - name: USsocks_residential_2
+  - name: 美住M2
     type: socks5
-    server: 168.158.228.103
+    server: 45.85.207.190
     port: 50101
     username: handawei
     password: QURJIEe2Z5
 
-  - name: US1socks
+  - name: 美住M3
     type: socks5
-    server: proxyus.rola.vip
-    # server: gate7.rola.info
-    port: 2079
-    username: simon_static_5
-    password: Simon@pwd@123
+    server: 139.171.58.229
+    port: 50101
+    username: handawei
+    password: QURJIEe2Z5
 
-  - name: 'vmessUSLos'
+  - name: 美机房高速1vmess
     type: vmess
     server: alicdn.digis.cyou
     port: 443
@@ -334,7 +331,7 @@ proxies:
       headers:
         Host: alicdn.digis.cyou
         
-  - name: HyUSLos
+  - name: 美机房高速1hy
     type: hysteria2
     server: 154.21.92.129
     port: 39620
