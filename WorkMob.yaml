@@ -16,9 +16,10 @@ proxy-groups:
     type: select
     proxies: &proxies
       - 美机房高速1vmess
+      - 美机房高速1vless
       - 美机房高速1hy
       - 香港机房1vless
-      # - RELAY美住流量1
+      - RELAY美住流量1
       # - RELAY美住流量2
       # - RELAY美住流量3
       # - RELAY美住流量4
@@ -48,7 +49,7 @@ proxy-groups:
     # benchmark-url: http://www.apple.com
     # benchmark-timeout: 5
     proxies:
-      - 美机房高速1vmess
+      - 香港机房1vless
       - 美住M2
       
   - name: RELAY美住M3
@@ -56,16 +57,16 @@ proxy-groups:
     # benchmark-url: http://www.apple.com 
     # benchmark-timeout: 5 
     proxies:
-      - 美机房高速1vmess
+      - 香港机房1vless
       - 美住M3
 
-  # - name: RELAY美住流量1
-  #   type: relay
-  #   benchmark-url: http://www.apple.com
-  #   benchmark-timeout: 2
-  #   proxies:
-  #     - 美机房高速1vmess
-  #     - 美住流量1
+  - name: RELAY美住流量1
+    type: relay
+    benchmark-url: http://www.apple.com
+    benchmark-timeout: 2
+    proxies:
+      - 香港机房1vless
+      - 美住流量1
 
   # - name: RELAY美住流量2
   #   type: relay
@@ -363,6 +364,22 @@ proxies:
       headers:
         Host: alicdn.digis.cyou
 
+  - name: 美机房高速1vless
+    type: vless
+    server: alicdn.digis.cyou
+    port: 443
+    uuid: 77fdab35-c346-4107-a194-63b71108c806
+    flow: xtls-rprx-direct
+    skip-cert-verify: true
+    network: h2
+    tls: true
+    h2-opts:
+      host:
+        - alicdn.digis.cyou
+      path: '/77fdab35-c346-4107-a194-63b71108c806'
+
+  
+  
   - name: 香港机房1vless
     type: vless
     server: qq.110221.xyz
