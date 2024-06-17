@@ -17,10 +17,10 @@ proxy-groups:
     proxies: &proxies
       - 美机房高速1vmess
       - 美机房高速1hy
-      - RELAY美住流量1
-      - RELAY美住流量2
-      - RELAY美住流量3
-      - RELAY美住流量4
+      # - RELAY美住流量1
+      # - RELAY美住流量2
+      # - RELAY美住流量3
+      # - RELAY美住流量4
       - RELAY美住M1
       - RELAY美住M2
       - RELAY美住M3
@@ -58,37 +58,37 @@ proxy-groups:
       - 美机房高速1vmess
       - 美住M3
 
-  - name: RELAY美住流量1
-    type: relay
-    benchmark-url: http://www.apple.com
-    benchmark-timeout: 2
-    proxies:
-      - 美机房高速1vmess
-      - 美住流量1
+  # - name: RELAY美住流量1
+  #   type: relay
+  #   benchmark-url: http://www.apple.com
+  #   benchmark-timeout: 2
+  #   proxies:
+  #     - 美机房高速1vmess
+  #     - 美住流量1
 
-  - name: RELAY美住流量2
-    type: relay
-    benchmark-url: http://www.apple.com
-    benchmark-timeout: 2
-    proxies:
-      - 美机房高速1vmess
-      - 美住流量2
+  # - name: RELAY美住流量2
+  #   type: relay
+  #   benchmark-url: http://www.apple.com
+  #   benchmark-timeout: 2
+  #   proxies:
+  #     - 美机房高速1vmess
+  #     - 美住流量2
 
-  - name: RELAY美住流量3
-    benchmark-url: http://www.apple.com
-    benchmark-timeout: 2
-    type: relay
-    proxies:
-      - 美机房高速1vmess
-      - 美住流量3
+  # - name: RELAY美住流量3
+  #   benchmark-url: http://www.apple.com
+  #   benchmark-timeout: 2
+  #   type: relay
+  #   proxies:
+  #     - 美机房高速1vmess
+  #     - 美住流量3
 
-  - name: RELAY美住流量4
-    type: relay
-    benchmark-url: http://www.apple.com
-    benchmark-timeout: 2
-    proxies:
-      - 美机房高速1vmess
-      - 美住流量4
+  # - name: RELAY美住流量4
+  #   type: relay
+  #   benchmark-url: http://www.apple.com
+  #   benchmark-timeout: 2
+  #   proxies:
+  #     - 美机房高速1vmess
+  #     - 美住流量4
       
   - name: 自动选择
     interval: 120
@@ -322,7 +322,7 @@ proxies:
 
   - name: 美住M1
     type: socks5
-    server: 168.158.20.101
+    server: 168.158.228.107
     port: 50101
     username: handawei
     password: QURJIEe2Z5
@@ -341,34 +341,7 @@ proxies:
     username: handawei
     password: QURJIEe2Z5
 
-  - name: 美住流量1
-    type: socks5
-    server: proxyus.rola.info
-    port: 2079
-    username: simon_static_10
-    password: Simon@pwd@123
-
-  - name: 美住流量2
-    type: socks5
-    server: proxyus.rola.info
-    port: 2079
-    username: simon_static_9
-    password: Simon@pwd@123
-
-  - name: 美住流量3
-    type: socks5
-    server: proxyus.rola.info
-    port: 2079
-    username: simon_static_8
-    password: Simon@pwd@123
-
-  - name: 美住流量4
-    type: socks5
-    server: proxyus.rola.info
-    port: 2079
-    username: simon_static_7
-    password: Simon@pwd@123
-
+  
 
   - name: 美机房高速1vmess
     type: vmess
