@@ -29,8 +29,6 @@ proxy-groups:
       - REJECT
 
 
-
-
   # 流量: stash <-> http <-> vmess <-> ss1 <-> ss2 <-> 互联网
   - name: RELAY美住M1
     type: relay
@@ -55,16 +53,6 @@ proxy-groups:
     proxies:
       - 香港机房1vless
       - 美住M3
-
-
-
-  # - name: RELAY美住流量4
-  #   type: relay
-  #   benchmark-url: http://www.apple.com
-  #   benchmark-timeout: 2
-  #   proxies:
-  #     - 美机房高速1vmess
-  #     - 美住流量4
       
   - name: 自动选择
     interval: 120
@@ -318,8 +306,6 @@ proxies:
     username: handawei
     password: QURJIEe2Z5
 
-  
-
   - name: 美机房高速1vmess
     type: vmess
     server: alicdn.digis.cyou
@@ -367,6 +353,7 @@ proxies:
       host:
         - qq.110221.xyz
       path: '/b7163e3f-5c83-4050-876d-b1085755b338'
+      
     # ws-opts:
     #   path: /path
     #   headers:
