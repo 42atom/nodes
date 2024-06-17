@@ -362,7 +362,7 @@ proxies:
     username: simon_static_7
     password: Simon@pwd@123
 
-    - name: 美住流量4
+  - name: 美住流量4
     type: socks5
     server: gate7.rola.info
     port: 2079
