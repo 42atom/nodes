@@ -17,6 +17,7 @@ proxy-groups:
     proxies: &proxies
       - 美机房高速1vmess
       - 美机房高速1hy
+      - 香港机房1vless
       # - RELAY美住流量1
       # - RELAY美住流量2
       # - RELAY美住流量3
@@ -233,7 +234,8 @@ rules:
   - IP-CIDR,fe80::/10,no-resolve
   - IP-CIDR,ff00::/8,no-resolve
   # 禁用 QUIC 协议 HTTP3 / QUIC 协议基于 UDP, 在目前的网络环境下较为低效
-  # - SCRIPT,quic,REJECT
+  - SCRIPT,quic,REJECT
+  
   - GEOIP,US,选择代理
   - GEOIP,LAN,DIRECT
   - GEOIP,CN,DIRECT
@@ -360,6 +362,22 @@ proxies:
       path: "/6c89672c-af2c-4bcf-b0e7-061992893525"
       headers:
         Host: alicdn.digis.cyou
+
+  - name: 香港机房1vless
+    type: vless
+    server: qq.110221.xyz
+    port: 443
+    uuid: 76bf7a33-0d7f-4875-ba64-1bdc5b0debbb
+    alterId: 0
+    cipher: auto
+    tls: true
+    skip-cert-verify: false
+    servername: qq.110221.xyz # 优先级高于 wss host
+    network: ws
+    ws-opts:
+      path: "/76bf7a33-0d7f-4875-ba64-1bdc5b0debbb"
+      headers:
+        Host: qq.110221.xyz
         
   - name: 美机房高速1hy
     type: hysteria2
