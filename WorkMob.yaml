@@ -248,7 +248,7 @@ rule-providers:
 #   url: https://raw.githubusercontent.com/Semporia/TikTok-Unlock/master/Surge/TikTok.list
 script:
   shortcuts:
-    # quic: network == 'udp' and dst_port == 443
+     quic: network == 'udp' and dst_port == 443
 
 dns:
   enable: true
