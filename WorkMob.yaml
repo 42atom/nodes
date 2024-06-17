@@ -15,14 +15,14 @@ proxy-groups:
   - name: 选择代理
     type: select
     proxies: &proxies
-      - 美机房高速1vmess
+      # - 美机房高速1vmess
       - 美机房高速1vless
       - 美机房高速1hy
       - 香港机房1vless
       - RELAY美住M1
       - RELAY美住M2
       - RELAY美住M3
-      - 备用线路vmessJP
+      # - 备用线路vmessJP
       - 备用线路HyJP
       - 自动选择
       - DIRECT
@@ -63,6 +63,7 @@ proxy-groups:
     proxies:
       - 美机房高速1vless
       - 美机房高速1hy
+      - 香港机房1vless
 
   - name: 默认
     type: select
