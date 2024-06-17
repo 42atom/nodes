@@ -30,15 +30,7 @@ proxy-groups:
       - DIRECT
       - REJECT
 
-  - name: mob代理
-    type: select
-    proxies: &proxies
-      # - RELAY
-      # - RELAY2
-      # - NY_socks
-      - 自动选择
-      - DIRECT
-      - REJECT
+
 
 
   # 流量: stash <-> http <-> vmess <-> ss1 <-> ss2 <-> 互联网
@@ -68,23 +60,29 @@ proxy-groups:
 
   - name: RELAY美住流量1
     type: relay
+    benchmark-url: http://www.apple.com
+    benchmark-timeout: 2
     proxies:
       - 美机房高速1vmess
       - 美住流量1
 
   - name: RELAY美住流量2
     type: relay
+    benchmark-url: http://www.apple.com
+    benchmark-timeout: 2
     proxies:
       - 美机房高速1vmess
       - 美住流量2
 
   - name: RELAY美住流量3
+    benchmark-url: http://www.apple.com
+    benchmark-timeout: 2
     type: relay
     proxies:
       - 美机房高速1vmess
       - 美住流量3
 
-- name: RELAY美住流量4
+  - name: RELAY美住流量4
     type: relay
     proxies:
       - 美机房高速1vmess
