@@ -37,23 +37,23 @@ proxy-groups:
   - name: RELAY美住M1
     type: relay
     benchmark-url: http://www.apple.com # 建议只使用HTTP协议
-    benchmark-timeout: 3 # 延迟测试超时，单位：秒
+    benchmark-timeout: 5 # 延迟测试超时，单位：秒
     proxies:
       - 美机房高速1vmess
       - 美住M1
       
   - name: RELAY美住M2
     type: relay
-    benchmark-url: http://www.apple.com # 建议只使用HTTP协议
-    benchmark-timeout: 3 # 延迟测试超时，单位：秒
+    # benchmark-url: http://www.apple.com
+    # benchmark-timeout: 5
     proxies:
       - 美机房高速1vmess
       - 美住M2
       
   - name: RELAY美住M3
     type: relay
-    benchmark-url: http://www.apple.com # 建议只使用HTTP协议
-    benchmark-timeout: 3 # 延迟测试超时，单位：秒
+    # benchmark-url: http://www.apple.com 
+    # benchmark-timeout: 5 
     proxies:
       - 美机房高速1vmess
       - 美住M3
