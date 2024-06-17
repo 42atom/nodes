@@ -84,6 +84,8 @@ proxy-groups:
 
   - name: RELAY美住流量4
     type: relay
+    benchmark-url: http://www.apple.com
+    benchmark-timeout: 2
     proxies:
       - 美机房高速1vmess
       - 美住流量4
