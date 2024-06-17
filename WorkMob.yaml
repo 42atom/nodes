@@ -367,18 +367,21 @@ proxies:
     type: vless
     server: qq.110221.xyz
     port: 443
-    uuid: 76bf7a33-0d7f-4875-ba64-1bdc5b0debbb
-    alterId: 0
-    cipher: auto
-    tls: true
-    skip-cert-verify: false
-    servername: qq.110221.xyz
+    uuid: b7163e3f-5c83-4050-876d-b1085755b338
     flow: xtls-rprx-direct
-    network: ws
-    ws-opts:
-      path: "/76bf7a33-0d7f-4875-ba64-1bdc5b0debbb"
-      headers:
-        Host: qq.110221.xyz
+    skip-cert-verify: true
+    network: h2
+    tls: true
+    h2-opts:
+      host:
+        - qq.110221.xyz
+      path: '/b7163e3f-5c83-4050-876d-b1085755b338'
+    # ws-opts:
+    #   path: /path
+    #   headers:
+    #     Host: v2ray.com
+    # grpc-opts:
+    #   grpc-service-name: "example"
         
   - name: 美机房高速1hy
     type: hysteria2
