@@ -307,23 +307,23 @@ proxies:
     username: handawei
     password: QURJIEe2Z5
 
-  - name: 美机房高速1vmess
-    type: vmess
-    server: alicdn.digis.cyou
-    port: 443
-    benchmark-url: http://www.apple.com
-    benchmark-timeout: 2
-    uuid: 6c89672c-af2c-4bcf-b0e7-061992893525
-    alterId: 0
-    cipher: auto
-    tls: true
-    skip-cert-verify: false
-    servername: alicdn.digis.cyou # 优先级高于 wss host
-    network: ws
-    ws-opts:
-      path: "/6c89672c-af2c-4bcf-b0e7-061992893525"
-      headers:
-        Host: alicdn.digis.cyou
+  # - name: 美机房高速1vmess
+  #   type: vmess
+  #   server: alicdn.digis.cyou
+  #   port: 443
+  #   benchmark-url: http://www.apple.com
+  #   benchmark-timeout: 2
+  #   uuid: 6c89672c-af2c-4bcf-b0e7-061992893525
+  #   alterId: 0
+  #   cipher: auto
+  #   tls: true
+  #   skip-cert-verify: false
+  #   servername: alicdn.digis.cyou # 优先级高于 wss host
+  #   network: ws
+  #   ws-opts:
+  #     path: "/6c89672c-af2c-4bcf-b0e7-061992893525"
+  #     headers:
+  #       Host: alicdn.digis.cyou
 
   - name: 美机房高速1vless
     type: vless
