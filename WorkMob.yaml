@@ -35,7 +35,7 @@ proxy-groups:
     benchmark-url: http://www.apple.com # 建议只使用HTTP协议
     benchmark-timeout: 5 # 延迟测试超时，单位：秒
     proxies:
-      - 美机房高速1vless
+      - 香港机房1vless
       - 美住M1
       
   - name: RELAY美住M2
