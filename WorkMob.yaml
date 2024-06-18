@@ -122,7 +122,7 @@ rules:
   # 内网IP配置
   # - SCRIPT,ip6,mob代理
 
-  - DOMAIN-SUFFIX,reddit.com,RELAY # Reddit
+  - DOMAIN-SUFFIX,reddit.com,Facebook # Reddit
   - DOMAIN-SUFFIX,figma.com,选择代理
   - DOMAIN-SUFFIX,notion.com,选择代理
   - DOMAIN-SUFFIX,suno.com,选择代理
