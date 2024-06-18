@@ -22,11 +22,10 @@ proxy-groups:
       - RELAY美住M1
       - RELAY美住M2
       - RELAY美住M3
-      # - 备用线路vmessJP
       - 备用线路HyJP
+      - 机房通负载均衡
       - 自动选择
       - DIRECT
-      - REJECT
 
 
   # 流量: stash <-> http <-> vmess <-> ss1 <-> ss2 <-> 互联网
@@ -40,26 +39,39 @@ proxy-groups:
       
   - name: RELAY美住M2
     type: relay
-    # benchmark-url: http://www.apple.com
-    # benchmark-timeout: 5
     proxies:
       - 香港机房1vless
       - 美住M2
       
   - name: RELAY美住M3
     type: relay
-    # benchmark-url: http://www.apple.com 
-    # benchmark-timeout: 5 
     proxies:
       - 香港机房1vless
       - 美住M3
       
+  # 能充分利用多个代理的带宽，不健康的代理会被跳过。    
+  - name: 机房通负载均衡
+    type: load-balance
+    strategy: consistent-hashing  # round-robin
+    proxies:
+      - 美机房高速1vless
+      - 美机房高速1hy
+      - 香港机房1vless
+      
+  # 从上往下顺序选择
+  - name: fallback-auto
+    type: fallback
+    proxies:
+      - ss1
+      - ss2
+      - vmess
+
+      
   - name: 自动选择
     interval: 120
-    lazy: true
-    tolerance: 50
+    # lazy: true
+    # tolerance: 50
     type: url-test
-    # include-all: true
     proxies:
       - 美机房高速1vless
       - 美机房高速1hy
@@ -105,9 +117,7 @@ proxy-groups:
       - REJECT
 rules:
   # - RULE-SET,google,选择代理
-
-
-
+  
   # 内网IP配置
   # - SCRIPT,ip6,mob代理
 
