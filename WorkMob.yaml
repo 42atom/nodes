@@ -68,10 +68,16 @@ proxy-groups:
   - name: YouTube
     type: select
     proxies: *proxies
+  - name: Google
+    type: select
+    proxies: *proxies
   - name: Speedtest
     type: select
     proxies: *proxies
   - name: Facebook
+    type: select
+    proxies: *proxies
+  - name: Twitter
     type: select
     proxies: *proxies
   - name: Spotify
@@ -80,6 +86,7 @@ proxy-groups:
   - name: OpenAi
     type: select
     proxies: *proxies
+    
   - name: WeChat
     type: select
     proxies: *proxies
@@ -97,7 +104,7 @@ proxy-groups:
     proxies:
       - REJECT
 rules:
-  - RULE-SET,google,选择代理
+  # - RULE-SET,google,选择代理
 
 
 
@@ -112,8 +119,10 @@ rules:
   - DOMAIN-SUFFIX,recraft.ai,选择代理
   - DOMAIN-SUFFIX,midjourney.com,选择代理
   - DOMAIN-SUFFIX,discord.com,选择代理
+  
   # 内网IP配置
   - DOMAIN-SUFFIX,v2ex.com,选择代理 #v2ex
+  
   # godot资源站
   - DOMAIN-SUFFIX,godotengine.org,选择代理 #godot
   - DOMAIN-SUFFIX,itch.zone,选择代理 #godot
@@ -128,20 +137,38 @@ rules:
   - DOMAIN-SUFFIX,challenges.cloudflare.com,选择代理 #OPENAI
   - DOMAIN-SUFFIX,auth0.openai.com,选择代理 #OPENAI
   - DOMAIN-SUFFIX,platform.openai.com,选择代理 #OPENAI
+  
   # bitcoin
   - DOMAIN-SUFFIX,okx.com,选择代理 #okx
-  # child Reader+web use
-  - DOMAIN-SUFFIX,raz-kids.com,Reader+web #riz
-  - DOMAIN-SUFFIX,learninga-z.com,Reader+web #riz
-  - DOMAIN-SUFFIX,raz-plus.com,Reader+web #riz
-  - DOMAIN-SUFFIX,getepic.com,Reader+web #epic
-  - DOMAIN-SUFFIX,mysteryscience.com,Reader+web #my
-  - DOMAIN-SUFFIX,i-ready.com,Reader+web #ready
-  - GEOSITE,netflix,Netflix # Netflix
-  - GEOSITE,disney,Disney+ # Disney+
-  - GEOSITE,spotify,Spotify # Spotify
+  - DOMAIN-SUFFIX,raz-kids.com,选择代理 #riz
+  - DOMAIN-SUFFIX,learninga-z.com,选择代理 #riz
+  - DOMAIN-SUFFIX,raz-plus.com,选择代理 #riz
+  - DOMAIN-SUFFIX,getepic.com,选择代理 #epic
+  - DOMAIN-SUFFIX,mysteryscience.com,选择代理 #my
+  - DOMAIN-SUFFIX,i-ready.com,选择代理 #ready
+  - GEOSITE,netflix,选择代理 # Netflix
+  - GEOSITE,disney,选择代理+ # Disney+
+  - GEOSITE,spotify,选择代理 # Spotify
   - GEOSITE,speedtest,Speedtest # Speedtest
   - GEOSITE,github,选择代理 # GitHub
+  
+  # YouTube
+  - GEOSITE,youtube,YouTube
+  
+  # Google
+  - GEOSITE,google,Google
+  
+  # Twitter
+  - GEOSITE,twitter,Twitter
+  - DOMAIN-SUFFIX,tapbots.com,Twitter
+  
+  # Instagram
+  - GEOSITE,instagram,Facebook
+  
+  # Facebook
+  - GEOSITE,facebook,Facebook
+  - DOMAIN-SUFFIX,fbcdn.net,Facebook
+  
   # Telegram
   - IP-ASN,62014,选择代理,no-resolve
   - IP-ASN,59930,选择代理,no-resolve
@@ -149,19 +176,7 @@ rules:
   - IP-ASN,211157,选择代理,no-resolve
   - PROCESS-NAME,Telegram,选择代理
   - GEOSITE,telegram,选择代理
-  # YouTube
-  - GEOSITE,youtube,YouTube
-  # Google
-  - GEOSITE,google,选择代理
-  # Twitter
-  - GEOSITE,twitter,选择代理
-  - DOMAIN-SUFFIX,tapbots.com,选择代理
-  # Instagram
-  - GEOSITE,instagram,选择代理
-  # Facebook
-  - GEOSITE,facebook,Facebook
-  - DOMAIN-SUFFIX,fbcdn.net,Facebook
-  
+
   - DOMAIN-SUFFIX,v2ex.com,选择代理 #v2ex
   - DOMAIN-SUFFIX,githubusercontent.com,选择代理 #godot
   - DOMAIN-SUFFIX,imgur.com,选择代理 #godot
@@ -177,25 +192,6 @@ rules:
   - DOMAIN-SUFFIX,okx.com,选择代理 #okx
   - GEOSITE,github,选择代理 # GitHub
   - DOMAIN-SUFFIX,feishu.cn,DIRECT #feishu
-
-  # Telegram
-  - IP-ASN,62014,选择代理,no-resolve
-  - IP-ASN,59930,选择代理,no-resolve
-  - IP-ASN,44907,选择代理,no-resolve
-  - IP-ASN,211157,选择代理,no-resolve
-  - PROCESS-NAME,Telegram,选择代理
-  - GEOSITE,telegram,选择代理
-  # YouTube
-  - GEOSITE,youtube,选择代理
-  # Google
-  - GEOSITE,google,选择代理
-  # Twitter
-  - GEOSITE,twitter,选择代理
-  - DOMAIN-SUFFIX,tapbots.com,选择代理
-  # Instagram
-  - GEOSITE,instagram,选择代理
-  # Facebook
-  - GEOSITE,facebook,RELAY
 
   # Other SAAS
   - DOMAIN-SUFFIX,anydesk.com,DIRECT
@@ -220,7 +216,7 @@ rules:
   - GEOSITE,xbox,选择代理
 
   # 根据指纹浏览器进程名选择自动代理网络,中转
-  - PROCESS-NAME,SunBrowser,自动选择
+  # - PROCESS-NAME,SunBrowser,自动选择
 
   # common proxy utils
   - PROCESS-NAME,Surge,DIRECT
@@ -292,8 +288,6 @@ rule-providers:
     url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/google.txt"
     path: ./ruleset/google.yaml
     interval: 86400
-
-
 
 # TikTok:
 #   behavior: domain
