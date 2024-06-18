@@ -295,18 +295,19 @@ rules:
   - MATCH,默认
   
 rule-providers:
-  google:
-    type: http
-    behavior: domain
-    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/google.txt"
-    path: ./ruleset/google.yaml
-    interval: 86400
+#  google:
+#    type: http
+#    behavior: domain
+#    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/google.txt"
+#    path: ./ruleset/google.yaml
+#    interval: 86400
 
 # TikTok:
 #   behavior: domain
 #   format: text
 #   interval: 86400
 #   url: https://raw.githubusercontent.com/Semporia/TikTok-Unlock/master/Surge/TikTok.list
+
 script:
   shortcuts:
      quic: network == 'udp' and dst_port == 443
@@ -320,7 +321,7 @@ dns:
     - 114.114.115.115
     - 119.29.29.29
    # - system
-  enhanced-mode: fake-ip
+  enhanced-mode: redir-host
   fake-ip-range: 198.18.0.1/16
   nameserver:
     - https://doh.pub/dns-query
