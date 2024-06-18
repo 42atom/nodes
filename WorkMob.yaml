@@ -64,6 +64,7 @@ proxy-groups:
       - 美机房高速1vless
       - 美机房高速1hy
       - 香港机房1vless
+      
   - name: YouTube
     type: select
     proxies: *proxies
@@ -79,11 +80,9 @@ proxy-groups:
   - name: OpenAi
     type: select
     proxies: *proxies
-    icon: https://github.com/shindgewongxj/WHATSINStash/raw/main/icon/openai.png
   - name: WeChat
     type: select
     proxies: *proxies
-    icon: https://raw.githubusercontent.com/Semporia/Hand-Painted-icon/master/Universal/WeChat.png
 
 
   - name: 默认
@@ -98,6 +97,10 @@ proxy-groups:
     proxies:
       - REJECT
 rules:
+  - RULE-SET,google,选择代理
+
+
+
   # 内网IP配置
   # - SCRIPT,ip6,mob代理
 
@@ -283,6 +286,15 @@ rules:
   - GEOIP,CN,DIRECT
   - MATCH,默认
 rule-providers:
+  google:
+    type: http
+    behavior: domain
+    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/google.txt"
+    path: ./ruleset/google.yaml
+    interval: 86400
+
+
+
 # TikTok:
 #   behavior: domain
 #   format: text
