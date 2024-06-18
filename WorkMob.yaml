@@ -102,20 +102,21 @@ proxy-groups:
     
   - name: WeChat
     type: select
-    proxies: *proxies
+    proxies: 
+      - DIRECT
 
 
   - name: 默认
     type: select
     proxies:
-      - 选择代理
       - DIRECT
-      - REJECT
+      - 选择代理
 
   - name: Forbiden
     type: select
     proxies:
       - REJECT
+      
 rules:
   # - RULE-SET,google,选择代理
   
@@ -187,7 +188,7 @@ rules:
   - IP-ASN,211157,选择代理,no-resolve
   - PROCESS-NAME,Telegram,选择代理
   - GEOSITE,telegram,选择代理
-
+  #
   - DOMAIN-SUFFIX,v2ex.com,选择代理 #v2ex
   - DOMAIN-SUFFIX,githubusercontent.com,选择代理 #godot
   - DOMAIN-SUFFIX,imgur.com,选择代理 #godot
@@ -292,6 +293,7 @@ rules:
   - GEOIP,LAN,DIRECT
   - GEOIP,CN,DIRECT
   - MATCH,默认
+  
 rule-providers:
   google:
     type: http
