@@ -25,6 +25,7 @@ proxy-groups:
       - 备用线路HyJP
       - 机房通负载均衡
       - 自动选择
+      - 自动顺序回退
       - DIRECT
 
 
@@ -59,12 +60,12 @@ proxy-groups:
       - 香港机房1vless
       
   # 从上往下顺序选择
-  - name: fallback-auto
+  - name: 自动顺序回退
     type: fallback
     proxies:
-      - ss1
-      - ss2
-      - vmess
+      - 美机房高速1vless
+      - 美机房高速1hy
+      - 香港机房1vless
 
       
   - name: 自动选择
