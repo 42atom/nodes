@@ -40,6 +40,8 @@ proxy-groups:
       
   - name: RELAY美住M2
     type: relay
+    benchmark-url: http://www.apple.com # 建议只使用HTTP协议
+    benchmark-timeout: 5 # 延迟测试超时，单位：秒
     proxies:
       - snell美
       - 美住M2
