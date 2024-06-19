@@ -18,15 +18,10 @@ proxy-groups:
       - snell港
       - snell美
       - 机房通负载均衡
-      # - 美机房高速1hy
-      # - 备用线路HyJP
-      # - 美机房高速1vless
       - 香港机房1vless
       - RELAY美住M1
       - RELAY美住M2
       - RELAY美住M3
-      - 自动选择
-      - 自动顺序回退
       - DIRECT
 
 
@@ -64,23 +59,23 @@ proxy-groups:
       - 备用线路HyJP
 
   # 从上往下顺序选择
-  - name: 自动顺序回退
-    type: fallback
-    proxies:
-      - 美机房高速1vless
-      - 美机房高速1hy
-      - 香港机房1vless
+  # - name: 自动顺序回退
+  #   type: fallback
+  #   proxies:
+  #     - 美机房高速1vless
+  #     - 美机房高速1hy
+  #     - 香港机房1vless
 
       
-  - name: 自动选择
-    interval: 120
-    # lazy: true
-    # tolerance: 50
-    type: url-test
-    proxies:
-      - 美机房高速1vless
-      - 美机房高速1hy
-      - 香港机房1vless
+  # - name: 自动选择
+  #   interval: 120
+  #   # lazy: true
+  #   # tolerance: 50
+  #   type: url-test
+  #   proxies:
+  #     - 美机房高速1vless
+  #     - 美机房高速1hy
+  #     - 香港机房1vless
       
   - name: YouTube
     type: select
@@ -465,9 +460,9 @@ proxies:
     psk: HKOVf2OzkkrqbkrZQbbsqySwBr1n7Ll
     udp: true # 需要 v3 以上服务端
     version: 3
-    # obfs-opts:
-    # mode: http # 或 tls
-    # host: bing.com
+    obfs-opts:
+      mode: http # 或 tls
+      host: bing.com
     fast-open: true
     servername: www.bing.com
 
