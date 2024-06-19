@@ -458,7 +458,7 @@ proxies:
     server: 154.21.92.129
     port: 24282
     psk: HKOVf2OzkkrqbkrZQbbsqySwBr1n7Ll
-    udp: true # 需要 v3 以上服务端
+    udp: false # 需要 v3 以上服务端
     version: 3
     obfs-opts:
       mode: http # 或 tls
@@ -472,10 +472,10 @@ proxies:
     server: 154.3.34.2
     port: 45857
     psk: 9Wn8e0WW0Vso2hntTOkxkqDBk6S5Mxa
-    tfo: true # 需要 v3 以上服务端
+    udp: false # 需要 v3 以上服务端
     version: 3
     obfs-opts: 
-      mode: http # 或 tls
+      mode: tls # http
       host: bing.com
     fast-open: true
     servername: www.bing.com
