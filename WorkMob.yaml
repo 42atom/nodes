@@ -479,7 +479,7 @@ proxies:
     udp: true # 需要 v3 以上服务端
     # version: 4
     obfs-opts: http
-    mode: http # 或 tls
-    host: bing.com
+    # mode: http # 或 tls
+    # host: bing.com
     fast-open: true
     servername: www.bing.com
