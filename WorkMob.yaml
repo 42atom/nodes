@@ -15,6 +15,7 @@ proxy-groups:
   - name: 选择代理
     type: select
     proxies: &proxies
+      - snell港
       - snell美
       - 机房通负载均衡
       - 美机房高速1hy
@@ -35,7 +36,7 @@ proxy-groups:
     benchmark-url: http://www.apple.com # 建议只使用HTTP协议
     benchmark-timeout: 5 # 延迟测试超时，单位：秒
     proxies:
-      - snell美
+      - snell港
       - 美住M1
       
   - name: RELAY美住M2
@@ -466,5 +467,19 @@ proxies:
     # obfs-opts:
     # mode: http # 或 tls
     # host: bing.com
+    fast-open: true
+    servername: www.bing.com
+
+    
+  - name: snell港
+    type: snell
+    server: 154.3.34.2
+    port: 45857
+    psk: 9Wn8e0WW0Vso2hntTOkxkqDBk6S5Mxa
+    udp: true # 需要 v3 以上服务端
+    version: 3
+    obfs-opts:
+    mode: http # 或 tls
+    host: bing.com
     fast-open: true
     servername: www.bing.com
