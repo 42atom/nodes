@@ -100,7 +100,7 @@ rules:
   # - RULE-SET,google,选择代理
   
   # 内网IP配置
-  # - SCRIPT,ip6,mob代理
+  # - SCRIPT,ip6,选择代理
 
   - DOMAIN-SUFFIX,reddit.com,Facebook # Reddit
   - DOMAIN-SUFFIX,figma.com,选择代理
