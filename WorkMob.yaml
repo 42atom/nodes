@@ -61,7 +61,8 @@ proxy-groups:
       - 美机房高速1vless
       - 美机房高速1hy
       - 香港机房1vless
-      
+      - 备用线路HyJP
+
   # 从上往下顺序选择
   - name: 自动顺序回退
     type: fallback
