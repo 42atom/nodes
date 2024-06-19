@@ -18,9 +18,9 @@ proxy-groups:
       - snell港
       - snell美
       - 机房通负载均衡
-      - 美机房高速1hy
-      - 备用线路HyJP
-      - 美机房高速1vless
+      # - 美机房高速1hy
+      # - 备用线路HyJP
+      # - 美机房高速1vless
       - 香港机房1vless
       - RELAY美住M1
       - RELAY美住M2
