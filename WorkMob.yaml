@@ -15,9 +15,9 @@ proxy-groups:
   - name: 选择代理
     type: select
     proxies: &proxies
-      - snell港
-      - snell美
-      - 机房通负载均衡
+      # - snell港
+      # - snell美
+      - 机房IP负载自动选择
       - 香港机房1vless
       - RELAY美住M1
       - RELAY美住M2
@@ -49,33 +49,15 @@ proxy-groups:
       - 美住M3
       
   # 能充分利用多个代理的带宽，不健康的代理会被跳过。    
-  - name: 机房通负载均衡
+  - name: 机房IP负载自动选择
     type: load-balance
     strategy: consistent-hashing  # round-robin
     proxies:
-      - 美机房高速1vless
-      - 美机房高速1hy
+      - snell港
+      - snell美
       - 香港机房1vless
       - 备用线路HyJP
 
-  # 从上往下顺序选择
-  # - name: 自动顺序回退
-  #   type: fallback
-  #   proxies:
-  #     - 美机房高速1vless
-  #     - 美机房高速1hy
-  #     - 香港机房1vless
-
-      
-  # - name: 自动选择
-  #   interval: 120
-  #   # lazy: true
-  #   # tolerance: 50
-  #   type: url-test
-  #   proxies:
-  #     - 美机房高速1vless
-  #     - 美机房高速1hy
-  #     - 香港机房1vless
       
   - name: YouTube
     type: select
@@ -360,18 +342,18 @@ dns:
 
 proxies:
 
-  - name: '备用线路vmessJP'
-    type: vmess
-    server: 89.233.104.165
-    port: 38056
-    benchmark-url: http://www.apple.com
-    benchmark-timeout: 2
-    uuid: 01735c02-9ca1-4470-b63a-3e40ce81a93e
-    alterId: 0
-    cipher: auto
-    tls: false
-    skip-cert-verify: true
-    network: tcp
+  # - name: '备用线路vmessJP'
+  #   type: vmess
+  #   server: 89.233.104.165
+  #   port: 38056
+  #   benchmark-url: http://www.apple.com
+  #   benchmark-timeout: 2
+  #   uuid: 01735c02-9ca1-4470-b63a-3e40ce81a93e
+  #   alterId: 0
+  #   cipher: auto
+  #   tls: false
+  #   skip-cert-verify: true
+  #   network: tcp
  
   - name: 备用线路HyJP
     type: hysteria2
@@ -425,15 +407,15 @@ proxies:
       
 
         
-  - name: 美机房高速1hy
-    type: hysteria2
-    server: 154.21.92.129
-    port: 39620
-    auth: f91fd01f
-    sni: www.bing.com
-    skip-cert-verify: true
-    down-speed: 300
-    up-speed: 300
+  # - name: 美机房高速1hy
+  #   type: hysteria2
+  #   server: 154.21.92.129
+  #   port: 39620
+  #   auth: f91fd01f
+  #   sni: www.bing.com
+  #   skip-cert-verify: true
+  #   down-speed: 300
+  #   up-speed: 300
 
   - name: snell美
     type: snell
