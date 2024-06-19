@@ -406,19 +406,6 @@ proxies:
     username: handawei
     password: QURJIEe2Z5
 
-  - name: 美机房高速1vless
-    type: vless
-    server: alicdn.digis.cyou
-    port: 443
-    uuid: 77fdab35-c346-4107-a194-63b71108c806
-    # flow: xtls-rprx-direct
-    skip-cert-verify: true
-    network: h2
-    tls: true
-    h2-opts:
-      host:
-        - alicdn.digis.cyou
-      path: '/77fdab35-c346-4107-a194-63b71108c806'
 
   
   
@@ -436,12 +423,7 @@ proxies:
         - qq.110221.xyz
       path: '/b7163e3f-5c83-4050-876d-b1085755b338'
       
-    # ws-opts:
-    #   path: /path
-    #   headers:
-    #     Host: v2ray.com
-    # grpc-opts:
-    #   grpc-service-name: "example"
+
         
   - name: 美机房高速1hy
     type: hysteria2
@@ -461,8 +443,8 @@ proxies:
     udp: false # 需要 v3 以上服务端
     version: 3
     obfs-opts:
-      mode: http # 或 tls
-      host: bing.com
+      mode: tls
+      host: www.bing.com
 
     
   - name: snell港
