@@ -463,8 +463,6 @@ proxies:
     obfs-opts:
       mode: http # 或 tls
       host: bing.com
-    fast-open: true
-    servername: www.bing.com
 
     
   - name: snell港
@@ -475,7 +473,5 @@ proxies:
     udp: false # 需要 v3 以上服务端
     version: 3
     obfs-opts: 
-      mode: tls # http
+      mode: http # http
       host: bing.com
-    fast-open: true
-    servername: www.bing.com
