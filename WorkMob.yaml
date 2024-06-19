@@ -477,7 +477,7 @@ proxies:
     server: 154.3.34.2
     port: 45857
     psk: 9Wn8e0WW0Vso2hntTOkxkqDBk6S5Mxa
-    udp: true # 需要 v3 以上服务端
+    tfo: true # 需要 v3 以上服务端
     # version: 4
     # obfs-opts: 
     #   mode: http # 或 tls
