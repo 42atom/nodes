@@ -411,7 +411,7 @@ proxies:
     server: alicdn.digis.cyou
     port: 443
     uuid: 77fdab35-c346-4107-a194-63b71108c806
-    flow: xtls-rprx-direct
+    # flow: xtls-rprx-direct
     skip-cert-verify: true
     network: h2
     tls: true
