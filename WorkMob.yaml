@@ -17,6 +17,7 @@ proxy-groups:
     proxies: &proxies
       - 机房IP负载自动选择
       - 香港机房1vless
+      - snell美
       - RELAY美住M1
       - RELAY美住M2
       - RELAY美住M3
