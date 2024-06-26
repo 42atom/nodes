@@ -53,7 +53,7 @@ proxy-groups:
     type: load-balance
     strategy: consistent-hashing  # round-robin
     proxies:
-      - snell港
+      # - snell港
       - snell美
       # - 香港机房1vless
       - 备用线路HyJP
