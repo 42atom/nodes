@@ -1,5 +1,26 @@
 #!/bin/bash
 
+# snell v3
+wget https://github.com/icpz/open-snell/releases/download/v3.0.1/snell-server-linux-amd64.zip
+
+unzip ./snell-server-linux-amd64.zip
+
+# 定义文件路径
+CONFIG_FILE="./snell-server.conf"
+
+# 写入内容到文件
+cat > "$CONFIG_FILE" <<EOL
+[snell-server]
+listen = 0.0.0.0:45857
+psk = 9Wn8e0WW0Vso2hntTOkxkqDBk6S5Mxa
+obfs = http
+ipv6 = false
+EOL
+
+# 显示提示信息
+echo "Configuration file '$CONFIG_FILE' created successfully."
+
+
 # 定义变量
 SERVICE_FILE="/lib/systemd/system/snell.service"
 SNELL_SERVER_SRC="./snell-server"
