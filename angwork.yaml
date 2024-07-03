@@ -15,7 +15,7 @@ proxy-groups:
   - name: 选择代理
     type: select
     proxies: &proxies
-      - 机房IP负载自动选择
+      # - 机房IP负载自动选择
       - snell美LosAngle
       - snell东京-备用
       - RELAY日美机房
