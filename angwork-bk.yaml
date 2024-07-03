@@ -16,8 +16,8 @@ proxy-groups:
     type: select
     proxies: &proxies
       - 机房IP负载自动选择
-      - snell美LosAngle
-      - snell东京-备用
+      - snell美
+      - snell东京
       - RELAY美住M1
       - RELAY美住M2
       - RELAY美住M3
@@ -30,7 +30,7 @@ proxy-groups:
     benchmark-url: http://www.apple.com # 建议只使用HTTP协议
     benchmark-timeout: 0 # 延迟测试超时，单位：秒
     proxies:
-      - snell美LosAngle
+      - snell美
       - 美住M1
       
   - name: RELAY美住M2
@@ -38,14 +38,14 @@ proxy-groups:
     benchmark-url: http://www.apple.com 
     benchmark-timeout: 0
     proxies:
-      - snell美LosAngle
+      - snell美
       - 美住M2
       
   - name: RELAY美住M3
     type: relay
     benchmark-timeout: 0
     proxies:
-      - snell美LosAngle
+      - snell美
       - 美住M3
       
   # 能充分利用多个代理的带宽，不健康的代理会被跳过。    
@@ -53,8 +53,8 @@ proxy-groups:
     type: load-balance
     strategy: consistent-hashing  # round-robin
     proxies:
-      - snell美LosAngle
-      - snell东京-备用
+      - snell美
+      - snell东京
 
       
   - name: YouTube
@@ -374,29 +374,20 @@ proxies:
     password: QURJIEe2Z5
 
 
-  # - name: snell美
-  #   type: snell
-  #   server: 154.21.92.129
-  #   port: 24282
-  #   psk: HKOVf2OzkkrqbkrZQbbsqySwBr1n7Ll
-  #   udp: false # 需要 v3 以上服务端
-  #   version: 3
-  #   obfs-opts:
-  #     mode: tls
-  #     host: www.bing.com
-
-  - name: snell美LosAngle
+  - name: snell美
     type: snell
-    server: 154.17.3.53
-    port: 45857
-    psk: 9Wn8e0WW0Vso2hntTOkxkqDBk6S5Mxa
+    server: 154.21.92.129
+    port: 24282
+    psk: HKOVf2OzkkrqbkrZQbbsqySwBr1n7Ll
     udp: false # 需要 v3 以上服务端
     version: 3
     obfs-opts:
       mode: tls
-      host: www.bing.com  
+      host: www.bing.com
 
-  - name: snell东京-备用
+    
+
+  - name: snell东京
     type: snell
     server: 89.233.104.165
     port: 45857
