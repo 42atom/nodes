@@ -20,6 +20,7 @@ EOL
 # 显示提示信息
 echo "Configuration file '$CONFIG_FILE' created successfully."
 
+ufw allow 45857
 
 # 定义变量
 SERVICE_FILE="/lib/systemd/system/snell.service"
