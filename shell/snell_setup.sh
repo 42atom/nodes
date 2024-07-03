@@ -15,7 +15,7 @@ cat > "$CONFIG_FILE" <<EOL
 [snell-server]
 listen = 0.0.0.0:45857
 psk = 9Wn8e0WW0Vso2hntTOkxkqDBk6S5Mxa
-obfs = http
+obfs = tls
 ipv6 = false
 EOL
 
