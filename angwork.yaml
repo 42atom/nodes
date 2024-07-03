@@ -18,10 +18,10 @@ proxy-groups:
       - 机房IP负载自动选择
       - snell美LosAngle
       - snell东京-备用
+      - RELAY日美机房
       - RELAY美住M1
       - RELAY美住M2
       - RELAY美住M3
-      - RELAY日美机房
       - DIRECT
 
 
@@ -63,7 +63,7 @@ proxy-groups:
     strategy: consistent-hashing  # round-robin
     proxies:
       - snell美LosAngle
-      - snell东京-备用
+      # - snell东京-备用
 
       
   - name: YouTube
@@ -123,11 +123,10 @@ rules:
   # 内网IP配置
   - DOMAIN-SUFFIX,v2ex.com,选择代理 #v2ex
   
-  # godot资源站
-  - DOMAIN-SUFFIX,godotengine.org,选择代理 #godot
-  - DOMAIN-SUFFIX,itch.zone,选择代理 #godot
-  - DOMAIN-SUFFIX,githubusercontent.com,选择代理 #godot
-  - DOMAIN-SUFFIX,imgur.com,选择代理 #godot
+  - DOMAIN-SUFFIX,godotengine.org,选择代理 
+  - DOMAIN-SUFFIX,itch.zone,选择代理 
+  - DOMAIN-SUFFIX,githubusercontent.com,选择代理
+  - DOMAIN-SUFFIX,imgur.com,选择代理 
   - DOMAIN-SUFFIX,openai.com,选择代理 #OPENAI
   - DOMAIN-SUFFIX,sentry.io,选择代理 #OPENAI
   - DOMAIN-SUFFIX,pay.openai.com,选择代理 #OPENAI
@@ -164,6 +163,8 @@ rules:
   
   # Instagram
   - GEOSITE,instagram,Facebook
+  - DOMAIN-SUFFIX,cdninstagram.com,Facebook
+  - DOMAIN-SUFFIX,instagram.com,Facebook
   
   # Facebook
   - GEOSITE,facebook,Facebook
