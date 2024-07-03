@@ -21,6 +21,7 @@ proxy-groups:
       - RELAY美住M1
       - RELAY美住M2
       - RELAY美住M3
+      - RELAY日美机房
       - DIRECT
 
 
@@ -47,6 +48,14 @@ proxy-groups:
     proxies:
       - snell美LosAngle
       - 美住M3
+
+  - name: RELAY日美机房
+    type: relay
+    benchmark-timeout: 0
+    proxies:
+      - snell东京-备用
+      - snell美LosAngle
+  
       
   # 能充分利用多个代理的带宽，不健康的代理会被跳过。    
   - name: 机房IP负载自动选择
