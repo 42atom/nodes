@@ -1,5 +1,5 @@
 #!/bin/bash
-
+apt install unzip
 # snell v3
 wget https://github.com/icpz/open-snell/releases/download/v3.0.1/snell-server-linux-amd64.zip
 
