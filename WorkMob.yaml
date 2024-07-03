@@ -17,7 +17,6 @@ proxy-groups:
     proxies: &proxies
       - 机房IP负载自动选择
       - snell美LosAngle
-      - snell美
       - snell东京-备用
       - RELAY美住M1
       - RELAY美住M2
@@ -375,16 +374,16 @@ proxies:
     password: QURJIEe2Z5
 
 
-  - name: snell美
-    type: snell
-    server: 154.21.92.129
-    port: 24282
-    psk: HKOVf2OzkkrqbkrZQbbsqySwBr1n7Ll
-    udp: false # 需要 v3 以上服务端
-    version: 3
-    obfs-opts:
-      mode: tls
-      host: www.bing.com
+  # - name: snell美
+  #   type: snell
+  #   server: 154.21.92.129
+  #   port: 24282
+  #   psk: HKOVf2OzkkrqbkrZQbbsqySwBr1n7Ll
+  #   udp: false # 需要 v3 以上服务端
+  #   version: 3
+  #   obfs-opts:
+  #     mode: tls
+  #     host: www.bing.com
 
   - name: snell美LosAngle
     type: snell
