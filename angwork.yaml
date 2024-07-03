@@ -306,15 +306,17 @@ dns:
   ipv6: false
   listen: 0.0.0.0:53
   default-nameserver:
-    - 223.5.5.5
-    - 114.114.115.115
+    # - 223.5.5.5
+    # - 114.114.115.115
+    - 1.0.0.1
+    - 8.8.8.8
     - 119.29.29.29
    # - system
   enhanced-mode: redir-host
   fake-ip-range: 198.18.0.1/16
   nameserver:
     - https://doh.pub/dns-query
-    - https://dns.alidns.com/dns-query
+    # - https://dns.alidns.com/dns-query
   nameserver-policy:
     'www.baidu.com': 223.5.5.5
     '+.internal.crop.com': system
