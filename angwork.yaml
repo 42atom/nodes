@@ -17,6 +17,7 @@ proxy-groups:
     proxies: &proxies
       # - 机房IP负载自动选择
       - snell美LosAngle
+      - snell港
       - snell东京-备用
       - RELAY日美机房
       - RELAY美住M1
@@ -396,6 +397,17 @@ proxies:
   #   obfs-opts:
   #     mode: tls
   #     host: www.bing.com
+
+  - name: snell港
+    type: snell
+    server: 154.3.34.2
+    port: 45857
+    psk: 9Wn8e0WW0Vso2hntTOkxkqDBk6S5Mxa
+    udp: false # 需要 v3 以上服务端
+    version: 3
+    obfs-opts:
+      mode: http
+      host: www.bing.com  
 
   - name: snell美LosAngle
     type: snell
