@@ -111,6 +111,7 @@ rules:
   
   # 内网IP配置
   # - SCRIPT,ip6,选择代理
+  - DOMAIN-SUFFIX,identity.essapple.com,选择代理 # 连续互通
 
   - DOMAIN-SUFFIX,reddit.com,Facebook # Reddit
   - DOMAIN-SUFFIX,figma.com,选择代理
