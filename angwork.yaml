@@ -15,9 +15,7 @@ proxy-groups:
   - name: 选择代理
     type: select
     proxies: &proxies
-      # - 机房IP负载自动选择
       - snell美LosAngle
-      - snell港
       - snell东京-备用
       - RELAY日美机房
       - RELAY美住M1
@@ -59,12 +57,12 @@ proxy-groups:
   
       
   # 能充分利用多个代理的带宽，不健康的代理会被跳过。    
-  - name: 机房IP负载自动选择
-    type: load-balance
-    strategy: consistent-hashing  # round-robin
-    proxies:
-      - snell美LosAngle
-      # - snell东京-备用
+  # - name: 机房IP负载自动选择
+  #   type: load-balance
+  #   strategy: consistent-hashing  # round-robin
+  #   proxies:
+  #     - snell美LosAngle
+  #     # - snell东京-备用
 
       
   - name: YouTube
@@ -354,17 +352,6 @@ dns:
 
 proxies:
  
-  - name: 备用线路HyJP
-    type: hysteria2
-    server: 89.233.104.165
-    port: 59789
-    auth: 120f72d9
-    sni: www.bing.com
-    skip-cert-verify: true
-    down-speed: 500
-    up-speed: 500
-    fast-open: true
-    servername: www.bing.com
 
   - name: 美住M1
     type: socks5
@@ -386,29 +373,6 @@ proxies:
     port: 50101
     username: handawei
     password: QURJIEe2Z5
-
-
-  # - name: snell美
-  #   type: snell
-  #   server: 154.21.92.129
-  #   port: 24282
-  #   psk: HKOVf2OzkkrqbkrZQbbsqySwBr1n7Ll
-  #   udp: false # 需要 v3 以上服务端
-  #   version: 3
-  #   obfs-opts:
-  #     mode: tls
-  #     host: www.bing.com
-
-  - name: snell港
-    type: snell
-    server: 154.3.34.2
-    port: 45857
-    psk: 9Wn8e0WW0Vso2hntTOkxkqDBk6S5Mxa
-    udp: false # 需要 v3 以上服务端
-    version: 3
-    obfs-opts:
-      mode: http
-      host: www.bing.com  
 
   - name: snell美LosAngle
     type: snell
