@@ -74,7 +74,7 @@ proxy-groups:
   - name: Speedtest
     type: select
     proxies: *proxies
-  - name: Facebook
+  - name: Facebook&Ins
     type: select
     proxies: *proxies
   - name: Twitter
@@ -111,7 +111,7 @@ rules:
   # - SCRIPT,ip6,选择代理
   - DOMAIN-SUFFIX,identity.ess.apple.com,选择代理 # 连续互通
 
-  - DOMAIN-SUFFIX,reddit.com,Facebook # Reddit
+  - DOMAIN-SUFFIX,reddit.com,Facebook&Ins # Reddit
   - DOMAIN-SUFFIX,figma.com,选择代理
   - DOMAIN-SUFFIX,notion.com,选择代理
   - DOMAIN-SUFFIX,suno.com,选择代理
@@ -162,13 +162,13 @@ rules:
   - DOMAIN-SUFFIX,tapbots.com,Twitter
   
   # Instagram
-  - GEOSITE,instagram,Facebook
-  - DOMAIN-SUFFIX,cdninstagram.com,Facebook
-  - DOMAIN-SUFFIX,instagram.com,Facebook
+  - GEOSITE,instagram,Facebook&Ins
+  - DOMAIN-SUFFIX,cdninstagram.com,Facebook&Ins
+  - DOMAIN-SUFFIX,instagram.com,Facebook&Ins
   
   # Facebook
-  - GEOSITE,facebook,Facebook
-  - DOMAIN-SUFFIX,fbcdn.net,Facebook
+  - GEOSITE,facebook,Facebook&Ins
+  - DOMAIN-SUFFIX,fbcdn.net,Facebook&Ins
   
   # Telegram
   - IP-ASN,62014,选择代理,no-resolve
