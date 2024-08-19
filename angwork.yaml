@@ -355,24 +355,25 @@ proxies:
 
   - name: 美住M1
     type: socks5
-    server: 168.158.228.107
-    port: 50101
-    username: handawei
-    password: QURJIEe2Z5
-
+    server: 161.77.214.131
+    port: 5432
+    username: 9xa7v
+    password: nu1y1eih
+    
   - name: 美住M2
     type: socks5
-    server: 45.85.207.190
-    port: 50101
-    username: handawei
-    password: QURJIEe2Z5
-
+    server: 161.77.214.131
+    port: 5432
+    username: 9xa7v
+    password: nu1y1eih
+    
   - name: 美住M3
     type: socks5
-    server: 139.171.58.229
-    port: 50101
-    username: handawei
-    password: QURJIEe2Z5
+    server: 161.77.214.131
+    port: 5432
+    username: 9xa7v
+    password: nu1y1eih
+
 
   - name: snell美LosAngle
     type: snell
