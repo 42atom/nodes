@@ -30,16 +30,41 @@ proxy-groups:
       - snell美LosAngle
       - 美住M1
 
-      
-      
 rules:
-  # - RULE-SET,local, DIRECT,no-resolve
-  # - RULE-SET,cn-ip, DIRECT,no-resolve
+  - RULE-SET,gfw, 选择代理
+  - RULE-SET,local, DIRECT,no-resolve
+  - RULE-SET,cn-ip, DIRECT,no-resolve
+  - RULE-SET,direct-app, DIRECT,no-resolve
+  - RULE-SET,direct-domain, DIRECT,no-resolve
   - GEOIP,CN,DIRECT,no-resolve
-  # - RULE-SET,on-domain, DIRECT
   - MATCH, 选择代理
-  
+
 rule-providers:
+  direct-domain:
+    behavior: domain
+    format: yaml
+    url: https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/direct.txt
+    interval: 86400
+  direct-app:
+    behavior: domain
+    format: yaml
+    url: https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/applications.txt
+    interval: 86400
+  gfw-domain:
+    behavior: domain
+    format: yaml
+    url: https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/gfw.txt
+    interval: 86400
+  cn-ip:
+    behavior: ipcidr
+    format: yaml
+    url: https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/cncidr.txt
+    interval: 86400
+  local:
+    behavior: ipcidr
+    format: yaml
+    url: https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/lancidr.txt
+    interval: 86400
 
 script:
   shortcuts:
