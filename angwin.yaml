@@ -31,7 +31,7 @@ proxy-groups:
       - 美住M1
 
 rules:
-  - RULE-SET,gfw, 选择代理
+  - RULE-SET,gfw-domain, 选择代理
   - RULE-SET,local, DIRECT,no-resolve
   - RULE-SET,cn-ip, DIRECT,no-resolve
   - RULE-SET,direct-app, DIRECT,no-resolve
