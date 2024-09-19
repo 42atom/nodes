@@ -15,12 +15,9 @@ proxy-groups:
   - name: 选择代理
     type: select
     proxies: &proxies
-      - 机房IP负载自动选择
-      - snell美
-      - snell东京
+      - snell美LosAngle
+      - snell东京-备用
       - RELAY美住M1
-      - RELAY美住M2
-      - RELAY美住M3
       - DIRECT
 
 
@@ -30,262 +27,19 @@ proxy-groups:
     benchmark-url: http://www.apple.com # 建议只使用HTTP协议
     benchmark-timeout: 0 # 延迟测试超时，单位：秒
     proxies:
-      - snell美
+      - snell美LosAngle
       - 美住M1
-      
-  - name: RELAY美住M2
-    type: relay
-    benchmark-url: http://www.apple.com 
-    benchmark-timeout: 0
-    proxies:
-      - snell美
-      - 美住M2
-      
-  - name: RELAY美住M3
-    type: relay
-    benchmark-timeout: 0
-    proxies:
-      - snell美
-      - 美住M3
-      
-  # 能充分利用多个代理的带宽，不健康的代理会被跳过。    
-  - name: 机房IP负载自动选择
-    type: load-balance
-    strategy: consistent-hashing  # round-robin
-    proxies:
-      - snell美
-      - snell东京
 
       
-  - name: YouTube
-    type: select
-    proxies: *proxies
-  - name: Google
-    type: select
-    proxies: *proxies
-  - name: Speedtest
-    type: select
-    proxies: *proxies
-  - name: Facebook
-    type: select
-    proxies: *proxies
-  - name: Twitter
-    type: select
-    proxies: *proxies
-  - name: Spotify
-    type: select
-    proxies: *proxies
-  - name: OpenAi
-    type: select
-    proxies: *proxies
-    
-  - name: WeChat
-    type: select
-    proxies: 
-      - DIRECT
-
-
-  - name: 默认
-    type: select
-    proxies:
-      - DIRECT
-      - 选择代理
-
-  - name: Forbiden
-    type: select
-    proxies:
-      - REJECT
       
 rules:
-  # - RULE-SET,google,选择代理
-  
-  # 内网IP配置
-  # - SCRIPT,ip6,选择代理
-
-  - DOMAIN-SUFFIX,reddit.com,Facebook # Reddit
-  - DOMAIN-SUFFIX,figma.com,选择代理
-  - DOMAIN-SUFFIX,notion.com,选择代理
-  - DOMAIN-SUFFIX,suno.com,选择代理
-  - DOMAIN-SUFFIX,vivago.ai,选择代理
-  - DOMAIN-SUFFIX,recraft.ai,选择代理
-  - DOMAIN-SUFFIX,midjourney.com,选择代理
-  - DOMAIN-SUFFIX,discord.com,选择代理
-  
-  # 内网IP配置
-  - DOMAIN-SUFFIX,v2ex.com,选择代理 #v2ex
-  
-  # godot资源站
-  - DOMAIN-SUFFIX,godotengine.org,选择代理 #godot
-  - DOMAIN-SUFFIX,itch.zone,选择代理 #godot
-  - DOMAIN-SUFFIX,githubusercontent.com,选择代理 #godot
-  - DOMAIN-SUFFIX,imgur.com,选择代理 #godot
-  - DOMAIN-SUFFIX,openai.com,选择代理 #OPENAI
-  - DOMAIN-SUFFIX,sentry.io,选择代理 #OPENAI
-  - DOMAIN-SUFFIX,pay.openai.com,选择代理 #OPENAI
-  - DOMAIN-SUFFIX,identrust.com,选择代理 #OPENAI
-  - DOMAIN-SUFFIX,openaiapi-site.azureedge.net,选择代理 #OPENAI
-  - DOMAIN-SUFFIX,chat.openai.com,选择代理 #OPENAI
-  - DOMAIN-SUFFIX,challenges.cloudflare.com,选择代理 #OPENAI
-  - DOMAIN-SUFFIX,auth0.openai.com,选择代理 #OPENAI
-  - DOMAIN-SUFFIX,platform.openai.com,选择代理 #OPENAI
-  
-  # bitcoin
-  - DOMAIN-SUFFIX,okx.com,选择代理 #okx
-  - DOMAIN-SUFFIX,raz-kids.com,选择代理 #riz
-  - DOMAIN-SUFFIX,learninga-z.com,选择代理 #riz
-  - DOMAIN-SUFFIX,raz-plus.com,选择代理 #riz
-  - DOMAIN-SUFFIX,getepic.com,选择代理 #epic
-  - DOMAIN-SUFFIX,mysteryscience.com,选择代理 #my
-  - DOMAIN-SUFFIX,i-ready.com,选择代理 #ready
-  - GEOSITE,netflix,选择代理 # Netflix
-  - GEOSITE,disney,选择代理+ # Disney+
-  - GEOSITE,spotify,选择代理 # Spotify
-  - GEOSITE,speedtest,Speedtest # Speedtest
-  - GEOSITE,github,选择代理 # GitHub
-  
-  # YouTube
-  - GEOSITE,youtube,YouTube
-  
-  # Google
-  - GEOSITE,google,Google
-  
-  # Twitter
-  - GEOSITE,twitter,Twitter
-  - DOMAIN-SUFFIX,tapbots.com,Twitter
-  
-  # Instagram
-  - GEOSITE,instagram,Facebook
-  
-  # Facebook
-  - GEOSITE,facebook,Facebook
-  - DOMAIN-SUFFIX,fbcdn.net,Facebook
-  
-  # Telegram
-  - IP-ASN,62014,选择代理,no-resolve
-  - IP-ASN,59930,选择代理,no-resolve
-  - IP-ASN,44907,选择代理,no-resolve
-  - IP-ASN,211157,选择代理,no-resolve
-  - PROCESS-NAME,Telegram,选择代理
-  - GEOSITE,telegram,选择代理
-  #
-  - DOMAIN-SUFFIX,v2ex.com,选择代理 #v2ex
-  - DOMAIN-SUFFIX,githubusercontent.com,选择代理 #godot
-  - DOMAIN-SUFFIX,imgur.com,选择代理 #godot
-  - DOMAIN-SUFFIX,openai.com,选择代理 #OPENAI
-  - DOMAIN-SUFFIX,sentry.io,选择代理 #OPENAI
-  - DOMAIN-SUFFIX,pay.openai.com,选择代理 #OPENAI
-  - DOMAIN-SUFFIX,identrust.com,选择代理 #OPENAI
-  - DOMAIN-SUFFIX,openaiapi-site.azureedge.net,选择代理 #OPENAI
-  - DOMAIN-SUFFIX,chat.openai.com,选择代理 #OPENAI
-  - DOMAIN-SUFFIX,challenges.cloudflare.com,选择代理 #OPENAI
-  - DOMAIN-SUFFIX,auth0.openai.com,选择代理 #OPENAI
-  - DOMAIN-SUFFIX,platform.openai.com,选择代理 #OPENAI
-  - DOMAIN-SUFFIX,okx.com,选择代理 #okx
-  - GEOSITE,github,选择代理 # GitHub
-  - DOMAIN-SUFFIX,feishu.cn,DIRECT #feishu
-
-  # Other SAAS
-  - DOMAIN-SUFFIX,anydesk.com,DIRECT
-  - DOMAIN-SUFFIX,proton.me,选择代理
-  - DOMAIN-SUFFIX,figma.com,DIRECT
-  - DOMAIN-SUFFIX,recraft.ai,选择代理
-  - DOMAIN-SUFFIX,photopea.com,选择代理
-  - DOMAIN-SUFFIX,teamviewer.com,DIRECT
-  
-  # Apple LBS
-  - DOMAIN-SUFFIX,iphone-ld.apple.com,DIRECT
-  - DOMAIN-SUFFIX,lcdn-locator.apple.com,DIRECT
-  - DOMAIN-SUFFIX,lcdn-registration.apple.com,DIRECT
-  - DOMAIN-SUFFIX,push.apple.com,DIRECT
-  - DOMAIN,timestamp.apple.com,DIRECT
-  - DOMAIN,seed-sequoia.siri.apple.com,DIRECT
-  # Apple OCSP
-  - PROCESS-NAME,trustd,选择代理
-  # Microsoft
-  - GEOSITE,microsoft@cn,DIRECT
-  - GEOSITE,microsoft,选择代理
-  - GEOSITE,xbox,选择代理
-
-  # 根据指纹浏览器进程名选择自动代理网络,中转
-  # - PROCESS-NAME,SunBrowser,自动选择
-
-  # common proxy utils
-  - PROCESS-NAME,Surge,DIRECT
-  - PROCESS-NAME,privoxy,DIRECT
-  - PROCESS-NAME,naive,DIRECT
-  - PROCESS-NAME,CloudflareWARP,DIRECT
-  - PROCESS-NAME,Cloudflare WARP,DIRECT
-  - PROCESS-NAME,p4pclient,DIRECT
-  - PROCESS-NAME,Thunder,DIRECT
-  - PROCESS-NAME,DownloadService,DIRECT
-  - PROCESS-NAME,qbittorrent,DIRECT
-  - PROCESS-NAME,Transmission,DIRECT
-  - PROCESS-NAME,fdm,DIRECT
-  - PROCESS-NAME,aria2c,DIRECT
-  - PROCESS-NAME,Folx,DIRECT
-  - PROCESS-NAME,NetTransport,DIRECT
-  - PROCESS-NAME,uTorrent,DIRECT
-  - PROCESS-NAME,WebTorrent,DIRECT
-  # Lan
-  - DOMAIN,asusrouter.com,DIRECT
-  - DOMAIN,cp.cloudflare.com,DIRECT
-  - DOMAIN,detectportal.firefox.com,DIRECT
-  - DOMAIN,instant.arubanetworks.com,DIRECT
-  - DOMAIN,router.asus.com,DIRECT
-  - DOMAIN,setmeup.arubanetworks.com,DIRECT
-  - DOMAIN,www.asusrouter.com,DIRECT
-  - DOMAIN-SUFFIX,home.arpa,DIRECT
-  - DOMAIN-SUFFIX,a.e.f.ip6.arpa,DIRECT
-  - DOMAIN-SUFFIX,acl4.ssr,DIRECT
-  - DOMAIN-SUFFIX,b.e.f.ip6.arpa,DIRECT
-  - DOMAIN-SUFFIX,captive.apple.com,DIRECT
-  - DOMAIN-SUFFIX,connectivitycheck.gstatic.com,DIRECT
-  - DOMAIN-SUFFIX,d.f.ip6.arpa,DIRECT
-  - DOMAIN-SUFFIX,hiwifi.com,DIRECT
-  - DOMAIN-SUFFIX,home.arpa,DIRECT
-  - DOMAIN-SUFFIX,leike.cc,DIRECT
-  - DOMAIN-SUFFIX,localhost.ptlogin2.qq.com,DIRECT
-  - DOMAIN-SUFFIX,localhost.sec.qq.com,DIRECT
-  - IP-CIDR,162.159.193.0/24,no-resolve
-  - IP-CIDR,0.0.0.0/8,no-resolve
-  - IP-CIDR,10.0.0.0/8,no-resolve
-  - IP-CIDR,100.64.0.0/10,no-resolve
-  - IP-CIDR,127.0.0.0/8,no-resolve
-  - IP-CIDR,169.254.0.0/16,no-resolve
-  - IP-CIDR,172.16.0.0/12,no-resolve
-  - IP-CIDR,192.0.0.0/24,no-resolve
-  - IP-CIDR,192.0.2.0/24,no-resolve
-  - IP-CIDR,192.168.0.0/16,no-resolve
-  - IP-CIDR,192.88.99.0/24,no-resolve
-  - IP-CIDR,198.18.0.0/15,no-resolve
-  - IP-CIDR,198.51.100.0/24,no-resolve
-  - IP-CIDR,203.0.113.0/24,no-resolve
-  - IP-CIDR,224.0.0.0/3,no-resolve
-  - IP-CIDR,::/127,no-resolve
-  - IP-CIDR,fc00::/7,no-resolve
-  - IP-CIDR,fe80::/10,no-resolve
-  - IP-CIDR,ff00::/8,no-resolve
-  # 禁用 QUIC 协议 HTTP3 / QUIC 协议基于 UDP, 在目前的网络环境下较为低效
-  - SCRIPT,quic,REJECT
-  
-  - GEOIP,US,选择代理
-  - GEOIP,LAN,DIRECT
-  - GEOIP,CN,DIRECT
-  - MATCH,默认
+  - RULE-SET,local, DIRECT,no-resolve
+  - RULE-SET,cn-ip, DIRECT,no-resolve
+  - GEOIP,CN,DIRECT,no-resolve
+  - RULE-SET,on-domain, DIRECT
+  - MATCH, 选择代理
   
 rule-providers:
-#  google:
-#    type: http
-#    behavior: domain
-#    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/google.txt"
-#    path: ./ruleset/google.yaml
-#    interval: 86400
-
-# TikTok:
-#   behavior: domain
-#   format: text
-#   interval: 86400
-#   url: https://raw.githubusercontent.com/Semporia/TikTok-Unlock/master/Surge/TikTok.list
 
 script:
   shortcuts:
@@ -296,15 +50,17 @@ dns:
   ipv6: false
   listen: 0.0.0.0:53
   default-nameserver:
-    - 223.5.5.5
-    - 114.114.115.115
+    # - 223.5.5.5
+    # - 114.114.115.115
+    - 1.0.0.1
+    - 8.8.8.8
     - 119.29.29.29
    # - system
   enhanced-mode: redir-host
   fake-ip-range: 198.18.0.1/16
   nameserver:
     - https://doh.pub/dns-query
-    - https://dns.alidns.com/dns-query
+    # - https://dns.alidns.com/dns-query
   nameserver-policy:
     'www.baidu.com': 223.5.5.5
     '+.internal.crop.com': system
@@ -340,54 +96,28 @@ dns:
 
 proxies:
  
-  - name: 备用线路HyJP
-    type: hysteria2
-    server: 89.233.104.165
-    port: 59789
-    auth: 120f72d9
-    sni: www.bing.com
-    skip-cert-verify: true
-    down-speed: 500
-    up-speed: 500
-    fast-open: true
-    servername: www.bing.com
 
   - name: 美住M1
     type: socks5
-    server: 168.158.228.107
-    port: 50101
-    username: handawei
-    password: QURJIEe2Z5
-
-  - name: 美住M2
-    type: socks5
-    server: 45.85.207.190
-    port: 50101
-    username: handawei
-    password: QURJIEe2Z5
-
-  - name: 美住M3
-    type: socks5
-    server: 139.171.58.229
-    port: 50101
-    username: handawei
-    password: QURJIEe2Z5
+    server: 161.77.214.131
+    port: 5432
+    username: 9xa7v
+    password: nu1y1eih
+    
 
 
-  - name: snell美
+  - name: snell美LosAngle
     type: snell
-    server: 154.21.92.129
-    port: 24282
-    psk: HKOVf2OzkkrqbkrZQbbsqySwBr1n7Ll
+    server: 154.17.3.53
+    port: 45857
+    psk: 9Wn8e0WW0Vso2hntTOkxkqDBk6S5Mxa
     udp: false # 需要 v3 以上服务端
     version: 3
     obfs-opts:
       mode: tls
-      host: www.bing.com
+      host: www.bing.com  
 
-    
-
-  - name: snell东京
+  - name: snell东京-备用
     type: snell
     server: 89.233.104.165
     port: 45857
