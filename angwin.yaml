@@ -27,7 +27,8 @@ rules:
   - RULE-SET,direct-domain, DIRECT,no-resolve
   - GEOIP,CN,DIRECT,no-resolve
   - MATCH, 选择代理
-
+  - NETWORK,udp,REJECT
+  
 rule-providers:
   direct-domain:
     behavior: domain
