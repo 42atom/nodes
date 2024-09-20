@@ -117,7 +117,7 @@ proxies:
     server: 154.17.3.53
     port: 45857
     psk: 9Wn8e0WW0Vso2hntTOkxkqDBk6S5Mxa
-    udp: false # 需要 v3 以上服务端
+    udp: true
     version: 3
     obfs-opts:
       mode: tls
@@ -128,7 +128,7 @@ proxies:
     server: 89.233.104.165
     port: 45857
     psk: 9Wn8e0WW0Vso2hntTOkxkqDBk6S5Mxa
-    udp: false # 需要 v3 以上服务端
+    udp: true
     version: 3
     obfs-opts: 
       mode: http # http
