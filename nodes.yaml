@@ -17,6 +17,175 @@ proxy-groups:
     proxies: &proxies
       - snell美LosAngle
       - snell东京-备用
+      - US-LISA
+      - DIRECT
+      
+  - name: YouTube
+    type: select
+    proxies: *proxies
+  - name: Google
+    type: select
+    proxies: *proxies
+
+rules:
+  # YouTube
+  - GEOSITE,youtube,YouTube
+  
+  # Google
+  - GEOSITE,google,Google
+  - DOMAIN-SUFFIX,identity.ess.apple.com,选择代理 # 连续互通
+
+  - RULE-SET,gfw-domain, 选择代理
+  - RULE-SET,local, DIRECT,no-resolve
+  - RULE-SET,cn-ip, DIRECT,no-resolve
+  - RULE-SET,direct-app, DIRECT,no-resolve
+  - RULE-SET,direct-domain, DIRECT,no-resolve
+  - GEOIP,CN,DIRECT,no-resolve
+  - MATCH, 选择代理
+  - NETWORK,udp,REJECT
+  
+rule-providers:
+  direct-domain:
+    type: http
+    behavior: domain
+    format: yaml
+    url: https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/direct.txt
+    interval: 86400
+  direct-app:
+    type: http
+    behavior: domain
+    format: yaml
+    url: https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/applications.txt
+    interval: 86400
+  gfw-domain:
+    type: http
+    behavior: domain
+    format: yaml
+    url: https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/gfw.txt
+    interval: 86400
+  cn-ip:
+    type: http
+    behavior: ipcidr
+    format: yaml
+    url: https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/cncidr.txt
+    interval: 86400
+  local:
+    type: http
+    behavior: ipcidr
+    format: yaml
+    url: https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/lancidr.txt
+    interval: 86400
+
+script:
+  shortcuts:
+     quic: network == 'udp' and dst_port == 443
+
+dns:
+  enable: true
+  ipv6: false
+  listen: 0.0.0.0:53
+  default-nameserver:
+    # - 223.5.5.5
+    # - 114.114.115.115
+    - 1.0.0.1
+    - 8.8.8.8
+    - 119.29.29.29
+   # - system
+  # enhanced-mode: redir-host
+  fake-ip-range: 198.18.0.1/16
+  nameserver:
+    - https://doh.pub/dns-query
+    # - https://dns.alidns.com/dns-query
+  nameserver-policy:
+    'www.baidu.com': 223.5.5.5
+    '+.internal.crop.com': system
+  skip-cert-verify: true
+  # 在以下列表的域名将不会被解析为 fake ip，这些域名相关的解析请求将会返回它们真实的 IP 地址
+  fake-ip-filter:
+    - '*.lan'
+    - localhost.ptlogin2.qq.com
+    - '+.srv.nintendo.net'
+    - '+.stun.playstation.net'
+    - '+.msftconnecttest.com'
+    - '+.msftncsi.com'
+    - '+.xboxlive.com'
+    - 'msftconnecttest.com'
+    - 'xbox.*.microsoft.com'
+    - '*.battlenet.com.cn'
+    - '*.battlenet.com'
+    - '*.blzstatic.cn'
+    - '*.battle.net'
+    - +.stun.*.*
+    - +.stun.*.*.*
+    - +.stun.*.*.*.*
+    - +.stun.*.*.*.*.*
+    - lens.l.google.com
+    - '*.n.n.srv.nintendo.net'
+    - +.stun.playstation.net
+    - xbox.*.*.microsoft.com
+    - '*.*.xboxlive.com'
+    - '*.msftncsi.com'
+    - '*.msftconnecttest.com'
+    - '*.mcdn.bilivideo.cn'
+
+
+proxies:
+ 
+
+  - name: snell美LosAngle
+    type: snell
+    server: 154.17.3.53
+    port: 45857
+    psk: 9Wn8e0WW0Vso2hntTOkxkqDBk6S5Mxa
+    udp: false
+    version: 3
+    obfs-opts:
+      mode: tls
+      host: www.bing.com  
+
+  - name: snell东京-备用
+    type: snell
+    server: 89.233.104.165
+    port: 45857
+    psk: 9Wn8e0WW0Vso2hntTOkxkqDBk6S5Mxa
+    udp: false
+    version: 3
+    obfs-opts: 
+      mode: http # http
+      host: bing.com
+
+  - name: US-LISA
+    type: snell
+    server: 38.84.200.198
+    port: 45857
+    psk: 9Wn8e0WW0Vso2hntTOkxkqDBk6S5Mxa
+    udp: false # 需要 v3 以上服务端
+    version: 3
+    obfs-opts:
+      mode: tls
+      host: www.bing.com  
+
+
+
+port: 7890
+socks-port: 7891
+allow-lan: true
+mode: Rule
+log-level: info
+# external-controller: :9090
+
+proxy-providers:
+# 服务提供商-1:
+# url: http://your-service-provider
+# interval: 600
+
+proxy-groups:
+  # 功能分组
+  - name: 选择代理
+    type: select
+    proxies: &proxies
+      - snell美LosAngle
+      - snell东京-备用
       - RELAY日美机房
       - RELAY美住M1
       - US-LISA
