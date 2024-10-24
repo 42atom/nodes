@@ -78,7 +78,7 @@ proxy-groups:
     icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Rocket.png
     use:
       - All
-    proxies:
+    proxies: &proxies
       - 自动选择
       - 故障转移
       - 美国节点
