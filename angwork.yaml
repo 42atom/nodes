@@ -1,327 +1,39 @@
-port: 7890
-socks-port: 7891
+# 将proxy-providers里面链接中的“订阅链接”替换即可
+
+mixed-port: 7890
 allow-lan: true
-mode: Rule
+bind-address: '*'
+mode: rule
 log-level: info
-# external-controller: :9090
+ipv6: true
+external-controller: 127.0.0.1:9090
+
+subscribe-url: 订阅链接
+#替换上面文字用于Stash获取机场流量信息并在主页显示
 
 proxy-providers:
-# 服务提供商-1:
-# url: http://your-service-provider
-# interval: 600
-
-proxy-groups:
-  # 功能分组
-  - name: 选择代理
-    type: select
-    proxies: &proxies
-      - snell美LosAngle
-      - snell东京-备用
-      - RELAY日美机房
-      - RELAY美住M1
-      - RELAY美住M2
-      - RELAY美住M3
-      - DIRECT
-
-
-  # 流量: stash <-> http <-> vmess <-> ss1 <-> ss2 <-> 互联网
-  - name: RELAY美住M1
-    type: relay
-    benchmark-url: http://www.apple.com # 建议只使用HTTP协议
-    benchmark-timeout: 0 # 延迟测试超时，单位：秒
-    proxies:
-      - snell美LosAngle
-      - 美住M1
-      
-  - name: RELAY美住M2
-    type: relay
-    benchmark-url: http://www.apple.com 
-    benchmark-timeout: 0
-    proxies:
-      - snell美LosAngle
-      - 美住M2
-      
-  - name: RELAY美住M3
-    type: relay
-    benchmark-timeout: 0
-    proxies:
-      - snell美LosAngle
-      - 美住M3
-
-  - name: RELAY日美机房
-    type: relay
-    benchmark-timeout: 0
-    proxies:
-      - snell东京-备用
-      - snell美LosAngle
-  
-      
-  # 能充分利用多个代理的带宽，不健康的代理会被跳过。    
-  # - name: 机房IP负载自动选择
-  #   type: load-balance
-  #   strategy: consistent-hashing  # round-robin
-  #   proxies:
-  #     - snell美LosAngle
-  #     # - snell东京-备用
-
-      
-  - name: YouTube
-    type: select
-    proxies: *proxies
-  - name: Google
-    type: select
-    proxies: *proxies
-  - name: Speedtest
-    type: select
-    proxies: *proxies
-  - name: Facebook&Ins
-    type: select
-    proxies: *proxies
-  - name: Twitter
-    type: select
-    proxies: *proxies
-  - name: Spotify
-    type: select
-    proxies: *proxies
-  - name: OpenAi
-    type: select
-    proxies: *proxies
-    
-  - name: WeChat
-    type: select
-    proxies: 
-      - DIRECT
-
-
-  - name: 默认
-    type: select
-    proxies:
-      - DIRECT
-      - 选择代理
-
-  - name: Forbiden
-    type: select
-    proxies:
-      - REJECT
-      
-rules:
-  # - RULE-SET,google,选择代理
-  
-  # 内网IP配置
-  # - SCRIPT,ip6,选择代理
-  - DOMAIN-SUFFIX,identity.ess.apple.com,选择代理 # 连续互通
-
-  - DOMAIN-SUFFIX,reddit.com,Facebook&Ins # Reddit
-  - DOMAIN-SUFFIX,figma.com,选择代理
-  - DOMAIN-SUFFIX,notion.com,选择代理
-  - DOMAIN-SUFFIX,suno.com,选择代理
-  - DOMAIN-SUFFIX,vivago.ai,选择代理
-  - DOMAIN-SUFFIX,recraft.ai,选择代理
-  - DOMAIN-SUFFIX,midjourney.com,选择代理
-  - DOMAIN-SUFFIX,discord.com,选择代理
-  
-  # 内网IP配置
-  - DOMAIN-SUFFIX,v2ex.com,选择代理 #v2ex
-  
-  - DOMAIN-SUFFIX,godotengine.org,选择代理 
-  - DOMAIN-SUFFIX,itch.zone,选择代理 
-  - DOMAIN-SUFFIX,githubusercontent.com,选择代理
-  - DOMAIN-SUFFIX,imgur.com,选择代理 
-  - DOMAIN-SUFFIX,openai.com,选择代理 #OPENAI
-  - DOMAIN-SUFFIX,sentry.io,选择代理 #OPENAI
-  - DOMAIN-SUFFIX,pay.openai.com,选择代理 #OPENAI
-  - DOMAIN-SUFFIX,identrust.com,选择代理 #OPENAI
-  - DOMAIN-SUFFIX,openaiapi-site.azureedge.net,选择代理 #OPENAI
-  - DOMAIN-SUFFIX,chat.openai.com,选择代理 #OPENAI
-  - DOMAIN-SUFFIX,challenges.cloudflare.com,选择代理 #OPENAI
-  - DOMAIN-SUFFIX,auth0.openai.com,选择代理 #OPENAI
-  - DOMAIN-SUFFIX,platform.openai.com,选择代理 #OPENAI
-  
-  # bitcoin
-  - DOMAIN-SUFFIX,okx.com,选择代理 #okx
-  - DOMAIN-SUFFIX,raz-kids.com,选择代理 #riz
-  - DOMAIN-SUFFIX,learninga-z.com,选择代理 #riz
-  - DOMAIN-SUFFIX,raz-plus.com,选择代理 #riz
-  - DOMAIN-SUFFIX,getepic.com,选择代理 #epic
-  - DOMAIN-SUFFIX,mysteryscience.com,选择代理 #my
-  - DOMAIN-SUFFIX,i-ready.com,选择代理 #ready
-  - GEOSITE,netflix,选择代理 # Netflix
-  - GEOSITE,disney,选择代理+ # Disney+
-  - GEOSITE,spotify,选择代理 # Spotify
-  - GEOSITE,speedtest,Speedtest # Speedtest
-  - GEOSITE,github,选择代理 # GitHub
-  
-  # YouTube
-  - GEOSITE,youtube,YouTube
-  
-  # Google
-  - GEOSITE,google,Google
-  
-  # Twitter
-  - GEOSITE,twitter,Twitter
-  - DOMAIN-SUFFIX,tapbots.com,Twitter
-  
-  # Instagram
-  - GEOSITE,instagram,Facebook&Ins
-  - DOMAIN-SUFFIX,cdninstagram.com,Facebook&Ins
-  - DOMAIN-SUFFIX,instagram.com,Facebook&Ins
-  
-  # Facebook
-  - GEOSITE,facebook,Facebook&Ins
-  - DOMAIN-SUFFIX,fbcdn.net,Facebook&Ins
-  
-  # Telegram
-  - IP-ASN,62014,选择代理,no-resolve
-  - IP-ASN,59930,选择代理,no-resolve
-  - IP-ASN,44907,选择代理,no-resolve
-  - IP-ASN,211157,选择代理,no-resolve
-  - PROCESS-NAME,Telegram,选择代理
-  - GEOSITE,telegram,选择代理
-  #
-  - DOMAIN-SUFFIX,v2ex.com,选择代理 #v2ex
-  - DOMAIN-SUFFIX,githubusercontent.com,选择代理 #godot
-  - DOMAIN-SUFFIX,imgur.com,选择代理 #godot
-  - DOMAIN-SUFFIX,openai.com,选择代理 #OPENAI
-  - DOMAIN-SUFFIX,sentry.io,选择代理 #OPENAI
-  - DOMAIN-SUFFIX,pay.openai.com,选择代理 #OPENAI
-  - DOMAIN-SUFFIX,identrust.com,选择代理 #OPENAI
-  - DOMAIN-SUFFIX,openaiapi-site.azureedge.net,选择代理 #OPENAI
-  - DOMAIN-SUFFIX,chat.openai.com,选择代理 #OPENAI
-  - DOMAIN-SUFFIX,challenges.cloudflare.com,选择代理 #OPENAI
-  - DOMAIN-SUFFIX,auth0.openai.com,选择代理 #OPENAI
-  - DOMAIN-SUFFIX,platform.openai.com,选择代理 #OPENAI
-  - DOMAIN-SUFFIX,okx.com,选择代理 #okx
-  - GEOSITE,github,选择代理 # GitHub
-  - DOMAIN-SUFFIX,feishu.cn,DIRECT #feishu
-
-  # Other SAAS
-  - DOMAIN-SUFFIX,anydesk.com,DIRECT
-  - DOMAIN-SUFFIX,proton.me,选择代理
-  - DOMAIN-SUFFIX,figma.com,DIRECT
-  - DOMAIN-SUFFIX,recraft.ai,选择代理
-  - DOMAIN-SUFFIX,photopea.com,选择代理
-  - DOMAIN-SUFFIX,teamviewer.com,DIRECT
-  
-  # Apple LBS
-  - DOMAIN-SUFFIX,iphone-ld.apple.com,DIRECT
-  - DOMAIN-SUFFIX,lcdn-locator.apple.com,DIRECT
-  - DOMAIN-SUFFIX,lcdn-registration.apple.com,DIRECT
-  - DOMAIN-SUFFIX,push.apple.com,DIRECT
-  - DOMAIN,timestamp.apple.com,DIRECT
-  - DOMAIN,seed-sequoia.siri.apple.com,DIRECT
-  # Apple OCSP
-  - PROCESS-NAME,trustd,选择代理
-  # Microsoft
-  - GEOSITE,microsoft@cn,DIRECT
-  - GEOSITE,microsoft,选择代理
-  - GEOSITE,xbox,选择代理
-
-  # 根据指纹浏览器进程名选择自动代理网络,中转
-  # - PROCESS-NAME,SunBrowser,自动选择
-
-  # common proxy utils
-  - PROCESS-NAME,Surge,DIRECT
-  - PROCESS-NAME,privoxy,DIRECT
-  - PROCESS-NAME,naive,DIRECT
-  - PROCESS-NAME,CloudflareWARP,DIRECT
-  - PROCESS-NAME,Cloudflare WARP,DIRECT
-  - PROCESS-NAME,p4pclient,DIRECT
-  - PROCESS-NAME,Thunder,DIRECT
-  - PROCESS-NAME,DownloadService,DIRECT
-  - PROCESS-NAME,qbittorrent,DIRECT
-  - PROCESS-NAME,Transmission,DIRECT
-  - PROCESS-NAME,fdm,DIRECT
-  - PROCESS-NAME,aria2c,DIRECT
-  - PROCESS-NAME,Folx,DIRECT
-  - PROCESS-NAME,NetTransport,DIRECT
-  - PROCESS-NAME,uTorrent,DIRECT
-  - PROCESS-NAME,WebTorrent,DIRECT
-  # Lan
-  - DOMAIN,asusrouter.com,DIRECT
-  - DOMAIN,cp.cloudflare.com,DIRECT
-  - DOMAIN,detectportal.firefox.com,DIRECT
-  - DOMAIN,instant.arubanetworks.com,DIRECT
-  - DOMAIN,router.asus.com,DIRECT
-  - DOMAIN,setmeup.arubanetworks.com,DIRECT
-  - DOMAIN,www.asusrouter.com,DIRECT
-  - DOMAIN-SUFFIX,home.arpa,DIRECT
-  - DOMAIN-SUFFIX,a.e.f.ip6.arpa,DIRECT
-  - DOMAIN-SUFFIX,acl4.ssr,DIRECT
-  - DOMAIN-SUFFIX,b.e.f.ip6.arpa,DIRECT
-  - DOMAIN-SUFFIX,captive.apple.com,DIRECT
-  - DOMAIN-SUFFIX,connectivitycheck.gstatic.com,DIRECT
-  - DOMAIN-SUFFIX,d.f.ip6.arpa,DIRECT
-  - DOMAIN-SUFFIX,hiwifi.com,DIRECT
-  - DOMAIN-SUFFIX,home.arpa,DIRECT
-  - DOMAIN-SUFFIX,leike.cc,DIRECT
-  - DOMAIN-SUFFIX,localhost.ptlogin2.qq.com,DIRECT
-  - DOMAIN-SUFFIX,localhost.sec.qq.com,DIRECT
-  - IP-CIDR,162.159.193.0/24,no-resolve
-  - IP-CIDR,0.0.0.0/8,no-resolve
-  - IP-CIDR,10.0.0.0/8,no-resolve
-  - IP-CIDR,100.64.0.0/10,no-resolve
-  - IP-CIDR,127.0.0.0/8,no-resolve
-  - IP-CIDR,169.254.0.0/16,no-resolve
-  - IP-CIDR,172.16.0.0/12,no-resolve
-  - IP-CIDR,192.0.0.0/24,no-resolve
-  - IP-CIDR,192.0.2.0/24,no-resolve
-  - IP-CIDR,192.168.0.0/16,no-resolve
-  - IP-CIDR,192.88.99.0/24,no-resolve
-  - IP-CIDR,198.18.0.0/15,no-resolve
-  - IP-CIDR,198.51.100.0/24,no-resolve
-  - IP-CIDR,203.0.113.0/24,no-resolve
-  - IP-CIDR,224.0.0.0/3,no-resolve
-  - IP-CIDR,::/127,no-resolve
-  - IP-CIDR,fc00::/7,no-resolve
-  - IP-CIDR,fe80::/10,no-resolve
-  - IP-CIDR,ff00::/8,no-resolve
-  # 禁用 QUIC 协议 HTTP3 / QUIC 协议基于 UDP, 在目前的网络环境下较为低效
-  - SCRIPT,quic,REJECT
-  
-  - GEOIP,US,选择代理
-  - GEOIP,LAN,DIRECT
-  - GEOIP,CN,DIRECT
-  - MATCH,默认
-  
-rule-providers:
-#  google:
-#    type: http
-#    behavior: domain
-#    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/google.txt"
-#    path: ./ruleset/google.yaml
-#    interval: 86400
-
-# TikTok:
-#   behavior: domain
-#   format: text
-#   interval: 86400
-#   url: https://raw.githubusercontent.com/Semporia/TikTok-Unlock/master/Surge/TikTok.list
-
-script:
-  shortcuts:
-     quic: network == 'udp' and dst_port == 443
+  # All:
+  #   type: http
+  #   url: "https://api.v1.mk/sub?target=clash&url=订阅链接&emoji=true&list=true&udp=true"
+  #   # 以下方法任选其一⚠️有Clash订阅优先使用方法二❗️
+  #   # 1.可以使用任意类型的链接仅替换上面文字，多个链接使用英文符号的竖杠|隔开一起写上即可
+  #   # 2.Sub-Store与Clash类型订阅链接替换掉整个引号""内的链接
+  #   interval: 86400
+  #   path: ./all.yaml
+  #   health-check:
+  #     enable: true
+  #     interval: 600
+  #     url: http://www.gstatic.com/generate_204
 
 dns:
   enable: true
-  ipv6: false
+  ipv6: true
   listen: 0.0.0.0:53
   default-nameserver:
-    # - 223.5.5.5
-    # - 114.114.115.115
-    - 1.0.0.1
-    - 8.8.8.8
     - 119.29.29.29
-   # - system
-  enhanced-mode: redir-host
+    - 223.5.5.5
+  enhanced-mode: fake-ip
   fake-ip-range: 198.18.0.1/16
-  nameserver:
-    - https://doh.pub/dns-query
-    # - https://dns.alidns.com/dns-query
-  nameserver-policy:
-    'www.baidu.com': 223.5.5.5
-    '+.internal.crop.com': system
-  skip-cert-verify: true
-  # 在以下列表的域名将不会被解析为 fake ip，这些域名相关的解析请求将会返回它们真实的 IP 地址
   fake-ip-filter:
     - '*.lan'
     - localhost.ptlogin2.qq.com
@@ -336,63 +48,213 @@ dns:
     - '*.battlenet.com'
     - '*.blzstatic.cn'
     - '*.battle.net'
-    - +.stun.*.*
-    - +.stun.*.*.*
-    - +.stun.*.*.*.*
-    - +.stun.*.*.*.*.*
-    - lens.l.google.com
-    - '*.n.n.srv.nintendo.net'
-    - +.stun.playstation.net
-    - xbox.*.*.microsoft.com
-    - '*.*.xboxlive.com'
-    - '*.msftncsi.com'
-    - '*.msftconnecttest.com'
-    - '*.mcdn.bilivideo.cn'
-
+  nameserver:
+    - https://doh.pub/dns-query
+    - https://dns.alidns.com/dns-query
 
 proxies:
- 
-
-  - name: 美住M1
-    type: socks5
-    server: 161.77.214.131
-    port: 5432
-    username: 9xa7v
-    password: nu1y1eih
-    
-  - name: 美住M2
-    type: socks5
-    server: 161.77.214.131
-    port: 5432
-    username: 9xa7v
-    password: nu1y1eih
-    
-  - name: 美住M3
-    type: socks5
-    server: 161.77.214.131
-    port: 5432
-    username: 9xa7v
-    password: nu1y1eih
-
-
-  - name: snell美LosAngle
+  - name: 美国节点
     type: snell
     server: 154.17.3.53
     port: 45857
     psk: 9Wn8e0WW0Vso2hntTOkxkqDBk6S5Mxa
-    udp: false # 需要 v3 以上服务端
+    udp: false
     version: 3
     obfs-opts:
       mode: tls
       host: www.bing.com  
 
-  - name: snell东京-备用
+  - name: 日本节点
     type: snell
     server: 89.233.104.165
     port: 45857
     psk: 9Wn8e0WW0Vso2hntTOkxkqDBk6S5Mxa
-    udp: false # 需要 v3 以上服务端
+    udp: false
     version: 3
     obfs-opts: 
       mode: http # http
       host: bing.com
+
+
+
+proxy-groups:
+  - name: 手动切换
+    type: select
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Rocket.png
+    include-all: true #引用所有节点
+    proxies:
+      - 自动选择
+      - 故障转移
+
+
+       
+  - name: 国外网站
+    type: select
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Global.png
+    proxies: &G
+      - 手动切换
+      - 日本节点
+      - 美国节点
+
+  - name: 国内网站
+    type: select
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/China_Map.png
+    proxies: &C
+      - DIRECT
+      - 手动切换
+      - 日本节点
+      - 美国节点
+      
+  - name: YouTube
+    type: select
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/YouTube.png
+    proxies:
+      *G
+
+  - name: NETFLIX
+    type: select
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Netflix.png
+    proxies:
+      *G
+
+  - name: Disney+
+    type: select
+    icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/DisneyPlus.png
+    proxies:
+      *G
+
+  - name: 苹果服务
+    type: select
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Apple.png
+    proxies:
+      *C
+
+  - name: 微软服务
+    type: select
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Microsoft.png
+    proxies:
+      *G
+
+  - name: 网易音乐
+    type: select
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Netease_Music.png
+    proxies:
+      - DIRECT
+
+  - name: 哔哩哔哩
+    type: select
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/bilibili_3.png
+    proxies:
+      *C
+
+  - name: 游戏平台
+    type: select
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Game.png
+    proxies:
+      *G
+      
+  - name: 漏网之鱼
+    type: select
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Final.png
+    proxies:
+      *G
+
+
+
+rule-providers:
+        
+  YouTube:
+    type: http
+    behavior: classical
+    url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/YouTube/YouTube.yaml"
+    path: ./ruleset/YouTube.yaml
+    interval: 86400
+
+  Netflix:
+    type: http
+    behavior: classical
+    url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Netflix/Netflix.yaml"
+    path: ./ruleset/Netflix.yaml
+    interval: 86400
+
+  Disney:
+    type: http
+    behavior: classical
+    url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Disney/Disney.yaml"
+    path: ./ruleset/Disney.yaml
+    interval: 86400
+    
+  Apple:
+    type: http
+    behavior: domain
+    format: text
+    url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Apple/Apple_Domain.txt"
+    path: ./ruleset/Apple.yaml
+    interval: 86400
+
+  Microsoft:
+    type: http
+    behavior: classical
+    url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Microsoft/Microsoft.yaml"
+    path: ./ruleset/Microsoft.yaml
+    interval: 86400
+
+  NetEaseMusic:
+    type: http
+    behavior: classical
+    url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/NetEaseMusic/NetEaseMusic.yaml"
+    path: ./ruleset/NetEaseMusic.yaml
+    interval: 86400
+
+  BiliBili:
+    type: http
+    behavior: classical
+    url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/BiliBili/BiliBili.yaml"
+    path: ./ruleset/BiliBili.yaml
+    interval: 86400
+
+  Game:
+    type: http
+    behavior: classical
+    url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Game/Game.yaml"
+    path: ./ruleset/Game.yaml
+    interval: 86400
+
+  OtherProxy:
+    type: http
+    behavior: classical
+    url: "https://raw.githubusercontent.com/Infatuation-Fei/rule/main/Clash/Rule/OtherProxy.yaml"
+    path: ./ruleset/OtherProxy.yaml
+    interval: 86400
+
+  China:
+    type: http
+    behavior: domain
+    format: text
+    url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/China/China_Domain.txt"
+    path: ./ruleset/China.yaml
+    interval: 86400
+
+  Global:
+    type: http
+    behavior: domain
+    format: text
+    url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Global/Global_Domain.txt"
+    path: ./ruleset/Global-Domain.yaml
+    interval: 86400
+    
+rules:
+  - RULE-SET,YouTube,YouTube
+  - RULE-SET,Netflix,NETFLIX
+  - RULE-SET,Disney,Disney+
+  - RULE-SET,Apple,苹果服务
+  - RULE-SET,Microsoft,微软服务
+  - RULE-SET,NetEaseMusic,网易音乐
+  - RULE-SET,BiliBili,哔哩哔哩
+  - RULE-SET,Game,游戏平台
+  - RULE-SET,OtherProxy,国外网站
+  - RULE-SET,Global,国外网站
+  - RULE-SET,China,国内网站
+  - GEOIP,Lan,DIRECT,no-resolve
+  - GEOIP,CN,国内网站,no-resolve
+  - MATCH,漏网之鱼
