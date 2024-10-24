@@ -73,7 +73,6 @@ proxies:
       mode: http # http
       host: bing.com
             
-			
 proxy-groups:
   - name: 手动切换
     type: select
