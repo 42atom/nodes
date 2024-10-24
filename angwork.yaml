@@ -82,9 +82,9 @@ proxy-groups:
     type: select
     icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Rocket.png
     include-all: true #引用所有节点
-    proxies:
-      - 自动选择
-      - 故障转移
+    proxies: &proxies
+      - 日本节点
+      - 美国节点
 
 
        
