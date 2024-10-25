@@ -61,16 +61,7 @@ proxies:
       mode: tls
       host: www.bing.com  
 
-  - name: 日本节点
-    type: snell
-    server: 89.233.104.165
-    port: 45857
-    psk: 9Wn8e0WW0Vso2hntTOkxkqDBk6S5Mxa
-    udp: false
-    version: 3
-    obfs-opts: 
-      mode: http # http
-      host: bing.com
+
             
 proxy-groups:
   - name: 手动切换
@@ -78,7 +69,7 @@ proxy-groups:
     icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Rocket.png
     proxies: &proxies
       - 美国节点
-      - 日本节点
+      - DIRECT
 
   
        
@@ -88,7 +79,6 @@ proxy-groups:
     proxies: &G
       - 手动切换
       - 美国节点
-      - 日本节点
 
   - name: 国内网站
     type: select
@@ -154,12 +144,6 @@ proxy-groups:
 
 
       
-  # - name: 美国节点
-  #   type: select
-  #   icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/United_States.png
-  #   use:
-  #     - All
-  #   filter: 美|洛杉矶|🇺🇸|US|(?i)States|American
     
 rule-providers:
         
