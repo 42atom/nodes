@@ -173,7 +173,7 @@ proxies:
     uuid: 788a38c0-54cf-2d47-1fdd-42a253685e62
     # flow: xtls-rprx-direct
     skip-cert-verify: false
-    network: WS
+    network: ws
     tls: true
     ws-opts:
        path: /weoiuws
