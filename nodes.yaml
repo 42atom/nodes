@@ -171,9 +171,9 @@ proxies:
     server: 163.177.58.169
     port: 30634
     uuid: e7160021-2e3e-48ed-a3d7-a0d59094389a
-    # flow: xtls-rprx-direct
-    # skip-cert-verify: true
-    network: ws
+    flow: xtls-rprx-direct
+    skip-cert-verify: true
+    network: websocket
     tls: true
     ws-opts:
        path: /weoiuws
