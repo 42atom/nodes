@@ -165,9 +165,9 @@ proxies:
     version: 3
     obfs-opts:
       mode: tls
-      host: www.bing.com  
-
- - name: Trans-US-LISA
+      host: www.bing.com
+      
+  - name: Trans-US-LISA
     type: vless
     server: 163.177.58.169
     port: 30634
@@ -186,7 +186,7 @@ proxies:
     flow: ""
     servername: api4v3.digis.cyou
     sni: api4v3.digis.cyou
-
+    
   - name: vmessUS
     type: vmess
     server: 163.177.58.169
