@@ -19,6 +19,7 @@ proxy-groups:
       - snell东京-备用
       - US-LISA
       - Trans-US-LISA
+      - vmessUS
       - DIRECT
       
   - name: YouTube
@@ -170,6 +171,7 @@ proxies:
     type: vless
     server: 163.177.58.169
     port: 30634
+    alterId: 0
     uuid: e7160021-2e3e-48ed-a3d7-a0d59094389a
     # flow: xtls-rprx-direct
     skip-cert-verify: false
