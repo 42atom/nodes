@@ -186,6 +186,7 @@ proxies:
     type: vmess
     server: 163.177.58.169
     port: 443
+    alterId: 0
     uuid: e7160021-2e3e-48ed-a3d7-a0d59094389a
     cipher: none
     network:
