@@ -170,7 +170,7 @@ proxies:
     type: vless
     server: 163.177.58.169
     port: 30634
-    uuid: e7160021-2e3e-48ed-a3d7-a0d59094389a
+    uuid: 788a38c0-54cf-2d47-1fdd-42a253685e62
     flow: xtls-rprx-direct
     skip-cert-verify: true
     network: websocket
