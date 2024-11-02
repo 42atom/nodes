@@ -18,6 +18,7 @@ proxy-groups:
       - snell美LosAngle
       - snell东京-备用
       - US-LISA
+      - Trans-US-LISA
       - DIRECT
       
   - name: YouTube
@@ -165,3 +166,13 @@ proxies:
       mode: tls
       host: www.bing.com  
 
+  - name: Trans-US-LISA
+    type: snell
+    server: 163.177.58.169
+    port: 30634
+    psk: 9Wn8e0WW0Vso2hntTOkxkqDBk6S5Mxa
+    udp: false # 需要 v3 以上服务端
+    version: 3
+    obfs-opts:
+      mode: tls
+      host: www.bing.com  
