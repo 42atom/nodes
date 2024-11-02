@@ -186,7 +186,7 @@ proxies:
     flow: ""
     servername: api4v3.digis.cyou
     sni: api4v3.digis.cyou
-    
+
   - name: vmessUS
     type: vmess
     server: 163.177.58.169
