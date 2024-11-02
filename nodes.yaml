@@ -170,12 +170,26 @@ proxies:
     type: vless
     server: 163.177.58.169
     port: 30634
-    uuid: 788a38c0-54cf-2d47-1fdd-42a253685e62
+    uuid: e7160021-2e3e-48ed-a3d7-a0d59094389a
     # flow: xtls-rprx-direct
     skip-cert-verify: false
     network: ws
     tls: true
     ws-opts:
-       path: /weoiuws
+       path: /weoiuvws
        headers:
          Host: api4v3.digis.cyou 
+
+  - name: vmessUS
+    type: vmess
+    server: 163.177.58.169
+    port: 443
+    uuid: e7160021-2e3e-48ed-a3d7-a0d59094389a
+    cipher: none
+    network:
+    ws-opts:
+      path: /weoiuvws
+      headers:
+        Host: api4v3.digis.cyou
+      max-early-data: 2048
+      early-data-header-name: Sec-WebSocket-Protocol
