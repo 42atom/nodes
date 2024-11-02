@@ -94,14 +94,14 @@ dns:
     - 119.29.29.29
    # - system
   # enhanced-mode: redir-host
-  fake-ip-range: 198.18.0.1/16
+  # fake-ip-range: 198.18.0.1/16
   nameserver:
     - https://doh.pub/dns-query
     # - https://dns.alidns.com/dns-query
   nameserver-policy:
     'www.baidu.com': 223.5.5.5
     '+.internal.crop.com': system
-  skip-cert-verify: true
+  # skip-cert-verify: true
   # 在以下列表的域名将不会被解析为 fake ip，这些域名相关的解析请求将会返回它们真实的 IP 地址
   fake-ip-filter:
     - '*.lan'
