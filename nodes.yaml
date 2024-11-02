@@ -167,32 +167,42 @@ proxies:
       mode: tls
       host: www.bing.com  
 
-  - name: Trans-US-LISA
+ - name: Trans-US-LISA
     type: vless
     server: 163.177.58.169
     port: 30634
     alterId: 0
     uuid: e7160021-2e3e-48ed-a3d7-a0d59094389a
     # flow: xtls-rprx-direct
-    skip-cert-verify: false
+    skip-cert-verify: null
     network: ws
     tls: true
     ws-opts:
-       path: /weoiuvws
-       headers:
-         Host: api4v3.digis.cyou 
-
+      path: /weoiuvws
+      headers:
+        Host: api4v3.digis.cyou
+        Path: /weoiuws
+    cipher: ""
+    flow: ""
+    servername: api4v3.digis.cyou
+    sni: api4v3.digis.cyou
+    
   - name: vmessUS
     type: vmess
     server: 163.177.58.169
-    port: 443
+    port: 30634
     alterId: 0
     uuid: e7160021-2e3e-48ed-a3d7-a0d59094389a
     cipher: none
-    network:
+    network: ws
     ws-opts:
       path: /weoiuvws
       headers:
         Host: api4v3.digis.cyou
       max-early-data: 2048
       early-data-header-name: Sec-WebSocket-Protocol
+    flow: ""
+    servername: api4v3.digis.cyou
+    sni: api4v3.digis.cyou
+    tls: true
+    skip-cert-verify: null
