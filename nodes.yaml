@@ -29,7 +29,7 @@ proxy-groups:
     proxies: *proxies
 
 rules:
-  - DOMAIN-SUFFIX,wlai.vip,PROXY # ai
+  - DOMAIN-SUFFIX,wlai.vip,DIRECT,no-resolve # ai
   - GEOSITE,youtube,YouTube
   - GEOSITE,google,Google
   - DOMAIN-SUFFIX,identity.ess.apple.com,PROXY # 连续互通
