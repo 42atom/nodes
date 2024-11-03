@@ -29,10 +29,11 @@ proxy-groups:
     proxies: *proxies
 
 rules:
+  - DOMAIN-SUFFIX,wlai.vip,PROXY # ai
   - GEOSITE,youtube,YouTube
   - GEOSITE,google,Google
-  - DOMAIN-SUFFIX,identity.ess.apple.com,选择代理 # 连续互通
-  - RULE-SET,gfw-domain, 选择代理
+  - DOMAIN-SUFFIX,identity.ess.apple.com,PROXY # 连续互通
+  - RULE-SET,gfw-domain, PROXY
   - RULE-SET,local, DIRECT,no-resolve
   - RULE-SET,cn-ip, DIRECT,no-resolve
   - RULE-SET,direct-app, DIRECT,no-resolve
