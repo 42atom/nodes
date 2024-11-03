@@ -38,7 +38,7 @@ rules:
   - RULE-SET,direct-app, DIRECT,no-resolve
   - RULE-SET,direct-domain, DIRECT,no-resolve
   - GEOIP,CN,DIRECT,no-resolve
-  - MATCH, DIRECT
+  - MATCH, PROXY
   # - NETWORK,udp,REJECT
   
 rule-providers:
