@@ -12,14 +12,14 @@ proxy-providers:
 
 proxy-groups:
   # 功能分组
-  - name: 选择代理
+  - name: PROXY
     type: select
     proxies: &proxies
       - snell美LosAngle
       - snell东京-备用
       - US-LISA
-      - Trans-US-LISA
-      - vmessUS
+      - vlessUSLISA
+      - vmessUSLISA
       - DIRECT
       
   - name: YouTube
@@ -30,21 +30,17 @@ proxy-groups:
     proxies: *proxies
 
 rules:
-  # YouTube
   - GEOSITE,youtube,YouTube
-  
-  # Google
   - GEOSITE,google,Google
   - DOMAIN-SUFFIX,identity.ess.apple.com,选择代理 # 连续互通
-
   - RULE-SET,gfw-domain, 选择代理
   - RULE-SET,local, DIRECT,no-resolve
   - RULE-SET,cn-ip, DIRECT,no-resolve
   - RULE-SET,direct-app, DIRECT,no-resolve
   - RULE-SET,direct-domain, DIRECT,no-resolve
   - GEOIP,CN,DIRECT,no-resolve
-  - MATCH, 选择代理
-  - NETWORK,udp,REJECT
+  - MATCH, DIRECT
+  # - NETWORK,udp,REJECT
   
 rule-providers:
   direct-domain:
@@ -167,7 +163,7 @@ proxies:
       mode: tls
       host: www.bing.com
       
-  - name: Trans-US-LISA
+  - name: vlessUSLISA
     type: vless
     server: 163.177.58.169
     port: 30634
@@ -187,7 +183,7 @@ proxies:
     servername: api4v3.digis.cyou
     sni: api4v3.digis.cyou
     
-  - name: vmessUS
+  - name: vmessUSLISA
     type: vmess
     server: 163.177.58.169
     port: 30634
