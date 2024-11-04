@@ -19,6 +19,7 @@ proxy-groups:
       - snell东京-备用
       - US-LISA
       - RE-US-LISA
+      - GZ2HK-RE-US-LISA
       - DIRECT
       
   - name: YouTube
@@ -167,6 +168,17 @@ proxies:
     type: snell
     server: 163.177.58.169
     port: 30671
+    psk: 9Wn8e0WW0Vso2hntTOkxkqDBk6S5Mxa
+    udp: false
+    version: 3
+    obfs-opts:
+      mode: tls
+      host: www.bing.com
+
+  - name: GZ2HK-RE-US-LISA
+    type: snell
+    server: 183.236.51.57
+    port: 28118
     psk: 9Wn8e0WW0Vso2hntTOkxkqDBk6S5Mxa
     udp: false
     version: 3
