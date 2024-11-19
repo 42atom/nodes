@@ -185,3 +185,25 @@ proxies:
     obfs-opts:
       mode: tls
       host: www.bing.com
+
+  - name: 美国J
+    type: snell
+    server: 38.97.249.54
+    port: 45857
+    psk: 9Wn8e0WW0Vso2hntTOkxkqDBk6S5Mxa
+    udp: false
+    version: 3
+    obfs-opts:
+      mode: tls
+      host: www.bing.com  
+
+  - name: 美国W
+    type: snell
+    server: 154.44.14.223
+    port: 45857
+    psk: 9Wn8e0WW0Vso2hntTOkxkqDBk6S5Mxa
+    udp: false
+    version: 3
+    obfs-opts:
+      mode: tls
+      host: www.bing.com  
