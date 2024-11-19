@@ -21,6 +21,8 @@ proxy-groups:
       - RE-US-LISA
       - GZ2HK-RE-US-LISA
       - DIRECT
+      - 美国J
+      - 美国W
       
   - name: YouTube
     type: select
