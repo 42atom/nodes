@@ -19,7 +19,7 @@ proxy-groups:
       - snell东京-备用
       - US-LISA
       - NNR-LISA-SZ2HKx8
-      - NNR-LISA-GZ2HKx1.6
+      - NNR-LISA-GZ2HKx1_6
       - DIRECT
       - 美国J
       - 美国W
@@ -152,21 +152,21 @@ proxies:
     udp: false
     version: 3
     obfs-opts: 
-      mode: http # http
+      mode: http
       host: bing.com
-
+      
   - name: US-LISA
     type: snell
     server: 38.84.200.198
     port: 45857
     psk: 9Wn8e0WW0Vso2hntTOkxkqDBk6S5Mxa
-    udp: false # 需要 v3 以上服务端
+    udp: false
     version: 3
     obfs-opts:
       mode: tls
       host: www.bing.com
       
-  - name:NNR-LISA-SZ2HKx8
+  - name: NNR-LISA-SZ2HKx8
     type: snell
     server: 183.236.51.16
     port: 13841
@@ -177,7 +177,7 @@ proxies:
       mode: tls
       host: www.bing.com
 
-  - name: NNR-LISA-GZ2HKx1.6
+  - name: NNR-LISA-GZ2HKx1_6
     type: snell
     server: 183.236.51.57
     port: 28118
