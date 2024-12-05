@@ -104,6 +104,7 @@ dns:
   # 在以下列表的域名将不会被解析为 fake ip，这些域名相关的解析请求将会返回它们真实的 IP 地址
   fake-ip-filter:
     - '*.lan'
+    - '*.mail.me.com'
     - localhost.ptlogin2.qq.com
     - '+.srv.nintendo.net'
     - '+.stun.playstation.net'
