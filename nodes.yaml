@@ -20,6 +20,7 @@ proxy-groups:
       - US-LISA
       - NNR-LISA-SZ2HKx8
       - NNR-LISA-GZ2HKx1_6
+      - UKsocks
       - DIRECT
       - 美国J
       - 美国W
@@ -30,6 +31,14 @@ proxy-groups:
   - name: Google
     type: select
     proxies: *proxies
+  - name: UKrelay
+    type: relay
+    benchmark-url: http://www.apple.com # 建议只使用HTTP协议
+    benchmark-timeout: 5 # 延迟测试超时，单位：秒
+    # 流量: stash <-> http <-> vmess <-> ss1 <-> ss2 <-> 互联网
+    proxies:
+      - US-LISA
+      - UKsocks
 
 rules:
   - DOMAIN-SUFFIX,wlai.vip,DIRECT,no-resolve # ai
@@ -210,3 +219,14 @@ proxies:
     obfs-opts:
       mode: tls
       host: www.bing.com  
+
+
+  - name: UKsocks
+    type: socks5
+    server: 104.239.53.230
+    port: 7648
+    username: mhnbsdza
+    password: l76qggz92s0k
+    # tls: true
+    # skip-cert-verify: true
+    # udp: true
