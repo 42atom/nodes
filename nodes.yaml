@@ -102,7 +102,6 @@ dns:
     # - 1.0.0.1
     # - system
   enhanced-mode: redir-host
-  fake-ip-range: 198.18.0.1/16
   nameserver:
     - 1.1.1.1
     - 8.8.8.8
