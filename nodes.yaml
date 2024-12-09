@@ -51,7 +51,7 @@ rules:
   - RULE-SET,cn-ip, DIRECT,no-resolve
   - RULE-SET,direct-app, DIRECT,no-resolve
   - RULE-SET,direct-domain, DIRECT,no-resolve
-  - GEOIP,CN,DIRECT,no-resolve
+  - GEOIP,CN,DIRECT
   - MATCH, PROXY
   - NETWORK,udp,REJECT
   
@@ -96,49 +96,38 @@ dns:
   ipv6: false
   listen: 0.0.0.0:53
   default-nameserver:
-    # - 223.5.5.5
+    - 223.5.5.5
+    - 223.6.6.6
     # - 114.114.115.115
-    - 1.0.0.1
-    - 8.8.8.8
-    - 119.29.29.29
-    - system
+    # - 1.0.0.1
+    # - system
   enhanced-mode: redir-host
   fake-ip-range: 198.18.0.1/16
   nameserver:
-    - https://doh.pub/dns-query
-    # - https://dns.alidns.com/dns-query
+    - 1.1.1.1
+    - 8.8.8.8
+    # - https://doh.pub/dns-query
   nameserver-policy:
     'www.baidu.com': 223.5.5.5
     '+.internal.crop.com': system
   # skip-cert-verify: true
   # 在以下列表的域名将不会被解析为 fake ip，这些域名相关的解析请求将会返回它们真实的 IP 地址
+  fallback:
+    - tls://1.1.1.1:853
+    - tls://8.8.8.8:853
+  fallback-filter:
+    geoip: true
+    geoip-code: CN
+    ipcidr:
+      - 240.0.0.0/4
+  enhanced-mode: fake-ip
+  fake-ip-range: 198.18.0.1/16
   fake-ip-filter:
     - '*.lan'
-    - '*.mail.me.com'
-    - localhost.ptlogin2.qq.com
-    - '+.srv.nintendo.net'
-    - '+.stun.playstation.net'
-    - '+.msftconnecttest.com'
-    - '+.msftncsi.com'
-    - '+.xboxlive.com'
-    - 'msftconnecttest.com'
-    - 'xbox.*.microsoft.com'
-    - '*.battlenet.com.cn'
-    - '*.battlenet.com'
-    - '*.blzstatic.cn'
-    - '*.battle.net'
-    - +.stun.*.*
-    - +.stun.*.*.*
-    - +.stun.*.*.*.*
-    - +.stun.*.*.*.*.*
-    - lens.l.google.com
-    - '*.n.n.srv.nintendo.net'
-    - +.stun.playstation.net
-    - xbox.*.*.microsoft.com
-    - '*.*.xboxlive.com'
-    - '*.msftncsi.com'
-    - '*.msftconnecttest.com'
-    - '*.mcdn.bilivideo.cn'
+    - 'localhost.ptlogin2.qq.com'
+    - 'dns.msftncsi.com'
+    - 'www.msftncsi.com'
+    - 'www.msftconnecttest.com'
 
 
 proxies:
