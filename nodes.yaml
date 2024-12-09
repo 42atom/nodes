@@ -24,6 +24,7 @@ proxy-groups:
       - DIRECT
       - 美国J
       - 美国W
+      - UKrelay
       
   - name: YouTube
     type: select
@@ -37,7 +38,7 @@ proxy-groups:
     benchmark-timeout: 5 # 延迟测试超时，单位：秒
     # 流量: stash <-> http <-> vmess <-> ss1 <-> ss2 <-> 互联网
     proxies:
-      - NNR-LISA-GZ2HKx1_6
+      - UKsocks
       - UKsocks
 
 rules:
