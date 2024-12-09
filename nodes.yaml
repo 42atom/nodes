@@ -53,7 +53,7 @@ rules:
   - RULE-SET,direct-domain, DIRECT,no-resolve
   - GEOIP,CN,DIRECT,no-resolve
   - MATCH, PROXY
-  # - NETWORK,udp,REJECT
+  - NETWORK,udp,REJECT
   
 rule-providers:
   direct-domain:
