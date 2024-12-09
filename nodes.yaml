@@ -51,7 +51,7 @@ rules:
   - RULE-SET,cn-ip, DIRECT,no-resolve
   - RULE-SET,direct-app, DIRECT,no-resolve
   - RULE-SET,direct-domain, DIRECT,no-resolve
-  - GEOIP,CN,DIRECT
+  - GEOIP,CN,DIRECT,no-resolve
   - MATCH, PROXY
   - NETWORK,udp,REJECT
   
