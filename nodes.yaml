@@ -46,11 +46,11 @@ rules:
   # - GEOSITE,youtube,YouTube
   # - GEOSITE,google,Google
   - DOMAIN-SUFFIX,identity.ess.apple.com,PROXY # 连续互通
-  - RULE-SET,gfw-domain, PROXY
-  - RULE-SET,local, DIRECT,no-resolve
-  - RULE-SET,cn-ip, DIRECT,no-resolve
-  - RULE-SET,direct-app, DIRECT,no-resolve
-  - RULE-SET,direct-domain, DIRECT,no-resolve
+  - RULE-SET,gfw-domain,PROXY
+  - RULE-SET,local,DIRECT,no-resolve
+  - RULE-SET,cn-ip,DIRECT,no-resolve
+  - RULE-SET,direct-app,DIRECT,no-resolve
+  - RULE-SET,direct-domain,DIRECT
   - GEOIP,CN,DIRECT,no-resolve
   - MATCH, PROXY
   - NETWORK,udp,REJECT
