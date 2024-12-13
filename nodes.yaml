@@ -130,6 +130,8 @@ dns:
     - 'dns.msftncsi.com'
     - 'www.msftncsi.com'
     - 'www.msftconnecttest.com'
+    - 'wx.qq.com'
+    - 'res.wx.qq.com'
 
 
 proxies:
