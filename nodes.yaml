@@ -110,9 +110,9 @@ dns:
     - 1.1.1.1
     - 8.8.8.8
   nameserver-policy:
-    # '+.arpa': '10.0.0.1'
-    'rule-set:cn-ip':
-      - https://dns.alidns.com/dns-query
+    '+.arpa': '10.0.0.1'
+    # 'rule-set:cn-ip':
+      # - https://dns.alidns.com/dns-query
     'www.jin10.com': 223.5.5.5
     'www.baidu.com': 223.5.5.5
     '+.internal.crop.com': system
