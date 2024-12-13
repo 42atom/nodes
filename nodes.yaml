@@ -96,11 +96,14 @@ dns:
   ipv6: false
   listen: 0.0.0.0:53
   default-nameserver:
-    - 223.5.5.5
-    - 223.6.6.6
+    - 36.55.237.145
+    - 218.102.23.228
+    # 香港DNS
+    # - 223.5.5.5
+    # - 223.6.6.6
     # - 114.114.115.115
-    # - 1.0.0.1
-    # - system
+    - 1.0.0.1
+    - system
   # enhanced-mode: redir-host
   nameserver:
     - 1.1.1.1
