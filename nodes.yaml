@@ -114,6 +114,7 @@ dns:
     # 'rule-set:cn-ip':
     #   - https://doh.pub/dns-query
     #   - https://dns.alidns.com/dns-query
+    'www.jin10.com': 223.5.5.5
     'www.baidu.com': 223.5.5.5
     '+.internal.crop.com': system
   # skip-cert-verify: true
@@ -139,8 +140,6 @@ dns:
 
 
 proxies:
- 
-
   - name: snell美LosAngle
     type: snell
     server: 154.17.3.53
