@@ -110,7 +110,7 @@ dns:
     - 8.8.8.8
     # - https://doh.pub/dns-query
   nameserver-policy:
-    '+.arpa': '10.0.0.1'
+    # '+.arpa': '10.0.0.1'
     # 'rule-set:cn-ip':
     #   - https://doh.pub/dns-query
     #   - https://dns.alidns.com/dns-query
