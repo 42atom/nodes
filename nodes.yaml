@@ -106,9 +106,9 @@ dns:
     - system
   # enhanced-mode: redir-host
   nameserver:
+    - https://doh.pub/dns-query
     - 1.1.1.1
     - 8.8.8.8
-    # - https://doh.pub/dns-query
   nameserver-policy:
     # '+.arpa': '10.0.0.1'
     # 'rule-set:cn-ip':
@@ -117,7 +117,6 @@ dns:
     'www.baidu.com': 223.5.5.5
     '+.internal.crop.com': system
   # skip-cert-verify: true
-  # 在以下列表的域名将不会被解析为 fake ip，这些域名相关的解析请求将会返回它们真实的 IP 地址
   fallback:
     - tls://1.1.1.1:853
     - tls://8.8.8.8:853
@@ -128,6 +127,7 @@ dns:
       - 240.0.0.0/4
   enhanced-mode: fake-ip
   fake-ip-range: 198.18.0.1/16
+  # 在以下列表的域名将不会被解析为 fake ip，这些域名相关的解析请求将会返回它们真实的 IP 地址
   fake-ip-filter:
     - '*.lan'
     - 'localhost.ptlogin2.qq.com'
