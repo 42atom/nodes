@@ -50,7 +50,7 @@ rules:
   - RULE-SET,local,DIRECT,no-resolve
   - RULE-SET,cn-ip,DIRECT,no-resolve
   - RULE-SET,direct-app,DIRECT,no-resolve
-  - RULE-SET,direct-domain,DIRECT
+  - RULE-SET,direct-domain,DIRECT,no-resolve
   - GEOIP,CN,DIRECT,no-resolve
   - MATCH, PROXY
   - NETWORK,udp,PROXY
