@@ -103,6 +103,7 @@ dns:
     - system
   # enhanced-mode: redir-host
   nameserver:
+    - 223.6.6.6
     - https://doh.pub/dns-query
     - 1.1.1.1
     - 8.8.8.8
