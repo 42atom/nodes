@@ -118,11 +118,11 @@ dns:
   fallback:
     - tls://1.1.1.1:853
     - tls://8.8.8.8:853
-  fallback-filter:
-    geoip: true
-    geoip-code: CN
-    ipcidr:
-      - 240.0.0.0/4
+  # fallback-filter:
+  #   geoip: true
+  #   geoip-code: CN
+  #   ipcidr:
+  #     - 240.0.0.0/4
   enhanced-mode: fake-ip
   fake-ip-range: 198.18.0.1/16
   # 在以下列表的域名将不会被解析为 fake ip，这些域名相关的解析请求将会返回它们真实的 IP 地址
