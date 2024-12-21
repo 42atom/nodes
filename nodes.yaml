@@ -217,10 +217,10 @@ proxies:
 
   - name: UKsocks
     type: socks5
-    server: 104.239.53.230
-    port: 7648
-    username: mhnbsdza
-    password: l76qggz92s0k
+    server: 45.43.68.49
+    port: 5689
+    username: gemingpjhiov
+    password: gemingpjhiov
     # tls: true
     # skip-cert-verify: true
     # udp: true
