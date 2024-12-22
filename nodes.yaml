@@ -18,6 +18,7 @@ proxy-groups:
       - snell美LosAngle
       - snell东京-备用
       - US-LISA
+      - RackNrerd-SJ美国
       - NNR-LISA-SZ2HKx8
       - NNR-LISA-GZ2HKx1_6
       - UKsocks
@@ -224,3 +225,14 @@ proxies:
     # tls: true
     # skip-cert-verify: true
     # udp: true
+
+  - name: RackNrerd-SJ美国
+    type: snell
+    server: 107.173.159.48
+    port: 45857
+    psk: 9Wn8e0WW0Vso2hntTOkxkqDBk6S5Mxa
+    udp: false
+    version: 3
+    obfs-opts:
+      mode: tls
+      host: www.bing.com  
