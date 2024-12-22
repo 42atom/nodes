@@ -27,12 +27,12 @@ proxy-groups:
       - 美国W
       - UKrelay
       
-  # - name: YouTube
-  #   type: select
-  #   proxies: *proxies
-  # - name: Google
-  #   type: select
-  #   proxies: *proxies
+  - name: YouTube
+    type: select
+    proxies: *proxies
+  - name: Google
+    type: select
+    proxies: *proxies
   - name: UKrelay
     type: relay
     benchmark-url: http://www.apple.com # 建议只使用HTTP协议
