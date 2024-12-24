@@ -26,7 +26,9 @@ proxy-groups:
       - DIRECT
       - 美国J
       - 美国W
-      - UKrelay
+      - USlisatoUK_Relay
+      - HKtoUK_Relay
+      - HKtoUS_Relay
       
   - name: YouTube
     type: select
@@ -34,7 +36,7 @@ proxy-groups:
   - name: Google
     type: select
     proxies: *proxies
-  - name: UKrelay
+  - name: USlisatoUK_Relay
     type: relay
     benchmark-url: http://www.apple.com # 建议只使用HTTP协议
     benchmark-timeout: 5 # 延迟测试超时，单位：秒
@@ -49,7 +51,7 @@ proxy-groups:
     proxies:
       - HK
       - UKsocks
-  - name: HKtoUK_Relay
+  - name: HKtoUS_Relay
     type: relay
     benchmark-url: http://www.apple.com
     benchmark-timeout: 5
