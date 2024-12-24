@@ -18,7 +18,7 @@ proxy-groups:
       - snell美LosAngle
       - snell东京-备用
       - US-LISA
-      - RackNrerd-SJ美国
+      - RackNerd-美国
       - NNR-LISA-SZ2HKx8
       - NNR-LISA-GZ2HKx1_6
       - UKsocks
@@ -243,7 +243,7 @@ proxies:
     # skip-cert-verify: true
     # udp: true
 
-  - name: RackNrerd-SJ美国
+  - name: RackNerd-美国
     type: snell
     server: 107.173.159.48
     port: 45857
