@@ -44,17 +44,15 @@ proxy-groups:
       - UKsocks
   - name: HKtoUK_Relay
     type: relay
-    benchmark-url: http://www.apple.com # 建议只使用HTTP协议
-    benchmark-timeout: 5 # 延迟测试超时，单位：秒
-    # 流量: stash <-> http <-> vmess <-> ss1 <-> ss2 <-> 互联网
+    benchmark-url: http://www.apple.com 
+    benchmark-timeout: 5
     proxies:
       - HK
       - UKsocks
   - name: HKtoUK_Relay
     type: relay
-    benchmark-url: http://www.apple.com # 建议只使用HTTP协议
-    benchmark-timeout: 5 # 延迟测试超时，单位：秒
-    # 流量: stash <-> http <-> vmess <-> ss1 <-> ss2 <-> 互联网
+    benchmark-url: http://www.apple.com
+    benchmark-timeout: 5
     proxies:
       - HK
       - US-LISA    
