@@ -60,6 +60,7 @@ proxy-groups:
       - US-LISA    
 
 rules:
+  - DOMAIN-SUFFIX,id.google.com,Google # Google IP定位
   - SCRIPT,quic,REJECT
   - DOMAIN-SUFFIX,wlai.vip,DIRECT,no-resolve # ai
   - GEOSITE,youtube,YouTube
