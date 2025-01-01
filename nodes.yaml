@@ -212,6 +212,18 @@ proxies:
       mode: tls
       host: www.bing.com
 
+  - name: NNR-LISA-SzHk10x
+    type: snell
+    server: 163.177.58.169
+    port: 41151
+    psk: 9Wn8e0WW0Vso2hntTOkxkqDBk6S5Mxa
+    udp: false
+    version: 3
+    obfs-opts:
+      mode: tls
+      host: www.bing.com
+
+
   - name: 美国J
     type: snell
     server: 38.97.249.54
