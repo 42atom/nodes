@@ -25,7 +25,6 @@ proxy-groups:
       - DIRECT
       - 美国J
       - 美国W
-      - USlisatoUK_Relay
       - HKtoUS_Relay
       
   - name: YouTube
@@ -34,14 +33,6 @@ proxy-groups:
   - name: Google
     type: select
     proxies: *proxies
-  - name: USlisatoUK_Relay
-    type: relay
-    benchmark-url: http://www.apple.com # 建议只使用HTTP协议
-    benchmark-timeout: 5 # 延迟测试超时，单位：秒
-    # 流量: stash <-> http <-> vmess <-> ss1 <-> ss2 <-> 互联网
-    proxies:
-      - US-LISA
-      - UKsocks
 
   - name: HKtoUS_Relay
     type: relay
