@@ -16,19 +16,16 @@ proxy-groups:
     type: select
     proxies: &proxies
       - snell美LosAngle
-      - snell东京-备用
       - US-LISA
       - RackNerd-美国
       - NNR-LISA-SZ2HKx8
       - NNR-LISA-GZ2HKx1_6
       - NNR-LISA-SzHk10x
-      - UKsocks
       - HK
       - DIRECT
       - 美国J
       - 美国W
       - USlisatoUK_Relay
-      - HKtoUK_Relay
       - HKtoUS_Relay
       
   - name: YouTube
@@ -168,17 +165,6 @@ proxies:
     obfs-opts:
       mode: tls
       host: www.bing.com  
-
-  - name: snell东京-备用
-    type: snell
-    server: 89.233.104.165
-    port: 45857
-    psk: 9Wn8e0WW0Vso2hntTOkxkqDBk6S5Mxa
-    udp: false
-    version: 3
-    obfs-opts: 
-      mode: http
-      host: bing.com
       
   - name: US-LISA
     type: snell
@@ -246,17 +232,6 @@ proxies:
     obfs-opts:
       mode: tls
       host: www.bing.com  
-
-
-  - name: UKsocks
-    type: socks5
-    server: 45.43.68.49
-    port: 5689
-    username: gemingpjhiov
-    password: gemingpjhiov
-    # tls: true
-    # skip-cert-verify: true
-    # udp: true
 
   - name: RackNerd-美国
     type: snell
