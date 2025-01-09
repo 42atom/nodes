@@ -42,13 +42,7 @@ proxy-groups:
     proxies:
       - US-LISA
       - UKsocks
-  - name: HKtoUK_Relay
-    type: relay
-    benchmark-url: http://www.apple.com 
-    benchmark-timeout: 5
-    proxies:
-      - HK
-      - UKsocks
+
   - name: HKtoUS_Relay
     type: relay
     benchmark-url: http://www.apple.com
