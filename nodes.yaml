@@ -18,9 +18,9 @@ proxy-groups:
       - snell美LosAngle
       - US-LISA
       - RackNerd-美国
-      - NNR-LISA-SZ2HKx8
-      - NNR-LISA-GZ2HKx1_6
-      - NNR-LISA-SzHk10x
+      - NNR-SZ2USx8-US-RN
+      - NNR-GZx1_6-US-RN
+      - NNR-SzHk10x-US-LISA
       - HK
       - DIRECT
       - 美国J
@@ -162,7 +162,7 @@ proxies:
       mode: tls
       host: www.bing.com
       
-  - name: NNR-LISA-SZ2HKx8
+  - name: NNR-SZ2USx8-US-RN
     type: snell
     server: 183.236.51.16
     port: 13841
@@ -173,7 +173,7 @@ proxies:
       mode: tls
       host: www.bing.com
 
-  - name: NNR-LISA-GZ2HKx1_6
+  - name: NNR-GZx1_6-US-RN
     type: snell
     server: 183.236.51.57
     port: 28118
@@ -184,9 +184,9 @@ proxies:
       mode: tls
       host: www.bing.com
 
-  - name: NNR-LISA-SzHk10x
+  - name: NNR-SzHk10x-US-LISA
     type: snell
-    server: 163.177.58.169
+    server: 163.177.58.167
     port: 41151
     psk: 9Wn8e0WW0Vso2hntTOkxkqDBk6S5Mxa
     udp: false
