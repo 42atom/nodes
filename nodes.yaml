@@ -152,7 +152,7 @@ proxies:
     server: 154.17.3.53
     port: 45857
     psk: 9Wn8e0WW0Vso2hntTOkxkqDBk6S5Mxa
-    udp: false
+    udp: true
     version: 3
     obfs-opts:
       mode: tls
@@ -163,7 +163,7 @@ proxies:
     server: 38.80.191.7
     port: 45857
     psk: 9Wn8e0WW0Vso2hntTOkxkqDBk6S5Mxa
-    udp: false
+    udp: true
     version: 3
     obfs-opts:
       mode: tls
@@ -174,7 +174,7 @@ proxies:
     server: 183.236.51.16
     port: 13841
     psk: 9Wn8e0WW0Vso2hntTOkxkqDBk6S5Mxa
-    udp: false
+    udp: true
     version: 3
     obfs-opts:
       mode: tls
@@ -185,7 +185,7 @@ proxies:
     server: 183.236.51.57
     port: 28118
     psk: 9Wn8e0WW0Vso2hntTOkxkqDBk6S5Mxa
-    udp: false
+    udp: true
     version: 3
     obfs-opts:
       mode: tls
@@ -196,7 +196,7 @@ proxies:
     server: 163.177.58.167
     port: 41151
     psk: 9Wn8e0WW0Vso2hntTOkxkqDBk6S5Mxa
-    udp: false
+    udp: true
     version: 3
     obfs-opts:
       mode: tls
@@ -208,7 +208,7 @@ proxies:
     server: 38.97.249.54
     port: 45857
     psk: 9Wn8e0WW0Vso2hntTOkxkqDBk6S5Mxa
-    udp: false
+    udp: true
     version: 3
     obfs-opts:
       mode: tls
@@ -219,7 +219,7 @@ proxies:
     server: 154.44.14.223
     port: 45857
     psk: 9Wn8e0WW0Vso2hntTOkxkqDBk6S5Mxa
-    udp: false
+    udp: true
     version: 3
     obfs-opts:
       mode: tls
@@ -230,7 +230,7 @@ proxies:
     server: 107.173.159.48
     port: 45857
     psk: 9Wn8e0WW0Vso2hntTOkxkqDBk6S5Mxa
-    udp: false
+    udp: true
     version: 3
     obfs-opts:
       mode: tls
@@ -241,7 +241,7 @@ proxies:
     server: 38.22.88.116
     port: 45857
     psk: 9Wn8e0WW0Vso2hntTOkxkqDBk6S5Mxa
-    udp: false
+    udp: true
     version: 3
     obfs-opts:
       mode: tls
