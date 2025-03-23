@@ -20,7 +20,6 @@ proxy-groups:
       - 美国W
       - HKtoUS_Relay
       - HKtoUS_Relay-RN
-      - Auto-Select
       
   - name: YouTube
     type: select
@@ -38,12 +37,12 @@ proxy-groups:
     type: select
     proxies: *proxies
 
-  - name: Auto-Select
-    type: url-test
-    url: http://www.gstatic.com/generate_204
-    interval: 300
-    tolerance: 50
-    proxies: *proxies
+  # - name: Auto-Select
+  #   type: url-test
+  #   url: http://www.gstatic.com/generate_204
+  #   interval: 300
+  #   tolerance: 50
+  #   proxies: *proxies
 
   - name: HKtoUS_Relay-RN
     type: relay
