@@ -1,0 +1,418 @@
+port: 7890
+socks-port: 7891
+allow-lan: true
+log-level: info
+
+proxy-groups:
+  # 功能分组
+  - name: PROXY
+    type: select
+    proxies: &proxies
+      - snell美LosAngle
+      - US-LISA
+      - RackNerd-美国
+      - NNR-SZ2USx8-US-RN
+      - NNR-GZx1_6-US-RN
+      - NNR-SzHk10x-US-LISA
+      - HK
+      - DIRECT
+      - 美国J
+      - 美国W
+      - HKtoUS_Relay
+      - HKtoUS_Relay-RN
+      - Auto-Select
+      
+  - name: YouTube
+    type: select
+    proxies: *proxies
+
+  - name: Google
+    type: select
+    proxies: *proxies
+    
+  - name: Apple
+    type: select
+    proxies: *proxies
+    
+  - name: Facebook
+    type: select
+    proxies: *proxies
+
+  - name: Auto-Select
+    type: url-test
+    url: http://www.gstatic.com/generate_204
+    interval: 300
+    tolerance: 50
+    proxies: *proxies
+
+  - name: HKtoUS_Relay-RN
+    type: relay
+    benchmark-url: http://www.apple.com
+    benchmark-timeout: 5
+    proxies:
+      - HK
+      - RackNerd-美国    
+
+  - name: HKtoUS_Relay
+    type: relay
+    benchmark-url: http://www.apple.com
+    benchmark-timeout: 5
+    proxies:
+      - HK
+      - US-LISA
+
+proxies:
+  - name: snell美LosAngle
+    type: snell
+    server: 154.17.3.53
+    port: 45857
+    psk: 9Wn8e0WW0Vso2hntTOkxkqDBk6S5Mxa
+    udp: true
+    version: 3
+    obfs-opts:
+      mode: tls
+      host: www.bing.com  
+      
+  - name: US-LISA
+    type: snell
+    server: 38.80.191.7
+    port: 45857
+    psk: 9Wn8e0WW0Vso2hntTOkxkqDBk6S5Mxa
+    udp: true
+    version: 3
+    obfs-opts:
+      mode: tls
+      host: www.bing.com
+      
+  - name: NNR-SZ2USx8-US-RN
+    type: snell
+    server: 183.236.51.16
+    port: 13841
+    psk: 9Wn8e0WW0Vso2hntTOkxkqDBk6S5Mxa
+    udp: true
+    version: 3
+    obfs-opts:
+      mode: tls
+      host: www.bing.com
+
+  - name: NNR-GZx1_6-US-RN
+    type: snell
+    server: 183.236.51.57
+    port: 28118
+    psk: 9Wn8e0WW0Vso2hntTOkxkqDBk6S5Mxa
+    udp: true
+    version: 3
+    obfs-opts:
+      mode: tls
+      host: www.bing.com
+
+  - name: NNR-SzHk10x-US-LISA
+    type: snell
+    server: 163.177.58.167
+    port: 41151
+    psk: 9Wn8e0WW0Vso2hntTOkxkqDBk6S5Mxa
+    udp: true
+    version: 3
+    obfs-opts:
+      mode: tls
+      host: www.bing.com
+
+  - name: 美国J
+    type: snell
+    server: 38.97.249.54
+    port: 45857
+    psk: 9Wn8e0WW0Vso2hntTOkxkqDBk6S5Mxa
+    udp: true
+    version: 3
+    obfs-opts:
+      mode: tls
+      host: www.bing.com  
+
+  - name: 美国W
+    type: snell
+    server: 154.44.14.223
+    port: 45857
+    psk: 9Wn8e0WW0Vso2hntTOkxkqDBk6S5Mxa
+    udp: true
+    version: 3
+    obfs-opts:
+      mode: tls
+      host: www.bing.com  
+
+  - name: RackNerd-美国
+    type: snell
+    server: 107.173.159.48
+    port: 45857
+    psk: 9Wn8e0WW0Vso2hntTOkxkqDBk6S5Mxa
+    udp: true
+    version: 3
+    obfs-opts:
+      mode: tls
+      host: www.bing.com  
+
+  - name: HK
+    type: snell
+    server: 38.22.88.116
+    port: 45857
+    psk: 9Wn8e0WW0Vso2hntTOkxkqDBk6S5Mxa
+    udp: true
+    version: 3
+    obfs-opts:
+      mode: tls
+      host: www.bing.com
+
+rules:
+  # 开发平台优先
+  - DOMAIN-SUFFIX,github.com,PROXY
+  - DOMAIN-SUFFIX,githubusercontent.com,PROXY
+  - DOMAIN-SUFFIX,githubassets.com,PROXY
+  - DOMAIN-SUFFIX,gitlab.com,PROXY
+  - DOMAIN-SUFFIX,gitlab-static.net,PROXY
+  
+  # 开发工具和服务
+  - DOMAIN-SUFFIX,visualstudio.com,PROXY
+  - DOMAIN-SUFFIX,azure.com,PROXY
+  - DOMAIN-SUFFIX,amazontrust.com,PROXY
+  - DOMAIN-SUFFIX,cloudfront.net,PROXY
+  - DOMAIN-SUFFIX,docker.com,PROXY
+  - DOMAIN-SUFFIX,docker.io,PROXY
+  - DOMAIN-SUFFIX,npmjs.com,PROXY
+  - DOMAIN-SUFFIX,maven.org,PROXY
+
+  # Copilot和AI开发
+  - DOMAIN,access-point.cloudmessaging.edge.microsoft.com,PROXY
+  - DOMAIN,sydney.bing.com,PROXY
+  - DOMAIN,browser.pipe.aria.microsoft.com,PROXY
+  - DOMAIN,designer.microsoft.com,PROXY
+  - DOMAIN,edge.microsoft.com,PROXY
+  - DOMAIN,copilot.microsoft.com,PROXY
+  - DOMAIN,edgeservices.bing.com,PROXY
+  - DOMAIN-SUFFIX,openai.com,PROXY
+  - DOMAIN-SUFFIX,anthropic.com,PROXY
+  - DOMAIN-SUFFIX,claude.ai,PROXY
+  - DOMAIN-SUFFIX,sentry.io,PROXY
+  - DOMAIN-SUFFIX,oaistatic.com,PROXY
+
+  # 微软开发服务
+  - DOMAIN-SUFFIX,servicebus.windows.net,PROXY
+  - DOMAIN-SUFFIX,azure-devices.net,PROXY
+  - DOMAIN-SUFFIX,windows.net,PROXY
+  - DOMAIN-SUFFIX,prod.do.dsp.mp.microsoft.com,PROXY
+  - DOMAIN,functional.events.data.microsoft.com,PROXY
+
+  # Apple 服务
+  - DOMAIN,developer.apple.com,Apple
+  - DOMAIN,api.smoot.apple.com,Apple
+  - DOMAIN,apple-events.akamaized.net,Apple
+  - DOMAIN-SUFFIX,apple-dns.net,Apple
+  - DOMAIN-SUFFIX,apple.co,Apple
+  - DOMAIN-SUFFIX,apple.com,Apple
+  - DOMAIN-SUFFIX,apple.com.cn,Apple
+  - DOMAIN-SUFFIX,apple.news,Apple
+  - DOMAIN-SUFFIX,appstore.com,Apple
+  - DOMAIN-SUFFIX,cdn-apple.com,Apple
+  - DOMAIN-SUFFIX,icloud-content.com,Apple
+  - DOMAIN-SUFFIX,icloud.com,Apple
+  - DOMAIN-SUFFIX,icloud.com.cn,Apple
+  - DOMAIN-SUFFIX,itunes.com,Apple
+  - DOMAIN-SUFFIX,me.com,Apple
+  - DOMAIN-SUFFIX,mzstatic.com,Apple
+  - DOMAIN-KEYWORD,apple.com.akadns.net,Apple
+  - DOMAIN-KEYWORD,icloud.com.akadns.net,Apple
+  - DOMAIN-KEYWORD,apple-support.akadns.net,Apple
+  - DOMAIN-KEYWORD,apple-cloudkit.com,Apple
+  - IP-CIDR,17.0.0.0/8,Apple
+
+  # Facebook 服务
+  - DOMAIN-SUFFIX,accountkit.com,Facebook
+  - DOMAIN-SUFFIX,cdninstagram.com,Facebook
+  - DOMAIN-SUFFIX,facebook.com,Facebook
+  - DOMAIN-SUFFIX,facebook.net,Facebook
+  - DOMAIN-SUFFIX,fb.com,Facebook
+  - DOMAIN-SUFFIX,fb.me,Facebook
+  - DOMAIN-SUFFIX,fbcdn.net,Facebook
+  - DOMAIN-SUFFIX,instagram.com,Facebook
+  - DOMAIN-SUFFIX,m.me,Facebook
+  - DOMAIN-SUFFIX,messenger.com,Facebook
+  - DOMAIN-SUFFIX,whatsapp.com,Facebook
+  - DOMAIN-SUFFIX,whatsapp.net,Facebook
+  - DOMAIN-KEYWORD,facebook,Facebook
+  - IP-CIDR,157.240.0.0/16,Facebook
+  - IP-CIDR,129.134.0.0/16,Facebook
+  - IP-CIDR,69.63.176.0/20,Facebook
+
+  # 流媒体服务
+  - DOMAIN-SUFFIX,netflix.com,Streaming
+  - DOMAIN-SUFFIX,netflix.net,Streaming
+  - DOMAIN-SUFFIX,nflxvideo.net,Streaming
+  - DOMAIN-SUFFIX,amazonaws.com,Streaming
+  - DOMAIN-SUFFIX,primevideo.com,Streaming
+  - DOMAIN-SUFFIX,hulu.com,Streaming
+  - DOMAIN-SUFFIX,disney-plus.net,Streaming
+  - DOMAIN-SUFFIX,disneyplus.com,Streaming
+
+  # 常用开发文档
+  - DOMAIN-SUFFIX,kubernetes.io,PROXY
+  - DOMAIN-SUFFIX,golang.org,PROXY
+  - DOMAIN-SUFFIX,python.org,PROXY
+  - DOMAIN-SUFFIX,dev.to,PROXY
+  - DOMAIN-SUFFIX,medium.com,PROXY
+
+  # 国内网站直连
+  - DOMAIN-SUFFIX,cn,DIRECT
+  - DOMAIN-KEYWORD,-cn,DIRECT
+  - GEOIP,CN,DIRECT,no-resolve
+
+  # 抗 DNS 污染
+  - DOMAIN-KEYWORD,amazon,PROXY
+  - DOMAIN-KEYWORD,google,PROXY
+  - DOMAIN-KEYWORD,gmail,PROXY
+  - DOMAIN-KEYWORD,youtube,YouTube
+  - DOMAIN-SUFFIX,id.google.com,Google
+  - GEOSITE,youtube,YouTube
+  - GEOSITE,google,Google
+
+  # 安全防护规则
+  - DOMAIN-SUFFIX,malware.com,REJECT
+  - DOMAIN-SUFFIX,phishing.com,REJECT
+  - DOMAIN-SUFFIX,spam.com,REJECT
+  - DOMAIN-KEYWORD,adservice,REJECT
+  - DOMAIN-KEYWORD,analytics,REJECT
+  - DOMAIN-KEYWORD,tracking,REJECT
+
+  # 规则集
+  - RULE-SET,icloud,Apple
+  - RULE-SET,apple,Apple
+  - RULE-SET,google,Google
+  - RULE-SET,gfw-domain,PROXY
+  - RULE-SET,local,DIRECT,no-resolve
+  - RULE-SET,cn-ip,DIRECT,no-resolve
+  - RULE-SET,direct-app,DIRECT,no-resolve
+  - RULE-SET,direct-domain,DIRECT,no-resolve
+  
+  # 最终规则
+  - MATCH,PROXY
+  - NETWORK,udp,PROXY
+
+dns:
+  enable: true
+  ipv6: false
+  preload-domain: true
+  default-nameserver:
+    - 223.5.5.5  # 阿里DNS
+    - 119.29.29.29  # 腾讯DNS
+    - 1.1.1.1  # Cloudflare
+    
+  nameserver:
+    - https://dns.alidns.com/dns-query  # 阿里加密DNS
+    - https://doh.pub/dns-query  # 腾讯加密DNS
+    - https://1.1.1.1/dns-query  # Cloudflare加密DNS
+    
+  nameserver-policy:
+    # 开发相关域名
+    'DOMAIN-SUFFIX,github.com': https://1.1.1.1/dns-query
+    'DOMAIN-SUFFIX,githubusercontent.com': https://1.1.1.1/dns-query
+    'DOMAIN-SUFFIX,gitlab.com': https://1.1.1.1/dns-query
+    
+    # 社交媒体
+    'DOMAIN-SUFFIX,facebook.com': https://1.1.1.1/dns-query
+    'DOMAIN-SUFFIX,instagram.com': https://1.1.1.1/dns-query
+    'DOMAIN-SUFFIX,whatsapp.com': https://1.1.1.1/dns-query
+    
+    # Apple服务
+    'DOMAIN-SUFFIX,apple.com': https://1.1.1.1/dns-query
+    'DOMAIN-SUFFIX,icloud.com': https://1.1.1.1/dns-query
+    'DOMAIN-SUFFIX,cdn-apple.com': https://1.1.1.1/dns-query
+    
+    # 微软服务
+    'DOMAIN-SUFFIX,microsoft.com': https://1.1.1.1/dns-query
+    'DOMAIN-SUFFIX,microsoftonline.com': https://1.1.1.1/dns-query
+    'DOMAIN-SUFFIX,visualstudio.com': https://1.1.1.1/dns-query
+    
+    # 国内网站
+    'DOMAIN-SUFFIX,baidu.com': https://dns.alidns.com/dns-query
+    'DOMAIN-SUFFIX,alibaba.com': https://dns.alidns.com/dns-query
+    'DOMAIN-SUFFIX,qq.com': https://doh.pub/dns-query
+
+  enhanced-mode: fake-ip
+  fake-ip-range: 198.18.0.1/16
+  fake-ip-filter:
+    - '*.lan'
+    - 'localhost.ptlogin2.qq.com'
+    - 'dns.msftncsi.com'
+    - 'www.msftncsi.com'
+    - 'www.msftconnecttest.com'
+    - '+.srv.nintendo.net'
+    - '+.stun.playstation.net'
+    - 'xbox.*.microsoft.com'
+    - '+.xboxlive.com'
+    - 'stun.*.*'
+    - 'stun.*.*.*'
+    - '*.mcdn.bilivideo.cn'
+
+rule-providers:
+  icloud:
+    type: http
+    behavior: domain
+    url: https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/icloud.txt
+    path: ./ruleset/icloud.yaml
+    interval: 86400
+
+  apple:
+    type: http
+    behavior: domain
+    url: https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/apple.txt
+    path: ./ruleset/apple.yaml
+    interval: 86400
+
+  google:
+    type: http
+    behavior: domain
+    url: https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/google.txt
+    path: ./ruleset/google.yaml
+    interval: 86400
+
+  direct-domain:
+    type: http
+    behavior: domain
+    url: https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/direct.txt
+    path: ./ruleset/direct.yaml
+    interval: 86400
+
+  direct-app:
+    type: http
+    behavior: domain
+    url: https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/applications.txt
+    path: ./ruleset/applications.yaml
+    interval: 86400
+
+  gfw-domain:
+    type: http
+    behavior: domain
+    url: https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/gfw.txt
+    path: ./ruleset/gfw.yaml
+    interval: 86400
+
+  cn-ip:
+    type: http
+    behavior: ipcidr
+    url: https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/cncidr.txt
+    path: ./ruleset/cn-ip.yaml
+    interval: 86400
+
+  local:
+    type: http
+    behavior: ipcidr
+    url: https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/lancidr.txt
+    path: ./ruleset/local.yaml
+    interval: 86400
+
+profile:
+  store-selected: true
+  store-fake-ip: true
+
+tcp-concurrent: true
+
+script:
+  shortcuts:
+    quic: network == 'udp' and dst_port == 443
