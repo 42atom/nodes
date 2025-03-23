@@ -50,6 +50,23 @@ proxy-groups:
       - HK
       - US-LISA  
 rules:
+  # Copilot
+  # 域名模式
+  - DOMAIN,access-point.cloudmessaging.edge.microsoft.com,PROXY
+  - DOMAIN,sydney.bing.com,PROXY
+  - DOMAIN,browser.pipe.aria.microsoft.com,PROXY
+  - DOMAIN,designer.microsoft.com,PROXY
+  - DOMAIN,edge.microsoft.com,PROXY
+  - DOMAIN,copilot.microsoft.com,PROXY
+  - DOMAIN,edgeservices.bing.com,PROXY
+  - DOMAIN,functional.events.data.microsoft.com,PROXY
+  - DOMAIN,www.bingapis.com,PROXY
+  # - DOMAIN,eu-mobile.events.data.microsoft.com,PROXY
+  # 域名后缀模式
+  # - DOMAIN-SUFFIX,events.data.microsoft.com,PROXY
+  - DOMAIN-SUFFIX,prod.do.dsp.mp.microsoft.com,PROXY
+  - DOMAIN-SUFFIX,sydney.bing.com,PROXY
+
   # Apple
   - DOMAIN,safebrowsing.urlsec.qq.com,DIRECT # 如果您并不信任此服务提供商或防止其下载消耗过多带宽资源，可以进入 Safari 设置，关闭 Fraudulent Website Warning 功能，并使用 REJECT 策略。
   - DOMAIN,safebrowsing.googleapis.com,DIRECT # 如果您并不信任此服务提供商或防止其下载消耗过多带宽资源，可以进入 Safari 设置，关闭 Fraudulent Website Warning 功能，并使用 REJECT 策略。
