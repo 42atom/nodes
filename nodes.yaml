@@ -18,9 +18,6 @@ proxy-groups:
       - snell美LosAngle
       - US-LISA
       - RackNerd-美国
-      - NNR-SZ2USx8-US-RN
-      - NNR-GZx1_6-US-RN
-      - NNR-SzHk10x-US-LISA
       - HK
       - DIRECT
       - 美国J
@@ -42,13 +39,7 @@ proxy-groups:
     proxies:
       - HK
       - RackNerd-美国    
-  - name: HKtoUS_Relay
-    type: relay
-    benchmark-url: http://www.apple.com
-    benchmark-timeout: 5
-    proxies:
-      - HK
-      - US-LISA  
+ 
 rules:
   - DOMAIN-SUFFIX,factorio.com,PROXY
   - DOMAIN-SUFFIX,sonnylab.com,PROXY
@@ -255,7 +246,7 @@ rules:
 
 
   - DOMAIN-SUFFIX,id.google.com,Google # Google IP定位
-  - SCRIPT,quic,REJECT
+  # - SCRIPT,quic,REJECT
   - DOMAIN-SUFFIX,wlai.vip,DIRECT,no-resolve # ai
   - GEOSITE,youtube,YouTube
   - GEOSITE,google,Google
@@ -341,6 +332,7 @@ dns:
   fake-ip-range: 198.18.0.1/16
   # 在以下列表的域名将不会被解析为 fake ip，这些域名相关的解析请求将会返回它们真实的 IP 地址
   fake-ip-filter:
+    - 'vps.sonnylab.com'
     - '*.lan'
     - 'localhost.ptlogin2.qq.com'
     - 'dns.msftncsi.com'
@@ -410,39 +402,6 @@ proxies:
     type: snell
     server: 38.80.191.7
     port: 45857
-    psk: 9Wn8e0WW0Vso2hntTOkxkqDBk6S5Mxa
-    udp: true
-    version: 3
-    obfs-opts:
-      mode: tls
-      host: www.bing.com
-      
-  - name: NNR-SZ2USx8-US-RN
-    type: snell
-    server: 183.236.51.16
-    port: 13841
-    psk: 9Wn8e0WW0Vso2hntTOkxkqDBk6S5Mxa
-    udp: true
-    version: 3
-    obfs-opts:
-      mode: tls
-      host: www.bing.com
-
-  - name: NNR-GZx1_6-US-RN
-    type: snell
-    server: 183.236.51.57
-    port: 28118
-    psk: 9Wn8e0WW0Vso2hntTOkxkqDBk6S5Mxa
-    udp: true
-    version: 3
-    obfs-opts:
-      mode: tls
-      host: www.bing.com
-
-  - name: NNR-SzHk10x-US-LISA
-    type: snell
-    server: 163.177.58.167
-    port: 41151
     psk: 9Wn8e0WW0Vso2hntTOkxkqDBk6S5Mxa
     udp: true
     version: 3
