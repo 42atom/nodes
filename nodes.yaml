@@ -22,7 +22,6 @@ proxy-groups:
       - DIRECT
       - 美国J
       - 美国W
-      - HKtoUS_Relay
       
   - name: YouTube
     type: select
