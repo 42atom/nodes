@@ -23,7 +23,6 @@ proxy-groups:
       - 美国J
       - 美国W
       - HKtoUS_Relay
-      - HKtoUS_Relay-RN
       
   - name: YouTube
     type: select
