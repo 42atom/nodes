@@ -30,13 +30,7 @@ proxy-groups:
     type: select
     proxies: *proxies
 
-  - name: HKtoUS_Relay-RN
-    type: relay
-    benchmark-url: http://www.apple.com
-    benchmark-timeout: 5
-    proxies:
-      - HK
-      - RackNerd-美国    
+  
  
 rules:
   - DOMAIN-SUFFIX,factorio.com,PROXY
