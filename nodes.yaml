@@ -50,6 +50,10 @@ proxy-groups:
       - HK
       - US-LISA  
 rules:
+  - DOMAIN-SUFFIX,factorio.com,PROXY
+  - DOMAIN-SUFFIX,sonnylab.com,PROXY
+
+
   # Copilot
   # 域名模式
   - DOMAIN,access-point.cloudmessaging.edge.microsoft.com,PROXY
