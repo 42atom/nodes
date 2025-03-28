@@ -35,6 +35,9 @@ proxy-groups:
 rules:
   - DOMAIN-SUFFIX,factorio.com,PROXY
   - DOMAIN-SUFFIX,sonnylab.com,PROXY
+  - DOMAIN-SUFFIX,*.larksuite.com,PROXY
+
+
 
 
   # Copilot
