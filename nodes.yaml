@@ -241,6 +241,7 @@ rules:
   - DOMAIN-SUFFIX,wlai.vip,DIRECT,no-resolve # ai
   - DOMAIN-SUFFIX,identity.ess.apple.com,PROXY # 连续互通
   - RULE-SET,gfw-domain,PROXY
+  - RULE-SET,YouTube,PROXY
   - RULE-SET,openai,PROXY
   - RULE-SET,OneDrive,PROXY
   - RULE-SET,Gemini,PROXY
@@ -263,6 +264,12 @@ rules:
   - NETWORK,udp,PROXY
   
 rule-providers:
+  YouTube:
+    type: http
+    behavior: domain
+    format: yaml
+    url: https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/YouTube.list
+    interval: 86400
   openai:
     type: http
     behavior: domain
