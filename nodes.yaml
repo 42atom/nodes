@@ -244,6 +244,8 @@ rules:
   - GEOSITE,google,Google
   - DOMAIN-SUFFIX,identity.ess.apple.com,PROXY # 连续互通
   - RULE-SET,gfw-domain,PROXY
+  - RULE-SET,openai,PROXY
+
   - RULE-SET,local,DIRECT,no-resolve
   - RULE-SET,cn-ip,DIRECT,no-resolve
   - RULE-SET,direct-app,DIRECT,no-resolve
