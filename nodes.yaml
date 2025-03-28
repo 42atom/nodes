@@ -237,15 +237,23 @@ rules:
 
 
 
-  - DOMAIN-SUFFIX,id.google.com,Google # Google IP定位
   # - SCRIPT,quic,REJECT
   - DOMAIN-SUFFIX,wlai.vip,DIRECT,no-resolve # ai
-  - GEOSITE,youtube,YouTube
-  - GEOSITE,google,Google
   - DOMAIN-SUFFIX,identity.ess.apple.com,PROXY # 连续互通
   - RULE-SET,gfw-domain,PROXY
   - RULE-SET,openai,PROXY
+  - RULE-SET,OneDrive,PROXY
+  - RULE-SET,Gemini,PROXY
+  - RULE-SET,Copilot,PROXY
+  - RULE-SET,Claude,PROXY
+  - RULE-SET,GoogleChina,PROXY
+  - RULE-SET,Microsoft,PROXY
+  - RULE-SET,WeChat,DIRECT,no-resolve
 
+  - DOMAIN-SUFFIX,id.google.com,Google # Google IP定位
+  - GEOSITE,youtube,YouTube
+  - GEOSITE,google,Google
+  
   - RULE-SET,local,DIRECT,no-resolve
   - RULE-SET,cn-ip,DIRECT,no-resolve
   - RULE-SET,direct-app,DIRECT,no-resolve
@@ -261,8 +269,49 @@ rule-providers:
     format: yaml
     url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/OpenAI/OpenAI.list
     interval: 86400
-
-
+  OneDrive:
+    type: http
+    behavior: domain
+    format: yaml
+    url: https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/OneDrive.list
+    interval: 86400
+  Gemini:
+    type: http
+    behavior: domain
+    format: yaml
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/Gemini/Gemini.list
+    interval: 86400
+  Copilot:
+    type: http
+    behavior: domain
+    format: yaml
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/Copilot/Copilot.list
+    interval: 86400
+  Claude:
+    type: http
+    behavior: domain
+    format: yaml
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/Claude/Claude.list
+    interval: 86400
+  GoogleChina:
+    type: http
+    behavior: domain
+    format: yaml
+    url: https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/GoogleCN.list
+    interval: 86400
+  Microsoft:
+    type: http
+    behavior: domain
+    format: yaml
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Microsoft/Microsoft.list
+    interval: 86400
+  WeChat:
+    type: http
+    behavior: domain
+    format: yaml
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/WeChat/WeChat.list
+    interval: 86400
+    
   direct-domain:
     type: http
     behavior: domain
