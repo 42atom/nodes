@@ -37,7 +37,8 @@ rules:
   - DOMAIN-SUFFIX,sonnylab.com,PROXY
   - DOMAIN-SUFFIX,*.larksuite.com,PROXY
 
-
+  - DOMAIN-SUFFIX,adobe.io,REJECT
+  - DOMAIN,lcs-cops.adobe.io,DIRECT
 
 
   # Copilot
