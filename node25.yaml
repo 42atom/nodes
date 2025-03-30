@@ -11,15 +11,15 @@ proxy-groups:
       - snell美LosAngle
       - US-LISA
       - RackNerd-美国
-      - NNR-SZ2USx8-US-RN
-      - NNR-GZx1_6-US-RN
-      - NNR-SzHk10x-US-LISA
+      # - NNR-SZ2USx8-US-RN
+      # - NNR-GZx1_6-US-RN
+      # - NNR-SzHk10x-US-LISA
       - HK
       - DIRECT
       - 美国J
       - 美国W
-      - HKtoUS_Relay
-      - HKtoUS_Relay-RN
+      # - HKtoUS_Relay
+      # - HKtoUS_Relay-RN
       
   - name: YouTube
     type: select
@@ -74,7 +74,7 @@ proxies:
       
   - name: US-LISA
     type: snell
-    server: 38.80.191.7
+    server: 38.244.20.17
     port: 45857
     psk: 9Wn8e0WW0Vso2hntTOkxkqDBk6S5Mxa
     udp: true
