@@ -462,7 +462,7 @@ proxies:
       
   - name: US-LISA
     type: snell
-    server: 38.244.20.17
+    server: 154.21.193.179
     port: 45857
     psk: 9Wn8e0WW0Vso2hntTOkxkqDBk6S5Mxa
     udp: true
