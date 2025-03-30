@@ -30,7 +30,13 @@ proxy-groups:
   - name: Google
     type: select
     proxies: *proxies
-
+  - name: RNtoLISA_Relay
+    type: relay
+    benchmark-url: http://www.apple.com
+    benchmark-timeout: 5
+    proxies:
+      - RackNerd-美国
+      - US-LISA
   
  
 rules:
@@ -450,13 +456,7 @@ dns:
 
 
 proxies:
-  - name: RNtoLISA_Relay
-    type: relay
-    benchmark-url: http://www.apple.com
-    benchmark-timeout: 5
-    proxies:
-      - RackNerd-美国
-      - US-LISA
+
 
 
   - name: snell美LosAngle
