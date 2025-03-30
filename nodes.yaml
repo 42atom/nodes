@@ -466,9 +466,9 @@ proxies:
     port: 45857
     psk: 9Wn8e0WW0Vso2hntTOkxkqDBk6S5Mxa
     udp: true
-    version: 3
+    version: 4
     obfs-opts:
-      mode: tls
+      mode: http
       host: www.bing.com
 
 
