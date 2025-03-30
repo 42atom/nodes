@@ -22,6 +22,7 @@ proxy-groups:
       - DIRECT
       - 美国J
       - 美国W
+      - RNtoLISA_Relay
       
   - name: YouTube
     type: select
@@ -449,6 +450,15 @@ dns:
 
 
 proxies:
+  - name: RNtoLISA_Relay
+    type: relay
+    benchmark-url: http://www.apple.com
+    benchmark-timeout: 5
+    proxies:
+      - RackNerd-美国
+      - US-LISA
+
+
   - name: snell美LosAngle
     type: snell
     server: 154.17.3.53
