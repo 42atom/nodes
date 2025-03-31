@@ -23,6 +23,7 @@ proxy-groups:
       - 美国J
       - 美国W
       - RNtoLISA_Relay
+      - socksJ
       
   # - name: YouTube
   #   type: select
@@ -371,32 +372,30 @@ dns:
   # listen: 0.0.0.0:53
   default-nameserver:
     - 223.5.5.5
-    # - 223.6.6.6
-    # - 114.114.115.115
     - 1.0.0.1
-    - system
+    # - system
   # enhanced-mode: redir-host
   nameserver:
-    - 223.6.6.6
-    - https://doh.pub/dns-query
-    - 1.1.1.1
-    - 8.8.8.8
+    - https://dns.alidns.com/dns-query  # 阿里云 DoH
+    - https://doh.pub/dns-query         # 腾讯云 DoH
+    - https://cloudflare-dns.com/dns-query  # Cloudflare DoH
+    - https://dns.google/dns-query      # Google DoH
   nameserver-policy:
-    '+.arpa': '10.0.0.1'
+    # '+.arpa': '10.0.0.1'
     # 'rule-set:cn-ip':
       # - https://dns.alidns.com/dns-query
-    'www.jin10.com': 223.5.5.5
-    'www.baidu.com': 223.5.5.5
+    # 'www.jin10.com': 223.5.5.5
+    # 'www.baidu.com': 223.5.5.5
     '+.internal.crop.com': system
   # skip-cert-verify: true
-  # fallback:
-  #   - tls://1.1.1.1:853
-  #   - tls://8.8.8.8:853
-  # fallback-filter:
-  #   geoip: true
-  #   geoip-code: CN
-  #   ipcidr:
-  #     - 240.0.0.0/4
+  fallback:
+    - tls://1.1.1.1:853
+    - tls://8.8.8.8:853
+  fallback-filter:
+    geoip: true
+    geoip-code: CN
+    ipcidr:
+      - 240.0.0.0/4
   enhanced-mode: fake-ip
   fake-ip-range: 198.18.0.1/16
   # 在以下列表的域名将不会被解析为 fake ip，这些域名相关的解析请求将会返回它们真实的 IP 地址
@@ -525,3 +524,13 @@ proxies:
     obfs-opts:
       mode: tls
       host: www.bing.com 
+
+- name: socksJ
+  type: socks5
+  server: 128.14.181.155
+  port: 11121
+  # username: username
+  # password: password
+  # tls: true
+  # skip-cert-verify: true
+  # udp: true
