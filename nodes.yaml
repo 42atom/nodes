@@ -37,7 +37,7 @@ proxy-groups:
     benchmark-timeout: 5
     proxies:
       - RackNerd-美国
-      - US-LISA
+      - socksJ
   
  
 rules:
