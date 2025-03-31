@@ -23,6 +23,7 @@ proxy-groups:
       - 美国J
       - 美国W
       - RNtoLISA_Relay
+      - HK_US_Relay
       - socksJ
       
 
