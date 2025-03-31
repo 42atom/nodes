@@ -15,8 +15,8 @@ proxy-groups:
   - name: PROXY
     type: select
     proxies: &proxies
-      - snell美LosAngle
       - US-LISA
+      - snell美LosAngle
       - RackNerd-美国
       - HK
       - DIRECT
