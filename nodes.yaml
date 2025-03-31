@@ -24,12 +24,12 @@ proxy-groups:
       - 美国W
       - RNtoLISA_Relay
       
-  - name: YouTube
-    type: select
-    proxies: *proxies
-  - name: Google
-    type: select
-    proxies: *proxies
+  # - name: YouTube
+  #   type: select
+  #   proxies: *proxies
+  # - name: Google
+  #   type: select
+  #   proxies: *proxies
   - name: RNtoLISA_Relay
     type: relay
     benchmark-url: http://www.apple.com
@@ -262,9 +262,9 @@ rules:
   - RULE-SET,Microsoft,PROXY
   - RULE-SET,WeChat,DIRECT,no-resolve
 
-  - DOMAIN-SUFFIX,id.google.com,Google # Google IP定位
-  - GEOSITE,youtube,YouTube
-  - GEOSITE,google,Google
+  - DOMAIN-SUFFIX,id.google.com,PROXY # Google IP定位
+  - GEOSITE,youtube,PROXY
+  - GEOSITE,google,PROXY
   
   - RULE-SET,local,DIRECT,no-resolve
   - RULE-SET,cn-ip,DIRECT,no-resolve
