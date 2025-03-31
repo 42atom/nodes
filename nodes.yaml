@@ -25,12 +25,7 @@ proxy-groups:
       - RNtoLISA_Relay
       - socksJ
       
-  # - name: YouTube
-  #   type: select
-  #   proxies: *proxies
-  # - name: Google
-  #   type: select
-  #   proxies: *proxies
+
   - name: RNtoLISA_Relay
     type: relay
     benchmark-url: http://www.apple.com
@@ -38,7 +33,15 @@ proxy-groups:
     proxies:
       - RackNerd-美国
       - socksJ
-  
+
+  - name: HK_US_Relay
+    type: relay
+    benchmark-url: http://www.apple.com
+    benchmark-timeout: 5
+    proxies:
+      - HK
+      - socksJ
+
 rules:
   - DOMAIN-SUFFIX,factorio.com,PROXY
   - DOMAIN-SUFFIX,sonnylab.com,PROXY
