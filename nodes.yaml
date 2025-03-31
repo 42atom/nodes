@@ -39,7 +39,6 @@ proxy-groups:
       - RackNerd-美国
       - socksJ
   
- 
 rules:
   - DOMAIN-SUFFIX,factorio.com,PROXY
   - DOMAIN-SUFFIX,sonnylab.com,PROXY
@@ -364,7 +363,7 @@ rule-providers:
 
 script:
   shortcuts:
-     quic: network == 'udp' and dst_port == 443
+    quic: network == 'udp' and dst_port == 443
 
 dns:
   enable: true
@@ -529,12 +528,12 @@ proxies:
       mode: tls
       host: www.bing.com 
 
- - name: socksJ
-   type: socks5
-   server: 128.14.181.155
-   port: 11121
-   # username: username
-   # password: password
-   # tls: true
-   # skip-cert-verify: true
-   # udp: true
+  - name: socksJ
+    type: socks5
+    server: 128.14.181.155
+    port: 11121
+    # username: username
+    # password: password
+    # tls: true
+    # skip-cert-verify: true
+    # udp: true
