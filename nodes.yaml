@@ -534,8 +534,8 @@ proxies:
 
   - name: socksJ
     type: socks5
-    server: 128.14.181.152
-    port: 19416
+    server: 128.14.181.154
+    port: 12921
     # username: username
     # password: password
     # tls: true
