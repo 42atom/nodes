@@ -416,6 +416,9 @@ dns:
   fake-ip-filter:
     - 'vps.sonnylab.com'
     - '*.lan'
+    - 'dns.google'
+    - 'cloudflare-dns.com'
+    - 'dns.alidns.com'
     - 'localhost.ptlogin2.qq.com'
     - 'dns.msftncsi.com'
     - 'www.msftncsi.com'
