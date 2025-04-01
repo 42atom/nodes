@@ -398,8 +398,8 @@ dns:
     '+.google.com': 'tls://8.8.8.8:853'
     '+.cloudflare.com': 'tls://1.1.1.1:853'
     '+.arpa': '10.0.0.1'
-    'www.jin10.com': 223.5.5.5
-    'www.baidu.com': 223.5.5.5
+    '+.jin10.com': 223.5.5.5
+    '+.baidu.com': 223.5.5.5
     '+.internal.crop.com': system
   # skip-cert-verify: true
   fallback:
