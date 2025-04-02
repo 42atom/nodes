@@ -22,26 +22,24 @@ proxy-groups:
       - DIRECT
       - 美国J
       - 美国W
-      - RNtoLISA_Relay
-      - HK_US_Relay
       - socksJ
       
 
-  - name: RNtoLISA_Relay
-    type: relay
-    benchmark-url: http://www.apple.com
-    benchmark-timeout: 5
-    proxies:
-      - RackNerd-美国
-      - socksJ
+  # - name: RNtoLISA_Relay
+  #   type: relay
+  #   benchmark-url: http://www.apple.com
+  #   benchmark-timeout: 5
+  #   proxies:
+  #     - RackNerd-美国
+  #     - socksJ
 
-  - name: HK_US_Relay
-    type: relay
-    benchmark-url: http://www.apple.com
-    benchmark-timeout: 5
-    proxies:
-      - HK
-      - socksJ
+  # - name: HK_US_Relay
+  #   type: relay
+  #   benchmark-url: http://www.apple.com
+  #   benchmark-timeout: 5
+  #   proxies:
+  #     - HK
+  #     - socksJ
 
 rules:
   # - SCRIPT,quic,REJECT
@@ -390,20 +388,20 @@ dns:
   ipv6: false
   listen: 0.0.0.0:53
   default-nameserver:
-    - 1.1.1.1
-    - 8.8.8.8
-    # - 223.5.5.5
-    # - 1.0.0.1
+    # - 1.1.1.1
+    # - 8.8.8.8
+    - 223.5.5.5
+    - 119.29.29.29
     # - system
   nameserver:
     # 阿里云 DoH
     - https://dns.alidns.com/dns-query
     # 腾讯云 DoH
-    # - https://doh.pub/dns-query
+    - https://doh.pub/dns-query
     # Cloudflare DoH
     - https://cloudflare-dns.com/dns-query
     # Google DoH
-    - https://dns.google/dns-query
+    # - https://dns.google/dns-query
   nameserver-policy:
     '+.icloud.com': '223.5.5.5'  # iCloud 域名使用阿里云 DNS
     '+.icloud-content.com': '223.5.5.5'
@@ -430,12 +428,13 @@ dns:
   fake-ip-range: 198.18.0.1/16
   # 在以下列表的域名将不会被解析为 fake ip，这些域名相关的解析请求将会返回它们真实的 IP 地址
   fake-ip-filter:
+    - '*'
     - 'vps.sonnylab.com'
-    - '*.lan'
+    - '+.lan'
+    - "+.local"
     - 'dns.google'
     - 'cloudflare-dns.com'
     - 'dns.alidns.com'
-    - 'localhost.ptlogin2.qq.com'
     - 'dns.msftncsi.com'
     - 'www.msftncsi.com'
     - 'www.msftconnecttest.com'
@@ -449,9 +448,6 @@ dns:
     ## Baidu
     - 'musicapi.taihe.com'
     - 'music.taihe.com'
-    ## Kugou
-    - 'songsearch.kugou.com'
-    - 'trackercdn.kugou.com'
     ## Kuwo
     - '*.kuwo.cn'
     ## JOOX
