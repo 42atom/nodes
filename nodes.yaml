@@ -407,6 +407,8 @@ dns:
   nameserver-policy:
     '+.icloud.com': '223.5.5.5'  # iCloud 域名使用阿里云 DNS
     '+.icloud-content.com': '223.5.5.5'
+    '+.apple.com': '223.5.5.5'
+    '+.apple-dns.net': '223.5.5.5'
     '+.google.com': 'tls://8.8.8.8:853'
     '+.cloudflare.com': 'tls://1.1.1.1:853'
     '+.arpa': '10.0.0.1'
