@@ -42,7 +42,7 @@ proxy-groups:
   #     - socksJ
 
 rules:
-  # - SCRIPT,quic,REJECT
+  - SCRIPT,quic,REJECT
   - RULE-SET,WeChat,DIRECT,no-resolve
   - DOMAIN-SUFFIX,wlai.vip,DIRECT,no-resolve # ai
   - DOMAIN-SUFFIX,identity.ess.apple.com,PROXY # 连续互通
