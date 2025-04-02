@@ -75,7 +75,7 @@ rules:
 
 
   # TIKTOK
-  - USER-AGENT,TikTok*,PROXY
+  # - USER-AGENT,TikTok*,PROXY
   - DOMAIN-KEYWORD,tiktokcdn,PROXY
   - DOMAIN-SUFFIX,byteoversea.com,PROXY
   - DOMAIN-SUFFIX,ibytedtos.com,PROXY
