@@ -61,6 +61,9 @@ proxy-groups:
   #     - socksJ
 
 rules:
+  - DOMAIN-SUFFIX,110221.xyz,DIRECT
+  - DOMAIN-SUFFIX,workers.dev,DIRECT
+  
   - SCRIPT,quic,REJECT
   - RULE-SET,WeChat,DIRECT,no-resolve
   - DOMAIN-SUFFIX,identity.ess.apple.com,PROXY # 连续互通
@@ -412,7 +415,7 @@ script:
 dns:
   enable: true
   cache: true
-  ipv6: false
+  ipv6: true
   listen: 0.0.0.0:53
   default-nameserver:
     # - 1.1.1.1
