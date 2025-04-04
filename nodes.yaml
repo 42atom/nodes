@@ -587,7 +587,7 @@ proxies:
 
   - name: NNR-L1
     type: snell
-    server: 163.177.58.167
+    server: 33596250-29a8-431e-af9e-5e731b9e3d0a.110221.xyz
     port: 25373
     psk: 9Wn8e0WW0Vso2hntTOkxkqDBk6S5Mxa
     udp: true
@@ -600,7 +600,7 @@ proxies:
 
   - name: NNR-L2
     type: snell
-    server: 125.94.46.115
+    server: 50045ba2-29c9-408c-86b5-976042645f52.110221.xyz
     port: 45857
     psk: 9Wn8e0WW0Vso2hntTOkxkqDBk6S5Mxa
     udp: true
@@ -613,7 +613,7 @@ proxies:
       
   - name: NNR-L3
     type: snell
-    server: 125.94.46.115
+    server: 50045ba2-29c9-408c-86b5-976042645f52.110221.xyz
     port: 10165
     psk: 9Wn8e0WW0Vso2hntTOkxkqDBk6S5Mxa
     udp: true
@@ -626,7 +626,7 @@ proxies:
 
   - name: NNR-L4
     type: snell
-    server: 103.8.222.179
+    server: 803d0da0-1606-48df-914d-34cd235d8206.110221.xyz
     port: 25164
     psk: 9Wn8e0WW0Vso2hntTOkxkqDBk6S5Mxa
     udp: true
@@ -639,7 +639,7 @@ proxies:
    
   - name: NNR-J1
     type: snell
-    server: 163.177.58.167
+    server: 33596250-29a8-431e-af9e-5e731b9e3d0a.110221.xyz
     port: 45857
     psk: 9Wn8e0WW0Vso2hntTOkxkqDBk6S5Mxa
     udp: true
@@ -652,7 +652,7 @@ proxies:
 
   - name: NNR-J2
     type: snell
-    server: 125.94.46.115
+    server: 50045ba2-29c9-408c-86b5-976042645f52.110221.xyz
     port: 10210
     psk: 9Wn8e0WW0Vso2hntTOkxkqDBk6S5Mxa
     udp: true
@@ -665,7 +665,7 @@ proxies:
       
   - name: NNR-J3
     type: snell
-    server: 125.94.46.115
+    server: 50045ba2-29c9-408c-86b5-976042645f52.110221.xyz
     port: 10205
     psk: 9Wn8e0WW0Vso2hntTOkxkqDBk6S5Mxa
     udp: true
@@ -678,7 +678,7 @@ proxies:
 
   - name: NNR-J4
     type: snell
-    server: 2409:8C54:1020:39:0:3156:0:13
+    server: b4f0a252-1df1-4056-b5a2-b47905906bfe.110221.xyz
     port: 25007
     psk: 9Wn8e0WW0Vso2hntTOkxkqDBk6S5Mxa
     udp: true
