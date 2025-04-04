@@ -400,6 +400,15 @@ script:
   shortcuts:
     quic: network == 'udp' and dst_port == 443
 
+# TUN 配置
+# tun:
+#   enable: true
+#   stack: system
+#   dns-hijack:
+#     - "any:53"
+#   auto-route: true
+#   auto-detect-interface: true
+
 dns:
   enable: true
   cache: true
@@ -453,6 +462,7 @@ dns:
     - '+.lan'
     - "+.local"
     - 'dns.google'
+    - "*.cloudflare.com"
     - 'cloudflare-dns.com'
     - 'dns.alidns.com'
     - 'dns.msftncsi.com'
