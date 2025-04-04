@@ -31,6 +31,8 @@ proxy-groups:
       - NNR-1
       - NNR-2
       - NNR-3
+      - NNR-4
+
     interval: 300
       
 
@@ -612,5 +614,18 @@ proxies:
     cipher: aes-256-gcm
     obfs-opts:
       mode: tls
-      host: www.bing.com      
+      host: www.bing.com
+
+  - name: NNR-4
+    type: snell
+    server: 103.8.222.179
+    port: 25164
+    psk: 9Wn8e0WW0Vso2hntTOkxkqDBk6S5Mxa
+    udp: true
+    version: 3
+    multiplex: true
+    cipher: aes-256-gcm
+    obfs-opts:
+      mode: tls
+      host: www.bing.com 
    
