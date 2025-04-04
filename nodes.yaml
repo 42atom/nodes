@@ -61,6 +61,10 @@ proxy-groups:
   #     - socksJ
 
 rules:
+  - DOMAIN,110221.xyz,DIRECT
+  - DOMAIN,*.110221.xyz,DIRECT
+  - DOMAIN,cf-pages.devdog.workers.dev,DIRECT
+
   - SCRIPT,quic,REJECT
   - RULE-SET,WeChat,DIRECT,no-resolve
   - DOMAIN-SUFFIX,wlai.vip,DIRECT,no-resolve # ai
