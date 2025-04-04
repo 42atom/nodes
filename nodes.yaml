@@ -458,8 +458,9 @@ dns:
   fake-ip-range: 198.18.0.1/16
   # 在以下列表的域名将不会被解析为 fake ip，这些域名相关的解析请求将会返回它们真实的 IP 地址
   fake-ip-filter:
-    - '*'
+    # - '*'
     - '110221.xyz'
+    - '*.110221.xyz'
     - 'workers.dev'
     - 'vps.sonnylab.com'
     - '+.lan'
