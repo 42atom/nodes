@@ -24,6 +24,14 @@ proxy-groups:
       - 美国W
       - socksJ
       
+  - name: AUTO
+    type: url-test
+    proxies:
+      - NNR-1
+      - NNR-2
+      - NNR-3
+    interval: 300
+      
 
   # - name: RNtoLISA_Relay
   #   type: relay
@@ -565,3 +573,43 @@ proxies:
     # tls: true
     # skip-cert-verify: true
     # udp: true
+
+  - name: NNR-1
+    type: snell
+    server: 163.177.58.167
+    port: 45857
+    psk: 9Wn8e0WW0Vso2hntTOkxkqDBk6S5Mxa
+    udp: true
+    version: 3
+    multiplex: true
+    cipher: aes-256-gcm
+    obfs-opts:
+      mode: tls
+      host: www.bing.com
+
+  - name: NNR-2
+    type: snell
+    server: 125.94.46.115
+    port: 45857
+    psk: 9Wn8e0WW0Vso2hntTOkxkqDBk6S5Mxa
+    udp: true
+    version: 3
+    multiplex: true
+    cipher: aes-256-gcm
+    obfs-opts:
+      mode: tls
+      host: www.bing.com
+      
+  - name: NNR-3
+    type: snell
+    server: 125.94.46.115
+    port: 10165
+    psk: 9Wn8e0WW0Vso2hntTOkxkqDBk6S5Mxa
+    udp: true
+    version: 3
+    multiplex: true
+    cipher: aes-256-gcm
+    obfs-opts:
+      mode: tls
+      host: www.bing.com      
+   
