@@ -23,6 +23,7 @@ proxy-groups:
       - 美国J
       - 美国W
       - socksJ
+      - AUTO
       
   - name: AUTO
     type: url-test
