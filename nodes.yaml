@@ -637,7 +637,7 @@ proxies:
       mode: tls
       host: www.bing.com 
    
- - name: NNR-J1
+  - name: NNR-J1
     type: snell
     server: 163.177.58.167
     port: 45857
