@@ -693,8 +693,8 @@ proxies:
 
   - name: NNR-J4
     type: snell
-    server: b4f0a252-1df1-4056-b5a2-b47905906bfe.110221.xyz
-    port: 25007
+    server: 0428c217-b76f-40f0-b9df-b5fef7be0a34.110221.xyz
+    port: 45450
     psk: 9Wn8e0WW0Vso2hntTOkxkqDBk6S5Mxa
     udp: true
     version: 3
