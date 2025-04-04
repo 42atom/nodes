@@ -15,16 +15,16 @@ proxy-groups:
   - name: PROXY
     type: select
     proxies: &proxies
-      - US-LISA
-      - snell美LosAngle
-      - RackNerd-美国
-      - HK
-      - DIRECT
-      - 美国J
-      - 美国W
-      - socksJ
       - AUTO-L
       - AUTO-J
+      - HK
+      - snell美LosAngle
+      - RackNerd-美国
+      - US-LISA
+      - 美国J
+      - 美国W
+      - DIRECT
+      # - socksJ
 
   - name: AUTO-L
     type: url-test
