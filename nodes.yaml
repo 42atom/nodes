@@ -61,6 +61,9 @@ proxy-groups:
   #     - socksJ
 
 rules:
+
+
+
   - DOMAIN-SUFFIX,110221.xyz,DIRECT
   - DOMAIN-SUFFIX,workers.dev,DIRECT
   
@@ -93,7 +96,30 @@ rules:
   - RULE-SET,cn-ip,DIRECT,no-resolve
   - RULE-SET,direct-app,DIRECT,no-resolve
   - RULE-SET,direct-domain,DIRECT,no-resolve
-
+  
+  # 教育网站代理规则
+  - DOMAIN-SUFFIX,abcmouse.com,PROXY
+  - DOMAIN,getepic.com,PROXY
+  - DOMAIN-SUFFIX,getepic.com,PROXY
+  - DOMAIN,khanacademy.org,PROXY
+  - DOMAIN-SUFFIX,brainpop.com,PROXY
+  - DOMAIN-SUFFIX,seesaw.me,PROXY
+  - DOMAIN-SUFFIX,sciencea-z.com,PROXY
+  - DOMAIN-SUFFIX,starfall.com,PROXY
+  - DOMAIN-SUFFIX,kidsa-z.com,PROXY
+  - DOMAIN,kidsa-z.com,PROXY
+  - DOMAIN-SUFFIX,raz-plus.com,PROXY
+  - DOMAIN,raz-plus.com,PROXY
+  - DOMAIN-SUFFIX,raz-kids.com,PROXY
+  - DOMAIN,raz-kids.com,PROXY
+  - DOMAIN-SUFFIX,learninga-z.com,PROXY
+  - DOMAIN,learninga-z.com,PROXY
+  - DOMAIN-SUFFIX,headsprout.com,PROXY
+  - DOMAIN,headsprout.com,PROXY
+  - DOMAIN,mysteryscience.com,PROXY
+  - DOMAIN-SUFFIX,mysteryscience.com,PROXY
+  - DOMAIN-SUFFIX,scholastic.com,PROXY
+  - DOMAIN-SUFFIX,i-ready.com,PROXY
 
   # TIKTOK
   # - USER-AGENT,TikTok*,PROXY
