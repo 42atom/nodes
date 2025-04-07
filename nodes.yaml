@@ -63,7 +63,7 @@ proxy-groups:
 rules:
 
 
-  - DOMAIN,mail.google.com,PROXY
+  # - DOMAIN,mail.google.com,PROXY
   - DOMAIN-SUFFIX,110221.xyz,DIRECT
   - DOMAIN-SUFFIX,workers.dev,DIRECT
   
@@ -97,7 +97,7 @@ rules:
   - RULE-SET,direct-app,DIRECT,no-resolve
   - RULE-SET,direct-domain,DIRECT,no-resolve
   
-  - DOMAIN-SUFFIX,gmail.com,PROXY
+  # - DOMAIN-SUFFIX,gmail.com,PROXY
   # 教育网站代理规则
   - DOMAIN,getepic.com,PROXY
   - DOMAIN-SUFFIX,getepic.com,PROXY
@@ -318,7 +318,7 @@ rules:
   # 抗 DNS 污染
   - DOMAIN-KEYWORD,amazon,PROXY
   - DOMAIN-KEYWORD,google,PROXY
-  - DOMAIN-KEYWORD,gmail,PROXY
+  # - DOMAIN-KEYWORD,gmail,PROXY
   - DOMAIN-KEYWORD,youtube,PROXY
   - DOMAIN-KEYWORD,facebook,PROXY
   - DOMAIN-SUFFIX,fb.me,PROXY
@@ -465,7 +465,7 @@ dns:
     '+.apple-dns.net': '223.5.5.5'
     # '+.me.com': 'tls://8.8.8.8:853'
     '+.google.com': 'tls://8.8.8.8:853'
-    '+.gmail.com': 'https://cloudflare-dns.com/dns-query'
+    # '+.gmail.com': 'https://cloudflare-dns.com/dns-query'
     '+.cloudflare.com': 'tls://1.1.1.1:853'
     '+.arpa': '10.0.0.1'
     '+.jin10.com': 223.5.5.5
