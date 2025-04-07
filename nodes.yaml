@@ -97,8 +97,8 @@ rules:
   - RULE-SET,direct-app,DIRECT,no-resolve
   - RULE-SET,direct-domain,DIRECT,no-resolve
   
+  - DOMAIN-SUFFIX,gmail.com,PROXY
   # 教育网站代理规则
-  - DOMAIN-SUFFIX,abcmouse.com,PROXY
   - DOMAIN,getepic.com,PROXY
   - DOMAIN-SUFFIX,getepic.com,PROXY
   - DOMAIN,khanacademy.org,PROXY
