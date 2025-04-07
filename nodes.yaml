@@ -63,7 +63,7 @@ proxy-groups:
 rules:
 
 
-
+  - DOMAIN,mail.google.com,PROXY
   - DOMAIN-SUFFIX,110221.xyz,DIRECT
   - DOMAIN-SUFFIX,workers.dev,DIRECT
   
