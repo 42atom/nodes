@@ -142,6 +142,8 @@ rules:
   - DOMAIN,*.github.com,PROXY
   - DOMAIN,api.githubcopilot.com,PROXY
   - DOMAIN,*.googleapis.com,PROXY
+  - DOMAIN,*.posthog.com,PROXY
+
 
   # - DOMAIN,eu-mobile.events.data.microsoft.com,PROXY
   # 域名后缀模式
