@@ -146,6 +146,10 @@ rules:
   - DOMAIN,edgeservices.bing.com,PROXY
   - DOMAIN,functional.events.data.microsoft.com,PROXY
   - DOMAIN,www.bingapis.com,PROXY
+  - DOMAIN,*.github.com,PROXY
+  - DOMAIN,api.githubcopilot.com,PROXY
+  - DOMAIN,*.googleapis.com,PROXY
+
   # - DOMAIN,eu-mobile.events.data.microsoft.com,PROXY
   # 域名后缀模式
   # - DOMAIN-SUFFIX,events.data.microsoft.com,PROXY
