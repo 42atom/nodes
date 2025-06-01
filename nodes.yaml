@@ -52,13 +52,6 @@ proxy-groups:
   #     - RackNerd-美国
   #     - socksJ
 
-  # - name: HK_US_Relay
-  #   type: relay
-  #   benchmark-url: http://www.apple.com
-  #   benchmark-timeout: 5
-  #   proxies:
-  #     - HK
-  #     - socksJ
 
 rules:
   # gmail邮件需直连 注意
