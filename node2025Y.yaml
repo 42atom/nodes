@@ -61,6 +61,9 @@ rules:
   - DOMAIN-SUFFIX,110221.xyz,DIRECT
   - DOMAIN-SUFFIX,workers.dev,DIRECT
   - DOMAIN-SUFFIX,googlevideo.com,REJECT
+  - GEOSITE,youtube,REJECT #YT
+  - RULE-SET,YouTube,REJECT #YT
+
 
   - SCRIPT,quic,REJECT
   - RULE-SET,WeChat,DIRECT,no-resolve
@@ -74,7 +77,6 @@ rules:
 
   
   - RULE-SET,gfw-domain,PROXY
-  - RULE-SET,YouTube,REJECT #YT
   - RULE-SET,openai,PROXY
   - RULE-SET,OneDrive,PROXY
   - RULE-SET,Gemini,PROXY
@@ -84,7 +86,6 @@ rules:
   - RULE-SET,Microsoft,PROXY
   - DOMAIN-SUFFIX,id.google.com,PROXY # Google IP定位
 
-  - GEOSITE,youtube,REJECT #YT
   - GEOSITE,google,PROXY
   
   - RULE-SET,local,DIRECT,no-resolve
