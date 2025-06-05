@@ -73,7 +73,7 @@ rules:
 
   
   - RULE-SET,gfw-domain,PROXY
-  - RULE-SET,YouTube,DIRECT
+  - RULE-SET,YouTube,REJECT #YT
   - RULE-SET,openai,PROXY
   - RULE-SET,OneDrive,PROXY
   - RULE-SET,Gemini,PROXY
@@ -83,7 +83,7 @@ rules:
   - RULE-SET,Microsoft,PROXY
   - DOMAIN-SUFFIX,id.google.com,PROXY # Google IP定位
 
-  - GEOSITE,youtube,DIRECT
+  - GEOSITE,youtube,REJECT #YT
   - GEOSITE,google,PROXY
   
   - RULE-SET,local,DIRECT,no-resolve
