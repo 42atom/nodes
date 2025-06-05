@@ -60,9 +60,12 @@ rules:
   # - DOMAIN,mail.google.com,PROXY
   - DOMAIN-SUFFIX,110221.xyz,DIRECT
   - DOMAIN-SUFFIX,workers.dev,DIRECT
+  # Youtube Disable
   - DOMAIN-SUFFIX,googlevideo.com,REJECT
-  - GEOSITE,youtube,REJECT #YT
-  - RULE-SET,YouTube,REJECT #YT
+  - DOMAIN-SUFFIX,youtube.com,REJECT
+  - DOMAIN-SUFFIX,youtu.be,REJECT
+  - GEOSITE,youtube,REJECT
+  - RULE-SET,YouTube,REJECT
 
 
   - SCRIPT,quic,REJECT
@@ -457,7 +460,7 @@ dns:
     # 腾讯云 DoH
     - https://doh.pub/dns-query
     # Cloudflare DoH
-    - https://cloudflare-dns.com/dns-query
+    # - https://cloudflare-dns.com/dns-query
     # Google DoH
     # - https://dns.google/dns-query
   nameserver-policy:
