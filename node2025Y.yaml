@@ -60,7 +60,8 @@ rules:
   # - DOMAIN,mail.google.com,PROXY
   - DOMAIN-SUFFIX,110221.xyz,DIRECT
   - DOMAIN-SUFFIX,workers.dev,DIRECT
-  
+  - DOMAIN-SUFFIX,googlevideo.com,REJECT
+
   - SCRIPT,quic,REJECT
   - RULE-SET,WeChat,DIRECT,no-resolve
   - DOMAIN-SUFFIX,identity.ess.apple.com,PROXY # 连续互通
