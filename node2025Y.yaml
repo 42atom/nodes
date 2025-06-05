@@ -1,0 +1,740 @@
+port: 7890
+socks-port: 7891
+allow-lan: true
+# mode: Rule
+log-level: info
+# external-controller: :9090
+
+proxy-providers:
+# 服务提供商-1:
+# url: http://your-service-provider
+# interval: 600
+
+proxy-groups:
+  # 功能分组
+  - name: PROXY
+    type: select
+    proxies: &proxies
+      - AUTO-L
+      - AUTO-J
+      - HK
+      - snell美LosAngle
+      - RackNerd-美国
+      - US-LISA
+      - 美国J
+      - 美国W
+      - DIRECT
+      # - socksJ
+
+  - name: AUTO-L
+    type: url-test
+    proxies:
+      - NNR-L1
+      - NNR-L2
+      - NNR-L3
+      - NNR-L4
+    interval: 300
+      
+  - name: AUTO-J
+    type: url-test
+    proxies:
+      - NNR-J1
+      - NNR-J2
+      - NNR-J3
+      - NNR-J4
+    interval: 300
+    
+  # - name: RNtoLISA_Relay
+  #   type: relay
+  #   benchmark-url: http://www.apple.com
+  #   benchmark-timeout: 5
+  #   proxies:
+  #     - RackNerd-美国
+  #     - socksJ
+
+
+rules:
+  # gmail邮件需直连 注意
+  - DOMAIN,smtp.gmail.com,DIRECT
+  - DOMAIN,imap.gmail.com,DIRECT
+  # - DOMAIN,mail.google.com,PROXY
+  - DOMAIN-SUFFIX,110221.xyz,DIRECT
+  - DOMAIN-SUFFIX,workers.dev,DIRECT
+  
+  - SCRIPT,quic,REJECT
+  - RULE-SET,WeChat,DIRECT,no-resolve
+  - DOMAIN-SUFFIX,identity.ess.apple.com,PROXY # 连续互通
+  
+  - DOMAIN-SUFFIX,factorio.com,PROXY
+  - DOMAIN-SUFFIX,sonnylab.com,PROXY
+  - DOMAIN-SUFFIX,*.larksuite.com,PROXY
+  - DOMAIN-SUFFIX,adobe.io,REJECT # ADOBE检测
+  - DOMAIN,lcs-cops.adobe.io,DIRECT # ADOBE
+
+  
+  - RULE-SET,gfw-domain,PROXY
+  - RULE-SET,YouTube,DIRECT
+  - RULE-SET,openai,PROXY
+  - RULE-SET,OneDrive,PROXY
+  - RULE-SET,Gemini,PROXY
+  - RULE-SET,Copilot,PROXY
+  - RULE-SET,Claude,PROXY
+  - RULE-SET,GoogleChina,PROXY
+  - RULE-SET,Microsoft,PROXY
+  - DOMAIN-SUFFIX,id.google.com,PROXY # Google IP定位
+
+  - GEOSITE,youtube,DIRECT
+  - GEOSITE,google,PROXY
+  
+  - RULE-SET,local,DIRECT,no-resolve
+  - RULE-SET,cn-ip,DIRECT,no-resolve
+  - RULE-SET,direct-app,DIRECT,no-resolve
+  - RULE-SET,direct-domain,DIRECT,no-resolve
+  
+  # - DOMAIN-SUFFIX,gmail.com,PROXY
+  # 教育网站代理规则
+  - DOMAIN,getepic.com,PROXY
+  - DOMAIN-SUFFIX,getepic.com,PROXY
+  - DOMAIN,khanacademy.org,PROXY
+  - DOMAIN-SUFFIX,brainpop.com,PROXY
+  - DOMAIN-SUFFIX,seesaw.me,PROXY
+  - DOMAIN-SUFFIX,sciencea-z.com,PROXY
+  - DOMAIN-SUFFIX,starfall.com,PROXY
+  - DOMAIN-SUFFIX,kidsa-z.com,PROXY
+  - DOMAIN,kidsa-z.com,PROXY
+  - DOMAIN-SUFFIX,raz-plus.com,PROXY
+  - DOMAIN,raz-plus.com,PROXY
+  - DOMAIN-SUFFIX,raz-kids.com,PROXY
+  - DOMAIN,raz-kids.com,PROXY
+  - DOMAIN-SUFFIX,learninga-z.com,PROXY
+  - DOMAIN,learninga-z.com,PROXY
+  - DOMAIN-SUFFIX,headsprout.com,PROXY
+  - DOMAIN,headsprout.com,PROXY
+  - DOMAIN,mysteryscience.com,PROXY
+  - DOMAIN-SUFFIX,mysteryscience.com,PROXY
+  - DOMAIN-SUFFIX,scholastic.com,PROXY
+  - DOMAIN-SUFFIX,i-ready.com,PROXY
+
+  # TIKTOK
+  # - USER-AGENT,TikTok*,PROXY
+  - DOMAIN-KEYWORD,tiktokcdn,PROXY
+  - DOMAIN-SUFFIX,byteoversea.com,PROXY
+  - DOMAIN-SUFFIX,ibytedtos.com,PROXY
+  - DOMAIN-SUFFIX,ipstatp.com,PROXY
+  - DOMAIN-SUFFIX,muscdn.com,PROXY
+  - DOMAIN-SUFFIX,musical.ly,PROXY
+  - DOMAIN-SUFFIX,tik-tokapi.com,PROXY
+  - DOMAIN-SUFFIX,tiktok.com,PROXY
+  - DOMAIN-SUFFIX,tiktokcdn.com,PROXY
+  - DOMAIN-SUFFIX,tiktokv.com,PROXY
+
+  # Copilot
+  # 域名模式
+  - DOMAIN,access-point.cloudmessaging.edge.microsoft.com,PROXY
+  - DOMAIN,sydney.bing.com,PROXY
+  - DOMAIN,browser.pipe.aria.microsoft.com,PROXY
+  - DOMAIN,designer.microsoft.com,PROXY
+  - DOMAIN,edge.microsoft.com,PROXY
+  - DOMAIN,copilot.microsoft.com,PROXY
+  - DOMAIN,edgeservices.bing.com,PROXY
+  - DOMAIN,functional.events.data.microsoft.com,PROXY
+  - DOMAIN,www.bingapis.com,PROXY
+  - DOMAIN,*.github.com,PROXY
+  - DOMAIN,api.githubcopilot.com,PROXY
+  - DOMAIN,*.googleapis.com,PROXY
+  - DOMAIN,*.posthog.com,PROXY
+
+
+  # - DOMAIN,eu-mobile.events.data.microsoft.com,PROXY
+  # 域名后缀模式
+  # - DOMAIN-SUFFIX,events.data.microsoft.com,PROXY
+  - DOMAIN-SUFFIX,prod.do.dsp.mp.microsoft.com,PROXY
+
+  # Apple
+  - DOMAIN,safebrowsing.urlsec.qq.com,DIRECT # 如果您并不信任此服务提供商或防止其下载消耗过多带宽资源，可以进入 Safari 设置，关闭 Fraudulent Website Warning 功能，并使用 REJECT 策略。
+  - DOMAIN,safebrowsing.googleapis.com,DIRECT # 如果您并不信任此服务提供商或防止其下载消耗过多带宽资源，可以进入 Safari 设置，关闭 Fraudulent Website Warning 功能，并使用 REJECT 策略。
+  - DOMAIN,developer.apple.com,PROXY
+  - DOMAIN-SUFFIX,digicert.com,PROXY
+  - DOMAIN,ocsp.apple.com,PROXY
+  - DOMAIN,ocsp.comodoca.com,PROXY
+  - DOMAIN,ocsp.usertrust.com,PROXY
+  - DOMAIN,ocsp.sectigo.com,PROXY
+  - DOMAIN,ocsp.verisign.net,PROXY
+  - DOMAIN,testflight.apple.com,PROXY
+  - DOMAIN,sandbox.itunes.apple.com,PROXY
+  - DOMAIN,itunes.apple.com,PROXY
+  - DOMAIN-SUFFIX,apps.apple.com,PROXY
+  - DOMAIN-SUFFIX,blobstore.apple.com,PROXY
+  # - DOMAIN,cvws.icloud-content.com,PROXY
+  - DOMAIN-SUFFIX,apple-dns.net,DIRECT
+  - DOMAIN-SUFFIX,mzstatic.com,DIRECT
+  - DOMAIN-SUFFIX,itunes.apple.com,DIRECT
+  - DOMAIN-SUFFIX,icloud.com,DIRECT
+  - DOMAIN-SUFFIX,icloud-content.com,DIRECT
+  - DOMAIN-SUFFIX,me.com,DIRECT
+  - DOMAIN-SUFFIX,aaplimg.com,DIRECT
+  - DOMAIN-SUFFIX,cdn20.com,DIRECT
+  - DOMAIN-SUFFIX,cdn-apple.com,DIRECT
+  - DOMAIN-SUFFIX,akadns.net,DIRECT
+  - DOMAIN-SUFFIX,akamaiedge.net,DIRECT
+  - DOMAIN-SUFFIX,edgekey.net,DIRECT
+  - DOMAIN-SUFFIX,mwcloudcdn.com,DIRECT
+  - DOMAIN-SUFFIX,mwcname.com,DIRECT
+  - DOMAIN-SUFFIX,apple.com,DIRECT
+  - DOMAIN-SUFFIX,apple-cloudkit.com,DIRECT
+  - DOMAIN-SUFFIX,apple-mapkit.com,DIRECT
+  # - DOMAIN,e.crashlytics.com,REJECT //注释此选项有助于大多数App开发者分析崩溃信息；如果您拒绝一切崩溃数据统计、搜集，请取消 # 注释。
+
+  # 国内网站
+  - DOMAIN-SUFFIX,cn,DIRECT
+  - DOMAIN-KEYWORD,-cn,DIRECT
+
+  - DOMAIN-SUFFIX,126.com,DIRECT
+  - DOMAIN-SUFFIX,126.net,DIRECT
+  - DOMAIN-SUFFIX,127.net,DIRECT
+  - DOMAIN-SUFFIX,163.com,DIRECT
+  - DOMAIN-SUFFIX,360buyimg.com,DIRECT
+  - DOMAIN-SUFFIX,36kr.com,DIRECT
+  - DOMAIN-SUFFIX,acfun.tv,DIRECT
+  - DOMAIN-SUFFIX,air-matters.com,DIRECT
+  - DOMAIN-SUFFIX,aixifan.com,DIRECT
+  - DOMAIN-KEYWORD,alicdn,DIRECT
+  - DOMAIN-KEYWORD,alipay,DIRECT
+  - DOMAIN-KEYWORD,taobao,DIRECT
+  - DOMAIN-SUFFIX,amap.com,DIRECT
+  - DOMAIN-SUFFIX,autonavi.com,DIRECT
+  - DOMAIN-KEYWORD,baidu,DIRECT
+  - DOMAIN-SUFFIX,bdimg.com,DIRECT
+  - DOMAIN-SUFFIX,bdstatic.com,DIRECT
+  - DOMAIN-SUFFIX,bilibili.com,DIRECT
+  - DOMAIN-SUFFIX,bilivideo.com,DIRECT
+  - DOMAIN-SUFFIX,caiyunapp.com,DIRECT
+  - DOMAIN-SUFFIX,clouddn.com,DIRECT
+  - DOMAIN-SUFFIX,cnbeta.com,DIRECT
+  - DOMAIN-SUFFIX,cnbetacdn.com,DIRECT
+  - DOMAIN-SUFFIX,cootekservice.com,DIRECT
+  - DOMAIN-SUFFIX,csdn.net,DIRECT
+  - DOMAIN-SUFFIX,ctrip.com,DIRECT
+  - DOMAIN-SUFFIX,dgtle.com,DIRECT
+  - DOMAIN-SUFFIX,dianping.com,DIRECT
+  - DOMAIN-SUFFIX,douban.com,DIRECT
+  - DOMAIN-SUFFIX,doubanio.com,DIRECT
+  - DOMAIN-SUFFIX,duokan.com,DIRECT
+  - DOMAIN-SUFFIX,easou.com,DIRECT
+  - DOMAIN-SUFFIX,ele.me,DIRECT
+  - DOMAIN-SUFFIX,feng.com,DIRECT
+  - DOMAIN-SUFFIX,fir.im,DIRECT
+  - DOMAIN-SUFFIX,frdic.com,DIRECT
+  - DOMAIN-SUFFIX,g-cores.com,DIRECT
+  - DOMAIN-SUFFIX,godic.net,DIRECT
+  - DOMAIN-SUFFIX,gtimg.com,DIRECT
+  - DOMAIN,cdn.hockeyapp.net,DIRECT
+  - DOMAIN-SUFFIX,hongxiu.com,DIRECT
+  - DOMAIN-SUFFIX,hxcdn.net,DIRECT
+  - DOMAIN-SUFFIX,iciba.com,DIRECT
+  - DOMAIN-SUFFIX,ifeng.com,DIRECT
+  - DOMAIN-SUFFIX,ifengimg.com,DIRECT
+  - DOMAIN-SUFFIX,ipip.net,DIRECT
+  - DOMAIN-SUFFIX,iqiyi.com,DIRECT
+  - DOMAIN-SUFFIX,jd.com,DIRECT
+  - DOMAIN-SUFFIX,jianshu.com,DIRECT
+  - DOMAIN-SUFFIX,knewone.com,DIRECT
+  - DOMAIN-SUFFIX,le.com,DIRECT
+  - DOMAIN-SUFFIX,lecloud.com,DIRECT
+  - DOMAIN-SUFFIX,lemicp.com,DIRECT
+  - DOMAIN-SUFFIX,licdn.com,DIRECT
+  - DOMAIN-SUFFIX,luoo.net,DIRECT
+  - DOMAIN-SUFFIX,meituan.com,DIRECT
+  - DOMAIN-SUFFIX,meituan.net,DIRECT
+  - DOMAIN-SUFFIX,mi.com,DIRECT
+  - DOMAIN-SUFFIX,miaopai.com,DIRECT
+  - DOMAIN-SUFFIX,microsoft.com,DIRECT
+  - DOMAIN-SUFFIX,microsoftonline.com,DIRECT
+  - DOMAIN-SUFFIX,miui.com,DIRECT
+  - DOMAIN-SUFFIX,miwifi.com,DIRECT
+  - DOMAIN-SUFFIX,mob.com,DIRECT
+  - DOMAIN-SUFFIX,netease.com,DIRECT
+  - DOMAIN-SUFFIX,office.com,DIRECT
+  - DOMAIN-SUFFIX,office365.com,DIRECT
+  - DOMAIN-KEYWORD,officecdn,DIRECT
+  - DOMAIN-SUFFIX,oschina.net,DIRECT
+  - DOMAIN-SUFFIX,ppsimg.com,DIRECT
+  - DOMAIN-SUFFIX,pstatp.com,DIRECT
+  - DOMAIN-SUFFIX,qcloud.com,DIRECT
+  - DOMAIN-SUFFIX,qdaily.com,DIRECT
+  - DOMAIN-SUFFIX,qdmm.com,DIRECT
+  - DOMAIN-SUFFIX,qhimg.com,DIRECT
+  - DOMAIN-SUFFIX,qhres.com,DIRECT
+  - DOMAIN-SUFFIX,qidian.com,DIRECT
+  - DOMAIN-SUFFIX,qihucdn.com,DIRECT
+  - DOMAIN-SUFFIX,qiniu.com,DIRECT
+  - DOMAIN-SUFFIX,qiniucdn.com,DIRECT
+  - DOMAIN-SUFFIX,qiyipic.com,DIRECT
+  - DOMAIN-SUFFIX,qq.com,DIRECT
+  - DOMAIN-SUFFIX,qqurl.com,DIRECT
+  - DOMAIN-SUFFIX,rarbg.to,DIRECT
+  - DOMAIN-SUFFIX,ruguoapp.com,DIRECT
+  - DOMAIN-SUFFIX,segmentfault.com,DIRECT
+  - DOMAIN-SUFFIX,sinaapp.com,DIRECT
+  - DOMAIN-SUFFIX,smzdm.com,DIRECT
+  - DOMAIN-SUFFIX,snapdrop.net,DIRECT
+  - DOMAIN-SUFFIX,sogou.com,DIRECT
+  - DOMAIN-SUFFIX,sogoucdn.com,DIRECT
+  - DOMAIN-SUFFIX,sohu.com,DIRECT
+  - DOMAIN-SUFFIX,soku.com,DIRECT
+  - DOMAIN-SUFFIX,speedtest.net,DIRECT
+  - DOMAIN-SUFFIX,sspai.com,DIRECT
+  - DOMAIN-SUFFIX,suning.com,DIRECT
+  - DOMAIN-SUFFIX,taobao.com,DIRECT
+  - DOMAIN-SUFFIX,tencent.com,DIRECT
+  - DOMAIN-SUFFIX,tenpay.com,DIRECT
+  - DOMAIN-SUFFIX,tianyancha.com,DIRECT
+  - DOMAIN-SUFFIX,tmall.com,DIRECT
+  - DOMAIN-SUFFIX,tudou.com,DIRECT
+  - DOMAIN-SUFFIX,umetrip.com,DIRECT
+  - DOMAIN-SUFFIX,upaiyun.com,DIRECT
+  - DOMAIN-SUFFIX,upyun.com,DIRECT
+  - DOMAIN-SUFFIX,veryzhun.com,DIRECT
+  - DOMAIN-SUFFIX,weather.com,DIRECT
+  - DOMAIN-SUFFIX,weibo.com,DIRECT
+  - DOMAIN-SUFFIX,xiami.com,DIRECT
+  - DOMAIN-SUFFIX,xiami.net,DIRECT
+  - DOMAIN-SUFFIX,xiaomicp.com,DIRECT
+  - DOMAIN-SUFFIX,ximalaya.com,DIRECT
+  - DOMAIN-SUFFIX,xmcdn.com,DIRECT
+  - DOMAIN-SUFFIX,xunlei.com,DIRECT
+  - DOMAIN-SUFFIX,yhd.com,DIRECT
+  - DOMAIN-SUFFIX,yihaodianimg.com,DIRECT
+  - DOMAIN-SUFFIX,yinxiang.com,DIRECT
+  - DOMAIN-SUFFIX,ykimg.com,DIRECT
+  - DOMAIN-SUFFIX,youdao.com,DIRECT
+  - DOMAIN-SUFFIX,youku.com,DIRECT
+  - DOMAIN-SUFFIX,zealer.com,DIRECT
+  - DOMAIN-SUFFIX,zhihu.com,DIRECT
+  - DOMAIN-SUFFIX,zhimg.com,DIRECT
+  - DOMAIN-SUFFIX,zimuzu.tv,DIRECT
+  - DOMAIN-SUFFIX,zoho.com,DIRECT
+
+  # 抗 DNS 污染
+  - DOMAIN-KEYWORD,amazon,PROXY
+  - DOMAIN-KEYWORD,google,PROXY
+  # - DOMAIN-KEYWORD,gmail,PROXY
+  - DOMAIN-KEYWORD,youtube,PROXY
+  - DOMAIN-KEYWORD,facebook,PROXY
+  - DOMAIN-SUFFIX,fb.me,PROXY
+  - DOMAIN-SUFFIX,fbcdn.net,PROXY
+  - DOMAIN-KEYWORD,twitter,PROXY
+  - DOMAIN-KEYWORD,instagram,PROXY
+  - DOMAIN-KEYWORD,dropbox,PROXY
+  - DOMAIN-SUFFIX,twimg.com,PROXY
+  - DOMAIN-KEYWORD,blogspot,PROXY
+  - DOMAIN-SUFFIX,youtu.be,PROXY
+  - DOMAIN-KEYWORD,whatsapp,PROXY
+
+
+
+ 
+  - GEOIP,CN,DIRECT,no-resolve
+  - NETWORK,udp,PROXY
+  - MATCH, PROXY
+  
+rule-providers:
+  YouTube:
+    type: http
+    behavior: domain
+    format: yaml
+    url: https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Ruleset/YouTube.list
+    interval: 86400
+  openai:
+    type: http
+    behavior: domain
+    format: yaml
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/OpenAI/OpenAI.list
+    interval: 86400
+  OneDrive:
+    type: http
+    behavior: domain
+    format: yaml
+    url: https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/OneDrive.list
+    interval: 86400
+  Gemini:
+    type: http
+    behavior: domain
+    format: yaml
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/Gemini/Gemini.list
+    interval: 86400
+  Copilot:
+    type: http
+    behavior: domain
+    format: yaml
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/Copilot/Copilot.list
+    interval: 86400
+  Claude:
+    type: http
+    behavior: domain
+    format: yaml
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/Claude/Claude.list
+    interval: 86400
+  GoogleChina:
+    type: http
+    behavior: domain
+    format: yaml
+    url: https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/GoogleCN.list
+    interval: 86400
+  Microsoft:
+    type: http
+    behavior: domain
+    format: yaml
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Microsoft/Microsoft.list
+    interval: 86400
+  WeChat:
+    type: http
+    behavior: domain
+    format: yaml
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/WeChat/WeChat.list
+    interval: 86400
+    
+  direct-domain:
+    type: http
+    behavior: domain
+    format: yaml
+    url: https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/direct.txt
+    interval: 86400
+  direct-app:
+    type: http
+    behavior: domain
+    format: yaml
+    url: https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/applications.txt
+    interval: 86400
+  gfw-domain:
+    type: http
+    behavior: domain
+    format: yaml
+    url: https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/gfw.txt
+    interval: 86400
+  cn-ip:
+    type: http
+    behavior: ipcidr
+    format: yaml
+    url: https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/cncidr.txt
+    interval: 86400
+  local:
+    type: http
+    behavior: ipcidr
+    format: yaml
+    url: https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/lancidr.txt
+    interval: 86400
+
+script:
+  shortcuts:
+    quic: network == 'udp' and dst_port == 443
+
+# TUN 配置
+# tun:
+#   enable: true
+#   stack: system
+#   dns-hijack:
+#     - "any:53"
+#   auto-route: true
+#   auto-detect-interface: true
+
+dns:
+  enable: true
+  cache: true
+  ipv6: true
+  listen: 0.0.0.0:53
+  default-nameserver:
+    # - 1.1.1.1
+    # - 8.8.8.8
+    - 223.5.5.5
+    - 119.29.29.29
+    # - system
+  nameserver:
+    # 阿里云 DoH
+    - https://dns.alidns.com/dns-query
+    # 腾讯云 DoH
+    - https://doh.pub/dns-query
+    # Cloudflare DoH
+    - https://cloudflare-dns.com/dns-query
+    # Google DoH
+    # - https://dns.google/dns-query
+  nameserver-policy:
+    '+.icloud.com': '223.5.5.5'  # iCloud 域名使用阿里云 DNS
+    '+.icloud-content.com': '223.5.5.5'
+    '+.apple.com': '223.5.5.5'
+    '+.apple-dns.net': '223.5.5.5'
+    # '+.me.com': 'tls://8.8.8.8:853'
+    '+.google.com': 'tls://8.8.8.8:853'
+    # '+.gmail.com': 'https://cloudflare-dns.com/dns-query'
+    '+.cloudflare.com': 'tls://1.1.1.1:853'
+    '+.arpa': '10.0.0.1'
+    '+.jin10.com': 223.5.5.5
+    '+.baidu.com': 223.5.5.5
+    '+.cn': '223.5.5.5'
+    '+.internal.crop.com': system
+    # '+.': 'https://cloudflare-dns.com/dns-query'  # 其他域名使用 Cloudflare DoH
+  # skip-cert-verify: true
+  fallback:
+    - tls://1.1.1.1:853
+    - tls://8.8.8.8:853
+  fallback-filter:
+    geoip: true
+    geoip-code: CN
+    ipcidr:
+      - 240.0.0.0/4
+  enhanced-mode: fake-ip
+  fake-ip-range: 198.18.0.1/16
+  # 在以下列表的域名将不会被解析为 fake ip，这些域名相关的解析请求将会返回它们真实的 IP 地址
+  fake-ip-filter:
+    - '*'
+    - '*.me.com'
+    - '*.outlook.com'
+    - '*.gmail.com'
+    - '*.nextmindedu.com'
+    - '*.apple.com'
+    - '*.larksuite.com'
+    - '110221.xyz'
+    - '*.110221.xyz'
+    - 'workers.dev'
+    - 'vps.sonnylab.com'
+    - '+.lan'
+    - "+.local"
+    - 'dns.google'
+    - "*.cloudflare.com"
+    - 'cloudflare-dns.com'
+    - 'dns.alidns.com'
+    - 'dns.msftncsi.com'
+    - 'www.msftncsi.com'
+    - 'www.msftconnecttest.com'
+    - 'wx.qq.com'
+    - 'res.wx.qq.com'
+    - 'time1.cloud.tencent.com'
+    # === Music Service ===
+    ## NetEase
+    - '+.music.163.com'
+    - '*.126.net'
+    ## Baidu
+    - 'musicapi.taihe.com'
+    - 'music.taihe.com'
+    ## Kuwo
+    - '*.kuwo.cn'
+    ## JOOX
+    - 'api-jooxtt.sanook.com'
+    - 'api.joox.com'
+    - 'joox.com'
+    ## QQ
+    - '+.y.qq.com'
+    - '+.music.tc.qq.com'
+    - 'aqqmusic.tc.qq.com'
+    - '+.stream.qqmusic.qq.com'
+    ## Xiami
+    - '*.xiami.com'
+    ## Migu
+    - '+.music.migu.cn'
+    # === Game Service ===
+    ## Nintendo Switch
+    - '+.srv.nintendo.net'
+    ## Sony PlayStation
+    - '+.stun.playstation.net'
+    ## Microsoft Xbox
+    - 'xbox.*.microsoft.com'
+    - '+.xboxlive.com'
+    # === Other ===
+    ## QQ Quick Login
+    - 'localhost.ptlogin2.qq.com'
+    ## Golang
+    - 'proxy.golang.org'
+    ## STUN Server
+    - 'stun.*.*'
+    - 'stun.*.*.*'
+    ## Bilibili CDN
+    - '*.mcdn.bilivideo.cn'
+
+
+proxies:
+
+
+
+  - name: snell美LosAngle
+    type: snell
+    server: 154.17.3.53
+    port: 45857
+    psk: 9Wn8e0WW0Vso2hntTOkxkqDBk6S5Mxa
+    udp: true
+    version: 3
+    obfs-opts:
+      mode: tls
+      host: www.bing.com  
+      
+  - name: US-LISA
+    type: snell
+    server: 154.21.193.179
+    port: 45857
+    psk: 9Wn8e0WW0Vso2hntTOkxkqDBk6S5Mxa
+    udp: true
+    version: 3
+    multiplex: true
+    cipher: aes-256-gcm
+    obfs-opts:
+      mode: tls
+      host: www.bing.com
+
+
+  - name: 美国J
+    type: snell
+    server: 38.97.249.54
+    port: 45857
+    psk: 9Wn8e0WW0Vso2hntTOkxkqDBk6S5Mxa
+    udp: true
+    version: 3
+    obfs-opts:
+      mode: tls
+      host: www.bing.com  
+
+  - name: 美国W
+    type: snell
+    server: 154.44.14.223
+    port: 45857
+    psk: 9Wn8e0WW0Vso2hntTOkxkqDBk6S5Mxa
+    udp: true
+    version: 3
+    obfs-opts:
+      mode: tls
+      host: www.bing.com  
+
+  - name: RackNerd-美国
+    type: snell
+    server: 107.173.159.48
+    port: 45857
+    psk: 9Wn8e0WW0Vso2hntTOkxkqDBk6S5Mxa
+    udp: true
+    version: 3
+    obfs-opts:
+      mode: tls
+      host: www.bing.com  
+
+  - name: HK
+    type: snell
+    server: 38.22.88.116
+    port: 45857
+    psk: 9Wn8e0WW0Vso2hntTOkxkqDBk6S5Mxa
+    udp: true
+    version: 3
+    obfs-opts:
+      mode: tls
+      host: www.bing.com 
+
+  - name: socksJ
+    type: socks5
+    server: 128.14.181.154
+    port: 12921
+    # username: username
+    # password: password
+    # tls: true
+    # skip-cert-verify: true
+    # udp: true
+
+  - name: NNR-L1
+    type: snell
+    server: 33596250-29a8-431e-af9e-5e731b9e3d0a.110221.xyz
+    port: 25373
+    psk: 9Wn8e0WW0Vso2hntTOkxkqDBk6S5Mxa
+    udp: true
+    version: 3
+    multiplex: true
+    cipher: aes-256-gcm
+    obfs-opts:
+      mode: tls
+      host: www.bing.com
+
+  - name: NNR-L2
+    type: snell
+    server: 50045ba2-29c9-408c-86b5-976042645f52.110221.xyz
+    port: 45857
+    psk: 9Wn8e0WW0Vso2hntTOkxkqDBk6S5Mxa
+    udp: true
+    version: 3
+    multiplex: true
+    cipher: aes-256-gcm
+    obfs-opts:
+      mode: tls
+      host: www.bing.com
+      
+  - name: NNR-L3
+    type: snell
+    server: 50045ba2-29c9-408c-86b5-976042645f52.110221.xyz
+    port: 10165
+    psk: 9Wn8e0WW0Vso2hntTOkxkqDBk6S5Mxa
+    udp: true
+    version: 3
+    multiplex: true
+    cipher: aes-256-gcm
+    obfs-opts:
+      mode: tls
+      host: www.bing.com
+
+  - name: NNR-L4
+    type: snell
+    server: 803d0da0-1606-48df-914d-34cd235d8206.110221.xyz
+    port: 25164
+    psk: 9Wn8e0WW0Vso2hntTOkxkqDBk6S5Mxa
+    udp: true
+    version: 3
+    multiplex: true
+    cipher: aes-256-gcm
+    obfs-opts:
+      mode: tls
+      host: www.bing.com 
+   
+  - name: NNR-J1
+    type: snell
+    server: 33596250-29a8-431e-af9e-5e731b9e3d0a.110221.xyz
+    port: 45857
+    psk: 9Wn8e0WW0Vso2hntTOkxkqDBk6S5Mxa
+    udp: true
+    version: 3
+    multiplex: true
+    cipher: aes-256-gcm
+    obfs-opts:
+      mode: tls
+      host: www.bing.com
+
+  - name: NNR-J2
+    type: snell
+    server: 50045ba2-29c9-408c-86b5-976042645f52.110221.xyz
+    port: 10210
+    psk: 9Wn8e0WW0Vso2hntTOkxkqDBk6S5Mxa
+    udp: true
+    version: 3
+    multiplex: true
+    cipher: aes-256-gcm
+    obfs-opts:
+      mode: tls
+      host: www.bing.com
+      
+  - name: NNR-J3
+    type: snell
+    server: 50045ba2-29c9-408c-86b5-976042645f52.110221.xyz
+    port: 10205
+    psk: 9Wn8e0WW0Vso2hntTOkxkqDBk6S5Mxa
+    udp: true
+    version: 3
+    multiplex: true
+    cipher: aes-256-gcm
+    obfs-opts:
+      mode: tls
+      host: www.bing.com
+
+  - name: NNR-J4
+    type: snell
+    server: 0428c217-b76f-40f0-b9df-b5fef7be0a34.110221.xyz
+    port: 45450
+    psk: 9Wn8e0WW0Vso2hntTOkxkqDBk6S5Mxa
+    udp: true
+    version: 3
+    multiplex: true
+    cipher: aes-256-gcm
+    obfs-opts:
+      mode: tls
+      host: www.bing.com 
+   
