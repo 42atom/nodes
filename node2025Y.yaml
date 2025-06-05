@@ -319,7 +319,7 @@ rules:
   - DOMAIN-KEYWORD,amazon,PROXY
   - DOMAIN-KEYWORD,google,PROXY
   # - DOMAIN-KEYWORD,gmail,PROXY
-  - DOMAIN-KEYWORD,youtube,PROXY
+  # - DOMAIN-KEYWORD,youtube,PROXY
   - DOMAIN-KEYWORD,facebook,PROXY
   - DOMAIN-SUFFIX,fb.me,PROXY
   - DOMAIN-SUFFIX,fbcdn.net,PROXY
@@ -328,7 +328,7 @@ rules:
   - DOMAIN-KEYWORD,dropbox,PROXY
   - DOMAIN-SUFFIX,twimg.com,PROXY
   - DOMAIN-KEYWORD,blogspot,PROXY
-  - DOMAIN-SUFFIX,youtu.be,PROXY
+  # - DOMAIN-SUFFIX,youtu.be,PROXY
   - DOMAIN-KEYWORD,whatsapp,PROXY
 
 
