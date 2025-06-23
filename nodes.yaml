@@ -61,7 +61,7 @@ rules:
   - DOMAIN-SUFFIX,110221.xyz,DIRECT
   - DOMAIN-SUFFIX,workers.dev,DIRECT
   
-  - SCRIPT,quic,REJECT
+  - SCRIPT,quic,REJECT,no-track
   - RULE-SET,WeChat,DIRECT,no-resolve
   - DOMAIN-SUFFIX,identity.ess.apple.com,PROXY # 连续互通
   
