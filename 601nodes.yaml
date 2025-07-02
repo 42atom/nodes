@@ -49,9 +49,12 @@ proxies:
     server: 154.21.91.123
     port: 45857
     psk: 9Wn8e0WW0Vso2hntTOkxkqDBk6S5Mxa
+    udp: true  # 启用 UDP 转发
+    version: 3  # 指定 Snell 协议版本
     obfs-opts:
       mode: tls
-      host: gateway.icloud.com  
+      host: www.bing.com  # 伪装域名
+
     tfo: true
   # SHADOWTLS加密方式
   - name: "Server-02"
@@ -59,8 +62,11 @@ proxies:
     server: 154.21.91.123
     port: 9999
     psk: 9Wn8e0WW0Vso2hntTOkxkqDBk6S5Mxa
-    obfs: tls
-    tfo: true
+    udp: true  # 启用 UDP 转发
+    version: 3  # 指定 Snell 协议版本
+    obfs-opts:
+      mode: tls
+      host: gateway.icloud.com  # ShadowTLS 的伪装域名
     shadowtls:
       server: gateway.icloud.com
       password: 4BgT4JWW
