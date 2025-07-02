@@ -150,8 +150,8 @@ rules:
   - DOMAIN-SUFFIX,apple-mapkit.com,DIRECT
 
   # ZeroTier 控制器和服务
-  - DOMAIN-SUFFIX,zerotier.com,PROXY
-  - DOMAIN,planet.zerotier.com,PROXY
+  - DOMAIN-SUFFIX,zerotier.com,DIRECT
+  - DOMAIN,planet.zerotier.com,DIRECT
   - DOMAIN,175.178.53.201,DIRECT
   - IP-CIDR,175.178.53.0/24,DIRECT  # 自建控制器网段
   
@@ -168,6 +168,7 @@ rules:
 
   # ZeroTier 服务端口
   - DST-PORT,9993,DIRECT       # ZeroTier UDP
+  - SRC-PORT,9993,DIRECT        # ZeroTier UDP 端口
   - DST-PORT,3402,DIRECT       # 自建控制器 Web 管理端口
   - DST-PORT,3403,DIRECT       # 自建控制器下载端口
   
