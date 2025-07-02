@@ -121,7 +121,7 @@ proxy-groups:
     type: url-test
     proxies:
       - Server-01
-      - Server-02
+      # - Server-02
     url: "http://www.gstatic.com/generate_204"
     interval: 300
     tolerance: 50
@@ -152,7 +152,7 @@ rules:
   
   - DOMAIN-SUFFIX,110221.xyz,DIRECT
   - DOMAIN-SUFFIX,digis.cyou,DIRECT
-
+  - DOMAIN-KEYWORD,google,PROXY
   
 
   # ZeroTier 控制器和服务
