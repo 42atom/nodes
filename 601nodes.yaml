@@ -25,6 +25,18 @@ dns:
     - "+.lan"
     - "+.local"
     - "+.localhost"
+    # Windows网络出现小地球图标
+    "+.msftconnecttest.com",
+    "+.msftncsi.com",
+    # QQ快速登录检测失败
+    "localhost.ptlogin2.qq.com",
+    "localhost.sec.qq.com",
+    # 追加以下条目
+    "+.in-addr.arpa", 
+    "+.ip6.arpa",
+    "time.*.com",
+    "time.*.gov",
+    "pool.ntp.org",
     # - "*.zerotier.com"
     # - "planet.zerotier.com"
     # - "*.local.zerotier.com"
