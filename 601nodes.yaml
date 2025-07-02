@@ -56,21 +56,19 @@ proxies:
       host: cn.bing.com  # 伪装域名
 
     tfo: true
-  # SHADOWTLS加密方式
+
+  # HK
   - name: "Server-02"
     type: snell
-    server: 154.21.91.123
-    port: 9999
+    server: 38.22.88.116
+    port: 45857
     psk: 9Wn8e0WW0Vso2hntTOkxkqDBk6S5Mxa
-    udp: true  # 启用 UDP 转发
-    version: 3  # 指定 Snell 协议版本
+    udp: true
+    version: 3
     obfs-opts:
       mode: tls
-      host: cn.bing.com  # ShadowTLS 的伪装域名
-    shadowtls:
-      server: gcn.bing.com
-      password: 4BgT4JWW
-
+      host: www.bing.com 
+      
 # 代理组配置
 proxy-groups:
   - name: "PROXY"
