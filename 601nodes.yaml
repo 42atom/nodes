@@ -206,6 +206,7 @@ rules:
 
   # 国内流量
   - GEOIP,CN,DIRECT,no-resolve
+  - GEOIP,LAN,DIRECT,no-resolve
   
   # 最终规则：其他都走代理
   - MATCH,PROXY
