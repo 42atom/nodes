@@ -218,15 +218,15 @@ profile:
   store-selected: true
   store-fake-ip: true
 
-# tun:
-#   enable: true
-#   stack: system
-#   dns-hijack:
-#     - 198.18.0.2:53
-#   auto-route: true
-#   auto-detect-interface: true
-  # 排除 ZeroTier 接口
-  # exclude-interface:
-    # - "zt"
-    # - "feth"
+tun:
+  enable: true
+  stack: system
+  dns-hijack:
+    - 198.18.0.2:53
+  auto-route: true
+  auto-detect-interface: true
+  排除 ZeroTier 接口
+  exclude-interface:
+    - "zt"
+    - "feth"
 
