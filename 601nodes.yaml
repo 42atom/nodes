@@ -48,10 +48,10 @@ dns:
     '+.icloud-content.com': '223.5.5.5'
     '+.apple.com': '223.5.5.5'
     '+.apple-dns.net': '223.5.5.5'
-    '+.me.com': 'tls://8.8.8.8:853'
-    '+.google.com': 'tls://8.8.8.8:853'
+    # '+.me.com': 'tls://8.8.8.8:853'
+    # '+.google.com': 'tls://8.8.8.8:853'
     # '+.gmail.com': 'https://cloudflare-dns.com/dns-query'
-    '+.cloudflare.com': 'tls://1.1.1.1:853'
+    # '+.cloudflare.com': 'tls://1.1.1.1:853'
     '+.arpa': '10.0.0.1'
     '+.baidu.com': 223.5.5.5
     # '+.cn': '223.5.5.5'
