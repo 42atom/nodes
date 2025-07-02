@@ -42,9 +42,11 @@ dns:
     # - "*.local.zerotier.com"
     # 添加你的自建控制器域名（如果有）
     - "175.178.53.201"
-    ## STUN Server
-    - 'stun.*.*'
-    - 'stun.*.*.*'
+   # Stun Services
+    - '+.stun.*.*'
+    - '+.stun.*.*.*'
+    - '+.stun.*.*.*.*'
+    - '+.stun.*.*.*.*.*'
     ## Bilibili CDN
     - '*.mcdn.bilivideo.cn'
   default-nameserver:
