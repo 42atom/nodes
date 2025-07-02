@@ -165,7 +165,10 @@ rules:
   - DST-PORT,3403,DIRECT       # 自建控制器下载端口
   
   # 直连规则
-  - RULE-SET,direct-list,DIRECT
+  - RULE-SET,direct-domain,DIRECT
+  - RULE-SET,direct-app,DIRECT
+  - RULE-SET,cn-ip,DIRECT
+
   
   # 内网直连
   - IP-CIDR,192.168.0.0/16,DIRECT
