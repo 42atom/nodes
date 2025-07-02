@@ -35,9 +35,29 @@ dns:
     - 'stun.*.*.*'
     ## Bilibili CDN
     - '*.mcdn.bilivideo.cn'
-  nameserver:
+  default-nameserver:
     - 223.5.5.5
     - 119.29.29.29
+  nameserver:
+    # 腾讯云 DoH
+    - https://doh.pub/dns-query
+    # Cloudflare DoH
+    - https://cloudflare-dns.com/dns-query
+  nameserver-policy:
+    '+.icloud.com': '223.5.5.5'  # iCloud 域名使用阿里云 DNS
+    '+.icloud-content.com': '223.5.5.5'
+    '+.apple.com': 'tls://8.8.8.8:853'
+    '+.apple-dns.net': '223.5.5.5'
+    '+.me.com': 'tls://8.8.8.8:853'
+    '+.google.com': 'tls://8.8.8.8:853'
+    # '+.gmail.com': 'https://cloudflare-dns.com/dns-query'
+    '+.cloudflare.com': 'tls://1.1.1.1:853'
+    '+.arpa': '10.0.0.1'
+    '+.baidu.com': 223.5.5.5
+    # '+.cn': '223.5.5.5'
+    '+.internal.crop.com': system
+    '+.': 'https://cloudflare-dns.com/dns-query'  # 其他域名使用 Cloudflare DoH
+
   fallback:
     - tls://8.8.8.8:853
     - tls://1.1.1.1:853
