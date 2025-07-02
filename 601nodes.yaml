@@ -46,25 +46,22 @@ proxies:
   # DMIT
   - name: "Server-01"
     type: snell
-    server: 154.17.3.53
+    server: 154.21.91.123
     port: 45857
     psk: 9Wn8e0WW0Vso2hntTOkxkqDBk6S5Mxa
-    udp: true
-    version: 3
-    obfs-opts:
-      mode: tls
-      host: www.bing.com 
-  # HK
+    obfs: tls
+    tfo: true
+  # SHADOWTLS加密方式
   - name: "Server-02"
     type: snell
-    server: 38.22.88.116
-    port: 45857
+    server: 154.21.91.123
+    port: 9999
     psk: 9Wn8e0WW0Vso2hntTOkxkqDBk6S5Mxa
-    udp: true
-    version: 3
-    obfs-opts:
-      mode: tls
-      host: www.bing.com 
+    obfs: tls
+    tfo: true
+    shadowtls:
+      server: gateway.icloud.com
+      password: 4BgT4JWW
 
 # 代理组配置
 proxy-groups:
