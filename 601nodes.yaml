@@ -53,7 +53,7 @@ proxies:
     version: 3  # 指定 Snell 协议版本
     obfs-opts:
       mode: tls
-      host: www.bing.com  # 伪装域名
+      host: gateway.icloud.com  # 伪装域名
 
     tfo: true
   # SHADOWTLS加密方式
