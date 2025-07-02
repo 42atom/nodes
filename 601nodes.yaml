@@ -163,6 +163,15 @@ rules:
   # - SRC-PORT,9993,DIRECT        # ZeroTier UDP 端口
   # - DST-PORT,3402,DIRECT       # 自建控制器 Web 管理端口
   # - DST-PORT,3403,DIRECT       # 自建控制器下载端口
+
+  # 强制代理所有 UDP 流量
+  - DST-PORT,53,PROXY       # DNS 请求
+  - DST-PORT,123,PROXY      # NTP 时间同步
+  - DST-PORT,443,PROXY      # HTTPS 流量
+  - DST-PORT,80,PROXY       # HTTP 流量
+  - DST-PORT,3478,PROXY     # WebRTC 流量
+  - DST-PORT,5349,PROXY     # WebRTC 流量
+  - NETWORK,udp,PROXY
   
   # 直连规则
   - RULE-SET,direct-domain,DIRECT
@@ -181,15 +190,6 @@ rules:
   # 局域网直连
   - DOMAIN-SUFFIX,local,DIRECT
   - DOMAIN-SUFFIX,localhost,DIRECT
-
-  # 强制代理所有 UDP 流量
-  - DST-PORT,53,PROXY       # DNS 请求
-  - DST-PORT,123,PROXY      # NTP 时间同步
-  - DST-PORT,443,PROXY      # HTTPS 流量
-  - DST-PORT,80,PROXY       # HTTP 流量
-  - DST-PORT,3478,PROXY     # WebRTC 流量
-  - DST-PORT,5349,PROXY     # WebRTC 流量
-  - NETWORK,udp,PROXY
 
   # 国内流量
   - GEOIP,CN,DIRECT,no-resolve
