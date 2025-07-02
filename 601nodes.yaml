@@ -150,9 +150,9 @@ rules:
   - DOMAIN-SUFFIX,apple-mapkit.com,DIRECT
 
   # ZeroTier 控制器和服务
-  - DOMAIN-SUFFIX,zerotier.com,DIRECT
-  - DOMAIN,planet.zerotier.com,DIRECT
-  - DOMAIN,175.178.53.201,DIRECT
+  # - DOMAIN-SUFFIX,zerotier.com,DIRECT
+  # - DOMAIN,planet.zerotier.com,DIRECT
+  # - DOMAIN,175.178.53.201,DIRECT
   - IP-CIDR,175.178.53.0/24,DIRECT  # 自建控制器网段
   
   # ZTCN 网络规则（你的自建网络）
@@ -161,16 +161,16 @@ rules:
   - IP-CIDR6,fc79:d207::/32,DIRECT       # IPv6 网段
   
   # 其他 ZeroTier 网络规则
-  - IP-CIDR,172.28.49.0/24,DIRECT   # PENNHOME 网段
-  - IP-CIDR,10.147.20.0/24,DIRECT   # AngOffice 网段
-  - IP-CIDR,10.30.55.0/24,DIRECT   # ZTCN 网段
-  - IP-CIDR,10.147.17.0/24,DIRECT   # 601 网段
+  # - IP-CIDR,172.28.49.0/24,DIRECT   # PENNHOME 网段
+  # - IP-CIDR,10.147.20.0/24,DIRECT   # AngOffice 网段
+  # - IP-CIDR,10.30.55.0/24,DIRECT   # ZTCN 网段
+  # - IP-CIDR,10.147.17.0/24,DIRECT   # 601 网段
 
   # ZeroTier 服务端口
-  - DST-PORT,9993,DIRECT       # ZeroTier UDP
-  - SRC-PORT,9993,DIRECT        # ZeroTier UDP 端口
-  - DST-PORT,3402,DIRECT       # 自建控制器 Web 管理端口
-  - DST-PORT,3403,DIRECT       # 自建控制器下载端口
+  # - DST-PORT,9993,DIRECT       # ZeroTier UDP
+  # - SRC-PORT,9993,DIRECT        # ZeroTier UDP 端口
+  # - DST-PORT,3402,DIRECT       # 自建控制器 Web 管理端口
+  # - DST-PORT,3403,DIRECT       # 自建控制器下载端口
   
   # 直连规则
   - RULE-SET,direct-domain,DIRECT
@@ -218,7 +218,7 @@ tun:
   auto-route: true
   auto-detect-interface: true
   # 排除 ZeroTier 接口
-  exclude-interface:
-    - "zt"
-    - "feth"
+  # exclude-interface:
+    # - "zt"
+    # - "feth"
 
