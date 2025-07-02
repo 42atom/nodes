@@ -8,7 +8,7 @@ external-ui: dashboard
 
 # 基础配置
 allow-lan: true
-bind-address: "*"
+# bind-address: "*"
 mode: rule
 log-level: info
 ipv6: false
