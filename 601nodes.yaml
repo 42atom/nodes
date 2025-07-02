@@ -4,14 +4,14 @@ mixed-port: 7890
 socks-port: 7891
 # 外部控制器
 external-controller: 0.0.0.0:9090
-external-ui: dashboard
+# external-ui: dashboard
 
 # 基础配置
 allow-lan: true
 # bind-address: "*"
 mode: rule
 log-level: info
-ipv6: false
+ipv6: true
 
 # DNS 配置
 dns:
@@ -76,7 +76,8 @@ dns:
     - tls://8.8.8.8:853
     - tls://1.1.1.1:853
   fallback-filter:
-    geoip: false
+    geoip: true
+    geoip-code: CN
     ipcidr:
       - 240.0.0.0/4
 
@@ -219,13 +220,13 @@ profile:
   store-selected: true
   store-fake-ip: true
 
-tun:
-  enable: true
-  stack: system
-  dns-hijack:
-    - 198.18.0.2:53
-  auto-route: true
-  auto-detect-interface: true
+# tun:
+#   enable: true
+#   stack: system
+#   dns-hijack:
+#     - 198.18.0.2:53
+#   auto-route: true
+#   auto-detect-interface: true
   # 排除 ZeroTier 接口
   # exclude-interface:
     # - "zt"
