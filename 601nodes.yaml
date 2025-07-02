@@ -140,39 +140,7 @@ rules:
   - DOMAIN-SUFFIX,110221.xyz,DIRECT
   - DOMAIN-SUFFIX,digis.cyou,DIRECT
 
-  # Apple
-  - DOMAIN,safebrowsing.urlsec.qq.com,DIRECT # 如果您并不信任此服务提供商或防止其下载消耗过多带宽资源，可以进入 Safari 设置，关闭 Fraudulent Website Warning 功能，并使用 REJECT 策略。
-  - DOMAIN,safebrowsing.googleapis.com,DIRECT # 如果您并不信任此服务提供商或防止其下载消耗过多带宽资源，可以进入 Safari 设置，关闭 Fraudulent Website Warning 功能，并使用 REJECT 策略。
-  - DOMAIN,developer.apple.com,PROXY
-  - DOMAIN-SUFFIX,digicert.com,PROXY
-  - DOMAIN,ocsp.apple.com,PROXY
-  - DOMAIN,ocsp.comodoca.com,PROXY
-  - DOMAIN,ocsp.usertrust.com,PROXY
-  - DOMAIN,ocsp.sectigo.com,PROXY
-  - DOMAIN,ocsp.verisign.net,PROXY
-  - DOMAIN,testflight.apple.com,PROXY
-  - DOMAIN,sandbox.itunes.apple.com,PROXY
-  - DOMAIN,itunes.apple.com,PROXY
-  - DOMAIN-SUFFIX,apps.apple.com,PROXY
-  - DOMAIN-SUFFIX,blobstore.apple.com,PROXY
-  # - DOMAIN,cvws.icloud-content.com,PROXY
-  - DOMAIN-SUFFIX,apple-dns.net,DIRECT
-  - DOMAIN-SUFFIX,mzstatic.com,DIRECT
-  - DOMAIN-SUFFIX,itunes.apple.com,DIRECT
-  - DOMAIN-SUFFIX,icloud.com,DIRECT
-  - DOMAIN-SUFFIX,icloud-content.com,DIRECT
-  - DOMAIN-SUFFIX,me.com,DIRECT
-  - DOMAIN-SUFFIX,aaplimg.com,DIRECT
-  - DOMAIN-SUFFIX,cdn20.com,DIRECT
-  - DOMAIN-SUFFIX,cdn-apple.com,DIRECT
-  - DOMAIN-SUFFIX,akadns.net,DIRECT
-  - DOMAIN-SUFFIX,akamaiedge.net,DIRECT
-  - DOMAIN-SUFFIX,edgekey.net,DIRECT
-  - DOMAIN-SUFFIX,mwcloudcdn.com,DIRECT
-  - DOMAIN-SUFFIX,mwcname.com,DIRECT
-  - DOMAIN-SUFFIX,apple.com,DIRECT
-  - DOMAIN-SUFFIX,apple-cloudkit.com,DIRECT
-  - DOMAIN-SUFFIX,apple-mapkit.com,DIRECT
+  
 
   # ZeroTier 控制器和服务
   # - DOMAIN-SUFFIX,zerotier.com,DIRECT
@@ -181,9 +149,9 @@ rules:
   - IP-CIDR,175.178.53.0/24,DIRECT  # 自建控制器网段
   
   # ZTCN 网络规则（你的自建网络）
-  - IP-CIDR,10.30.55.0/24,DIRECT    # IPv4 网段
-  - IP-CIDR6,fdda:73c1:93a3::/48,DIRECT  # IPv6 网段
-  - IP-CIDR6,fc79:d207::/32,DIRECT       # IPv6 网段
+  # - IP-CIDR,10.30.55.0/24,DIRECT    # IPv4 网段
+  # - IP-CIDR6,fdda:73c1:93a3::/48,DIRECT  # IPv6 网段
+  # - IP-CIDR6,fc79:d207::/32,DIRECT       # IPv6 网段
   
   # 其他 ZeroTier 网络规则
   # - IP-CIDR,172.28.49.0/24,DIRECT   # PENNHOME 网段
