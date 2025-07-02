@@ -25,6 +25,7 @@ proxy-groups:
       - 美国J
       - 美国W
       - DIRECT
+      - DMIT-Server-01
       # - socksJ
 
   - name: AUTO-L
@@ -625,15 +626,6 @@ proxies:
       mode: tls
       host: www.bing.com 
 
-  - name: socksJ
-    type: socks5
-    server: 128.14.181.154
-    port: 12921
-    # username: username
-    # password: password
-    # tls: true
-    # skip-cert-verify: true
-    # udp: true
 
   - name: NNR-L1
     type: snell
@@ -738,4 +730,17 @@ proxies:
     obfs-opts:
       mode: tls
       host: www.bing.com 
+
+  # DMIT
+  - name: "DMIT-Server-01"
+    type: snell
+    server: 154.21.91.123
+    port: 45857
+    psk: 9Wn8e0WW0Vso2hntTOkxkqDBk6S5Mxa
+    udp: true  # 启用 UDP 转发
+    version: 3  # 指定 Snell 协议版本
+    obfs-opts:
+      mode: tls
+      host: cn.bing.com  # 伪装域名
+    tfo: true
    
