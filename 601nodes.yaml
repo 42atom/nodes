@@ -112,19 +112,19 @@ proxy-groups:
   - name: "PROXY"
     type: select
     proxies:
-      - AUTO
+      # - AUTO
       - DIRECT
       - Server-01
       - Server-02
 
-  - name: "AUTO"
-    type: url-test
-    proxies:
-      - Server-01
-      # - Server-02
-    url: "http://www.gstatic.com/generate_204"
-    interval: 300
-    tolerance: 50
+  # - name: "AUTO"
+  #   type: url-test
+  #   proxies:
+  #     - Server-01
+  #     - Server-02
+  #   url: "http://www.gstatic.com/generate_204"
+  #   interval: 300
+  #   tolerance: 50
 
 # 规则提供者
 rule-providers:
