@@ -40,7 +40,7 @@ dns:
     - 119.29.29.29
   nameserver:
     # 腾讯云 DoH
-    - https://doh.pub/dns-query
+    # - https://doh.pub/dns-query
     # Cloudflare DoH
     # - https://cloudflare-dns.com/dns-query
   nameserver-policy:
@@ -165,18 +165,18 @@ rules:
   # - DST-PORT,3403,DIRECT       # 自建控制器下载端口
 
   # 直连规则
-  - RULE-SET,direct-domain,DIRECT
+  # - RULE-SET,direct-domain,DIRECT
   - RULE-SET,direct-app,DIRECT
   - RULE-SET,cn-ip,DIRECT
 
   
   # 内网直连
   - IP-CIDR,192.168.0.0/16,DIRECT
-  - IP-CIDR,10.0.0.0/8,DIRECT
-  - IP-CIDR,172.16.0.0/12,DIRECT
-  - IP-CIDR,127.0.0.0/8,DIRECT
-  - IP-CIDR,100.64.0.0/10,DIRECT
-  - IP-CIDR,224.0.0.0/4,DIRECT
+  # - IP-CIDR,10.0.0.0/8,DIRECT
+  # - IP-CIDR,172.16.0.0/12,DIRECT
+  # - IP-CIDR,127.0.0.0/8,DIRECT
+  # - IP-CIDR,100.64.0.0/10,DIRECT
+  # - IP-CIDR,224.0.0.0/4,DIRECT
   
   # 局域网直连
   - DOMAIN-SUFFIX,local,DIRECT
