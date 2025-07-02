@@ -22,14 +22,19 @@ dns:
   enhanced-mode: fake-ip
   fake-ip-range: 198.18.0.1/16
   fake-ip-filter:
-    - "*.lan"
-    - "*.local"
-    - "*.localhost"
-    - "*.zerotier.com"
-    - "planet.zerotier.com"
-    - "*.local.zerotier.com"
+    - "+.lan"
+    - "+.local"
+    - "+.localhost"
+    # - "*.zerotier.com"
+    # - "planet.zerotier.com"
+    # - "*.local.zerotier.com"
     # 添加你的自建控制器域名（如果有）
     - "175.178.53.201"
+    ## STUN Server
+    - 'stun.*.*'
+    - 'stun.*.*.*'
+    ## Bilibili CDN
+    - '*.mcdn.bilivideo.cn'
   nameserver:
     - 223.5.5.5
     - 119.29.29.29
