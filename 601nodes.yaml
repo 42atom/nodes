@@ -43,20 +43,28 @@ dns:
 
 # 代理配置
 proxies:
+  # DMIT
   - name: "Server-01"
-    type: ss
-    server: server1.example.com
-    port: 443
-    cipher: chacha20-ietf-poly1305
-    password: password1
-
+    type: snell
+    server: 154.17.3.53
+    port: 45857
+    psk: 9Wn8e0WW0Vso2hntTOkxkqDBk6S5Mxa
+    udp: true
+    version: 3
+    obfs-opts:
+      mode: tls
+      host: www.bing.com 
+  # HK
   - name: "Server-02"
-    type: vmess
-    server: server2.example.com
-    port: 443
-    uuid: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
-    alterId: 0
-    cipher: auto
+    type: snell
+    server: 38.22.88.116
+    port: 45857
+    psk: 9Wn8e0WW0Vso2hntTOkxkqDBk6S5Mxa
+    udp: true
+    version: 3
+    obfs-opts:
+      mode: tls
+      host: www.bing.com 
 
 # 代理组配置
 proxy-groups:
@@ -100,6 +108,9 @@ rule-providers:
 
 # 规则配置
 rules:
+  
+  - DOMAIN-SUFFIX,110221.xyz,DIRECT
+
   # Apple
   - DOMAIN,safebrowsing.urlsec.qq.com,DIRECT # 如果您并不信任此服务提供商或防止其下载消耗过多带宽资源，可以进入 Safari 设置，关闭 Fraudulent Website Warning 功能，并使用 REJECT 策略。
   - DOMAIN,safebrowsing.googleapis.com,DIRECT # 如果您并不信任此服务提供商或防止其下载消耗过多带宽资源，可以进入 Safari 设置，关闭 Fraudulent Website Warning 功能，并使用 REJECT 策略。
