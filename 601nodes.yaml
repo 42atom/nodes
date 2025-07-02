@@ -1,1 +1,143 @@
+# HTTP(S) 端口
+mixed-port: 7890
+# SOCKS5 端口
+socks-port: 7891
+# 外部控制器
+external-controller: 0.0.0.0:9090
+external-ui: dashboard
+
+# 基础配置
+allow-lan: true
+bind-address: "*"
+mode: rule
+log-level: info
+ipv6: true
+
+# DNS 配置
+dns:
+  enable: true
+  listen: 0.0.0.0:53
+  ipv6: true
+  enhanced-mode: fake-ip
+  fake-ip-range: 198.18.0.1/16
+  fake-ip-filter:
+    - "*.lan"
+    - "*.local"
+    - "*.localhost"
+    - "*.zerotier.com"
+    - "planet.zerotier.com"
+    - "*.local.zerotier.com"
+    # 添加你的自建控制器域名（如果有）
+    - "175.178.53.*"
+  nameserver:
+    - 223.5.5.5
+    - 119.29.29.29
+  fallback:
+    - tls://8.8.8.8:853
+    - tls://1.1.1.1:853
+  fallback-filter:
+    geoip: true
+    ipcidr:
+      - 240.0.0.0/4
+
+# 代理配置
+proxies:
+  - name: "Server-01"
+    type: ss
+    server: server1.example.com
+    port: 443
+    cipher: chacha20-ietf-poly1305
+    password: password1
+
+  - name: "Server-02"
+    type: vmess
+    server: server2.example.com
+    port: 443
+    uuid: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+    alterId: 0
+    cipher: auto
+
+# 代理组配置
+proxy-groups:
+  - name: "PROXY"
+    type: select
+    proxies:
+      - AUTO
+      - DIRECT
+      - Server-01
+      - Server-02
+
+  - name: "AUTO"
+    type: url-test
+    proxies:
+      - Server-01
+      - Server-02
+    url: "http://www.gstatic.com/generate_204"
+    interval: 300
+    tolerance: 50
+
+# 规则提供者
+rule-providers:
+  direct-list:
+    type: http
+    behavior: classical
+    url: "https://your-direct-list-url.com/direct.yaml"
+    path: ./ruleset/direct.yaml
+    interval: 86400
+
+# 规则配置
+rules:
+  # ZeroTier 控制器和服务
+  - DOMAIN-SUFFIX,zerotier.com,DIRECT
+  - DOMAIN,planet.zerotier.com,DIRECT
+  - IP-CIDR,175.178.53.0/24,DIRECT  # 自建控制器网段
+  
+  # ZTCN 网络规则（你的自建网络）
+  - IP-CIDR,10.30.55.0/24,DIRECT    # IPv4 网段
+  - IP-CIDR6,fdda:73c1:93a3::/48,DIRECT  # IPv6 网段
+  - IP-CIDR6,fc79:d207::/32,DIRECT       # IPv6 网段
+  
+  # 其他 ZeroTier 网络规则
+  - IP-CIDR,172.28.49.0/24,DIRECT   # PENNHOME 网段
+  - IP-CIDR,10.147.20.0/24,DIRECT   # AngOffice 网段
+  
+  # ZeroTier 服务端口
+  - DST-PORT,9993,DIRECT       # ZeroTier UDP
+  - DST-PORT,3402,DIRECT       # 自建控制器 Web 管理端口
+  - DST-PORT,3403,DIRECT       # 自建控制器下载端口
+  
+  # 直连规则
+  - RULE-SET,direct-list,DIRECT
+  
+  # 内网直连
+  - IP-CIDR,192.168.0.0/16,DIRECT
+  - IP-CIDR,10.0.0.0/8,DIRECT
+  - IP-CIDR,172.16.0.0/12,DIRECT
+  - IP-CIDR,127.0.0.0/8,DIRECT
+  - IP-CIDR,100.64.0.0/10,DIRECT
+  - IP-CIDR,224.0.0.0/4,DIRECT
+  
+  # 局域网直连
+  - DOMAIN-SUFFIX,local,DIRECT
+  - DOMAIN-SUFFIX,localhost,DIRECT
+  
+  # 最终规则：其他都走代理
+  - MATCH,PROXY
+
+# 性能优化配置
+profile:
+  store-selected: true
+  store-fake-ip: true
+
+tun:
+  enable: true
+  stack: system
+  dns-hijack:
+    - 198.18.0.2:53
+  auto-route: true
+  auto-detect-interface: true
+  # 排除 ZeroTier 接口
+  exclude-interface:
+    - "zt"
+    - "feth"
 
