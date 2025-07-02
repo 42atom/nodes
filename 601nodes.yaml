@@ -9,7 +9,7 @@ external-controller: 0.0.0.0:9090
 # 基础配置
 allow-lan: true
 # bind-address: "*"
-mode: rule
+# mode: rule
 log-level: info
 ipv6: true
 
@@ -53,12 +53,11 @@ dns:
     - 223.5.5.5
     - 119.29.29.29
   nameserver:
-
     # - https://doh.pub/dns-query
-    - https://208.67.222.222/dns-query #OpenDNS
-    - https://77.88.8.8/dns-query #YandexDNS
-    - https://1.1.1.1/dns-query #CloudflareDNS
-    - https://8.8.4.4/dns-query #GoogleDNS
+    - 'https://208.67.222.222/dns-query' #OpenDNS
+    - 'https://77.88.8.8/dns-query' #YandexDNS
+    - 'https://1.1.1.1/dns-query' #CloudflareDNS
+    - 'https://8.8.4.4/dns-query' #GoogleDNS
     
   nameserver-policy:
     '+.icloud.com': '223.5.5.5'  # iCloud 域名使用阿里云 DNS
@@ -70,7 +69,7 @@ dns:
     # '+.gmail.com': 'https://cloudflare-dns.com/dns-query'
     # '+.cloudflare.com': 'tls://1.1.1.1:853'
     '+.arpa': '10.0.0.1'
-    '+.baidu.com': 223.5.5.5
+    '+.baidu.com': '223.5.5.5'
     # '+.cn': '223.5.5.5'
     '+.internal.crop.com': system
 
