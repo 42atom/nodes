@@ -49,7 +49,9 @@ proxies:
     server: 154.21.91.123
     port: 45857
     psk: 9Wn8e0WW0Vso2hntTOkxkqDBk6S5Mxa
-    obfs: tls
+    obfs-opts:
+      mode: tls
+      host: gateway.icloud.com  
     tfo: true
   # SHADOWTLS加密方式
   - name: "Server-02"
