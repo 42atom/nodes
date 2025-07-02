@@ -26,23 +26,23 @@ dns:
     - "+.local"
     - "+.localhost"
     # Windows网络出现小地球图标
-    - "+.msftconnecttest.com",
-    - "+.msftncsi.com",
+    - "+.msftconnecttest.com"
+    - "+.msftncsi.com"
     # QQ快速登录检测失败
-    - "localhost.ptlogin2.qq.com",
-    - "localhost.sec.qq.com",
+    - "localhost.ptlogin2.qq.com"
+    - "localhost.sec.qq.com"
     # 追加以下条目
-    - "+.in-addr.arpa", 
-    - "+.ip6.arpa",
-    - "time.*.com",
-    - "time.*.gov",
-    - "pool.ntp.org",
+    - "+.in-addr.arpa"
+    - "+.ip6.arpa"
+    - "time.*.com"
+    - "time.*.gov"
+    - "pool.ntp.org"
     - "*.zerotier.com"
     - "planet.zerotier.com"
     - "*.local.zerotier.com"
     # 添加你的自建控制器域名（如果有）
     - "175.178.53.201"
-   # Stun Services
+    # Stun Services
     - '+.stun.*.*'
     - '+.stun.*.*.*'
     - '+.stun.*.*.*.*'
