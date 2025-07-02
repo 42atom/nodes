@@ -56,7 +56,6 @@ dns:
     '+.baidu.com': 223.5.5.5
     # '+.cn': '223.5.5.5'
     '+.internal.crop.com': system
-    '+.': 'https://cloudflare-dns.com/dns-query'  # 其他域名使用 Cloudflare DoH
 
   fallback:
     - tls://8.8.8.8:853
