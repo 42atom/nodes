@@ -147,8 +147,9 @@ rules:
   - DOMAIN-SUFFIX,apple-mapkit.com,DIRECT
 
   # ZeroTier 控制器和服务
-  - DOMAIN-SUFFIX,zerotier.com,DIRECT
-  - DOMAIN,planet.zerotier.com,DIRECT
+  - DOMAIN-SUFFIX,zerotier.com,PROXY
+  - DOMAIN,planet.zerotier.com,PROXY
+  - DOMAIN,175.178.53.201,DIRECT
   - IP-CIDR,175.178.53.0/24,DIRECT  # 自建控制器网段
   
   # ZTCN 网络规则（你的自建网络）
