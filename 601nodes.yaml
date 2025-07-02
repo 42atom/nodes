@@ -159,7 +159,9 @@ rules:
   # 其他 ZeroTier 网络规则
   - IP-CIDR,172.28.49.0/24,DIRECT   # PENNHOME 网段
   - IP-CIDR,10.147.20.0/24,DIRECT   # AngOffice 网段
-  
+  - IP-CIDR,10.30.55.0/24,DIRECT   # ZTCN 网段
+  - IP-CIDR,10.147.17.0/24,DIRECT   # 601 网段
+
   # ZeroTier 服务端口
   - DST-PORT,9993,DIRECT       # ZeroTier UDP
   - DST-PORT,3402,DIRECT       # 自建控制器 Web 管理端口
