@@ -4,7 +4,6 @@ mixed-port: 7890
 socks-port: 7891
 # 外部控制器
 external-controller: 0.0.0.0:9090
-# external-ui: dashboard
 
 # 基础配置
 allow-lan: true
@@ -40,7 +39,7 @@ dns:
     - "*.zerotier.com"
     - "planet.zerotier.com"
     - "*.local.zerotier.com"
-    # 添加你的自建控制器域名（如果有）
+    # 添加你的Zerotier自建控制器域名（如果有）
     - "175.178.53.201"
     # Stun Services
     - '+.stun.*.*'
@@ -53,7 +52,7 @@ dns:
     - 223.5.5.5
     - 119.29.29.29
   nameserver:
-    # - https://doh.pub/dns-query
+    # - https://doh.pub/dns-query #腾讯
     - 'https://208.67.222.222/dns-query' #OpenDNS
     - 'https://1.1.1.1/dns-query' #CloudflareDNS
     - 'https://8.8.4.4/dns-query' #GoogleDNS
@@ -92,7 +91,6 @@ proxies:
     obfs-opts:
       mode: tls
       host: cn.bing.com  # 伪装域名
-
     tfo: true
 
   # HK
@@ -149,48 +147,20 @@ rule-providers:
 
 # 规则配置
 rules:
-  
+  # 自定义区
+  - DOMAIN-SUFFIX,todesk.com,DIRECT
   - DOMAIN-SUFFIX,110221.xyz,DIRECT
   - DOMAIN-SUFFIX,digis.cyou,DIRECT
   - DOMAIN-KEYWORD,google,PROXY
   
 
   # ZeroTier 控制器和服务
-  # - DOMAIN-SUFFIX,zerotier.com,DIRECT
-  # - DOMAIN,planet.zerotier.com,DIRECT
-  # - DOMAIN,175.178.53.201,DIRECT
-  - IP-CIDR,175.178.53.0/24,DIRECT  # 自建控制器网段
-  
-  # ZTCN 网络规则（你的自建网络）
-  # - IP-CIDR,10.30.55.0/24,DIRECT    # IPv4 网段
-  # - IP-CIDR6,fdda:73c1:93a3::/48,DIRECT  # IPv6 网段
-  # - IP-CIDR6,fc79:d207::/32,DIRECT       # IPv6 网段
-  
-  # 其他 ZeroTier 网络规则
-  # - IP-CIDR,172.28.49.0/24,DIRECT   # PENNHOME 网段
-  # - IP-CIDR,10.147.20.0/24,DIRECT   # AngOffice 网段
-  # - IP-CIDR,10.30.55.0/24,DIRECT   # ZTCN 网段
-  # - IP-CIDR,10.147.17.0/24,DIRECT   # 601 网段
-
-  # ZeroTier 服务端口
-  # - DST-PORT,9993,DIRECT       # ZeroTier UDP
-  # - SRC-PORT,9993,DIRECT        # ZeroTier UDP 端口
-  # - DST-PORT,3402,DIRECT       # 自建控制器 Web 管理端口
-  # - DST-PORT,3403,DIRECT       # 自建控制器下载端口
-
-  # 直连规则
-  # - RULE-SET,direct-domain,DIRECT
-  - RULE-SET,direct-app,DIRECT
+  - IP-CIDR,175.178.53.0/24,DIRECT,no-resolve  # 自建控制器网段
   - RULE-SET,cn-ip,DIRECT
 
   
   # 内网直连
-  - IP-CIDR,192.168.0.0/16,DIRECT
-  # - IP-CIDR,10.0.0.0/8,DIRECT
-  # - IP-CIDR,172.16.0.0/12,DIRECT
-  # - IP-CIDR,127.0.0.0/8,DIRECT
-  # - IP-CIDR,100.64.0.0/10,DIRECT
-  # - IP-CIDR,224.0.0.0/4,DIRECT
+  - IP-CIDR,192.168.0.0/16,DIRECT,no-resolve
   
   # 局域网直连
   - DOMAIN-SUFFIX,local,DIRECT
