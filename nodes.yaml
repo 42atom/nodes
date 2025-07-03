@@ -44,14 +44,6 @@ proxy-groups:
       - NNR-J3
       - NNR-J4
     interval: 300
-    
-  # - name: RNtoLISA_Relay
-  #   type: relay
-  #   benchmark-url: http://www.apple.com
-  #   benchmark-timeout: 5
-  #   proxies:
-  #     - RackNerd-美国
-  #     - socksJ
 
 
 rules:
