@@ -148,7 +148,7 @@ rule-providers:
 # 规则配置
 rules:
   # 网关流量IP指定
-  # - SRC-IP,192.168.1.12,PROXY
+  - SRC-IP,192.168.1.12,PROXY
   
   # 自定义区
   - DOMAIN-SUFFIX,todesk.com,DIRECT
@@ -196,7 +196,7 @@ tun:
     - 198.18.0.2:53
   auto-route: true
   auto-detect-interface: true
-  排除 ZeroTier 接口
+  # 排除 ZeroTier 接口
   exclude-interface:
     - "zt"
     - "feth"
