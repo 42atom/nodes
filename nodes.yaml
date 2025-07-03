@@ -19,7 +19,6 @@ proxy-groups:
       - AUTO-L
       - AUTO-J
       - HK
-      - snell美LosAngle
       - RackNerd-美国
       - US-LISA
       - 美国J
@@ -555,19 +554,6 @@ dns:
 
 proxies:
 
-
-
-  - name: snell美LosAngle
-    type: snell
-    server: 154.17.3.53
-    port: 45857
-    psk: 9Wn8e0WW0Vso2hntTOkxkqDBk6S5Mxa
-    udp: true
-    version: 3
-    obfs-opts:
-      mode: tls
-      host: www.bing.com  
-      
   - name: US-LISA
     type: snell
     server: 154.21.193.179
