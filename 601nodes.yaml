@@ -147,24 +147,24 @@ rule-providers:
 
 # 规则配置
 rules:
+  # 网关流量IP指定
+  - SRC-IP,192.168.1.12,PROXY
+  
   # 自定义区
   - DOMAIN-SUFFIX,todesk.com,DIRECT
   - DOMAIN-SUFFIX,110221.xyz,DIRECT
   - DOMAIN-SUFFIX,digis.cyou,DIRECT
   - DOMAIN-KEYWORD,google,PROXY
-  
-
   # ZeroTier 控制器和服务
   - IP-CIDR,175.178.53.0/24,DIRECT,no-resolve  # 自建控制器网段
-  - RULE-SET,cn-ip,DIRECT
+  - DST-PORT,9993,DIRECT,no-resolve #zerotier 协议接口
 
-  
   # 内网直连
   - IP-CIDR,192.168.0.0/16,DIRECT,no-resolve
   
   # 局域网直连
-  - DOMAIN-SUFFIX,local,DIRECT
-  - DOMAIN-SUFFIX,localhost,DIRECT
+  - DOMAIN-SUFFIX,local,DIRECT,no-resolve
+  - DOMAIN-SUFFIX,localhost,DIRECT,no-resolve
   
   # 强制代理所有 UDP 流量
   - DST-PORT,53,PROXY       # DNS 请求
@@ -177,6 +177,7 @@ rules:
   
 
   # 国内流量
+  - RULE-SET,cn-ip,DIRECT,no-resolve
   - GEOIP,CN,DIRECT,no-resolve
   - GEOIP,LAN,DIRECT,no-resolve
   
