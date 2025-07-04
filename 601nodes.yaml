@@ -59,7 +59,10 @@ dns:
     - 'https://8.8.4.4/dns-query' #GoogleDNS
     
   nameserver-policy:
-    '+.icloud.com': '223.5.5.5'  # iCloud 域名使用阿里云 DNS
+    '+.digis.cyou': '223.5.5.5'  
+    '+.bitbrowser.cn': '223.5.5.5'  
+    '+.110221.xyz': '223.5.5.5'  
+    '+.icloud.com': '223.5.5.5'  
     '+.icloud-content.com': '223.5.5.5'
     '+.apple.com': '223.5.5.5'
     '+.apple-dns.net': '223.5.5.5'
@@ -133,7 +136,7 @@ proxies:
     obfs-opts:
       mode: tls
       host: cn.bing.com  # 伪装域名
-    tfo: true
+    # tfo: true
       
   - name: NNR-J3
     type: snell
@@ -145,7 +148,7 @@ proxies:
     obfs-opts:
       mode: tls
       host: cn.bing.com  # 伪装域名
-    tfo: true
+    # tfo: true
 
   - name: NNR-J4
     type: snell
@@ -157,7 +160,7 @@ proxies:
     obfs-opts:
       mode: tls
       host: cn.bing.com  # 伪装域名
-    tfo: true
+    # tfo: true
       
 # 代理组配置
 proxy-groups:
