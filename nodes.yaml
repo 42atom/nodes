@@ -679,7 +679,6 @@ dns:
     - '*.larksuite.com'
     - 'workers.dev'
     - 'vps.sonnylab.com'
-    - 'dns.google'
     - "*.cloudflare.com"
     - 'cloudflare-dns.com'
     - 'dns.alidns.com'
