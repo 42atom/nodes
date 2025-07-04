@@ -24,6 +24,7 @@ dns:
     - "+.lan"
     - "+.local"
     - "+.localhost"
+    - "+.bitbrowser.net"
     - "+.bitbrowser.cn"
     - "+.110221.xyz"
     - "+.digis.cyou"
@@ -59,9 +60,10 @@ dns:
     - 'https://8.8.4.4/dns-query' #GoogleDNS
     
   nameserver-policy:
-    '+.digis.cyou': '223.5.5.5'  
-    '+.bitbrowser.cn': '223.5.5.5'  
-    '+.110221.xyz': '223.5.5.5'  
+    '+.digis.cyou': '223.5.5.5'
+    '+.bitbrowser.net': '223.5.5.5'
+    '+.bitbrowser.cn': '223.5.5.5'
+    '+.110221.xyz': '223.5.5.5'
     '+.icloud.com': '223.5.5.5'  
     '+.icloud-content.com': '223.5.5.5'
     '+.apple.com': '223.5.5.5'
