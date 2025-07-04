@@ -671,6 +671,11 @@ dns:
     - "+.bitbrowser.cn"
     - "+.110221.xyz"
     - "+.digis.cyou"
+    - "*.zerotier.com"
+    - "planet.zerotier.com"
+    - "*.local.zerotier.com"
+    # 添加你的Zerotier自建控制器域名（如果有）
+    - "175.178.53.201"
     - '*'
     - '*.me.com'
     - '*.outlook.com'
