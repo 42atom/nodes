@@ -24,6 +24,7 @@ dns:
     - "+.lan"
     - "+.local"
     - "+.localhost"
+    - "+.todesk.com"
     - "+.bitbrowser.net"
     - "+.bitbrowser.cn"
     - "+.110221.xyz"
@@ -60,6 +61,7 @@ dns:
     - 'https://8.8.4.4/dns-query' #GoogleDNS
     
   nameserver-policy:
+    '+.todesk.com': '223.5.5.5'
     '+.digis.cyou': '223.5.5.5'
     '+.bitbrowser.net': '223.5.5.5'
     '+.bitbrowser.cn': '223.5.5.5'
