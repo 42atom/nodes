@@ -271,6 +271,7 @@ rules:
   - RULE-SET,GoogleChina,PROXY
   - RULE-SET,Microsoft,PROXY
   - DOMAIN-SUFFIX,id.google.com,PROXY # Google IP定位
+  - DOMAIN-SUFFIX,play.google.com,PROXY # Google IP定位
 
   - GEOSITE,youtube,PROXY
   - GEOSITE,google,PROXY
