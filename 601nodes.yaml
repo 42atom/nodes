@@ -125,7 +125,7 @@ proxies:
   - name: NNR-J2
     type: snell
     server: 50045ba2-29c9-408c-86b5-976042645f52.110221.xyz
-    port: 10210
+    port: 25112
     psk: 9Wn8e0WW0Vso2hntTOkxkqDBk6S5Mxa
     udp: true  # 启用 UDP 转发
     version: 3  # 指定 Snell 协议版本
