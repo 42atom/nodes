@@ -521,7 +521,7 @@ rules:
 
   - SCRIPT,quic,REJECT,no-track
   - GEOIP,CN,DIRECT,no-resolve
-  - NETWORK,udp,PROXY
+  # - NETWORK,udp,PROXY
   - MATCH,PROXY
   
 rule-providers:
