@@ -122,57 +122,57 @@ proxies:
       mode: tls
       host: www.bing.com 
    
-  - name: NNR-J1
-    type: snell
-    server: 33596250-29a8-431e-af9e-5e731b9e3d0a.110221.xyz
-    port: 45857
-    psk: 9Wn8e0WW0Vso2hntTOkxkqDBk6S5Mxa
-    udp: true
-    version: 3
-    multiplex: true
-    cipher: aes-256-gcm
-    obfs-opts:
-      mode: tls
-      host: www.bing.com
+  # - name: NNR-J1
+  #   type: snell
+  #   server: 33596250-29a8-431e-af9e-5e731b9e3d0a.110221.xyz
+  #   port: 45857
+  #   psk: 9Wn8e0WW0Vso2hntTOkxkqDBk6S5Mxa
+  #   udp: true
+  #   version: 3
+  #   multiplex: true
+  #   cipher: aes-256-gcm
+  #   obfs-opts:
+  #     mode: tls
+  #     host: www.bing.com
 
-  - name: NNR-J2
-    type: snell
-    server: 50045ba2-29c9-408c-86b5-976042645f52.110221.xyz
-    port: 10210
-    psk: 9Wn8e0WW0Vso2hntTOkxkqDBk6S5Mxa
-    udp: true
-    version: 3
-    multiplex: true
-    cipher: aes-256-gcm
-    obfs-opts:
-      mode: tls
-      host: www.bing.com
+  # - name: NNR-J2
+  #   type: snell
+  #   server: 50045ba2-29c9-408c-86b5-976042645f52.110221.xyz
+  #   port: 10210
+  #   psk: 9Wn8e0WW0Vso2hntTOkxkqDBk6S5Mxa
+  #   udp: true
+  #   version: 3
+  #   multiplex: true
+  #   cipher: aes-256-gcm
+  #   obfs-opts:
+  #     mode: tls
+  #     host: www.bing.com
       
-  - name: NNR-J3
-    type: snell
-    server: 50045ba2-29c9-408c-86b5-976042645f52.110221.xyz
-    port: 10205
-    psk: 9Wn8e0WW0Vso2hntTOkxkqDBk6S5Mxa
-    udp: true
-    version: 3
-    multiplex: true
-    cipher: aes-256-gcm
-    obfs-opts:
-      mode: tls
-      host: www.bing.com
+  # - name: NNR-J3
+  #   type: snell
+  #   server: 50045ba2-29c9-408c-86b5-976042645f52.110221.xyz
+  #   port: 10205
+  #   psk: 9Wn8e0WW0Vso2hntTOkxkqDBk6S5Mxa
+  #   udp: true
+  #   version: 3
+  #   multiplex: true
+  #   cipher: aes-256-gcm
+  #   obfs-opts:
+  #     mode: tls
+  #     host: www.bing.com
 
-  - name: NNR-J4
-    type: snell
-    server: 0428c217-b76f-40f0-b9df-b5fef7be0a34.110221.xyz
-    port: 45450
-    psk: 9Wn8e0WW0Vso2hntTOkxkqDBk6S5Mxa
-    udp: true
-    version: 3
-    multiplex: true
-    cipher: aes-256-gcm
-    obfs-opts:
-      mode: tls
-      host: www.bing.com 
+  # - name: NNR-J4
+  #   type: snell
+  #   server: 0428c217-b76f-40f0-b9df-b5fef7be0a34.110221.xyz
+  #   port: 45450
+  #   psk: 9Wn8e0WW0Vso2hntTOkxkqDBk6S5Mxa
+  #   udp: true
+  #   version: 3
+  #   multiplex: true
+  #   cipher: aes-256-gcm
+  #   obfs-opts:
+  #     mode: tls
+  #     host: www.bing.com 
 
   # DMIT
   - name: "DMIT-Server-01"
@@ -198,7 +198,7 @@ proxy-groups:
     type: select
     proxies: &proxies
       - AUTO-L
-      - AUTO-J
+      # - AUTO-J
       - HK
       - RackNerd-美国
       - US-LISA
@@ -218,15 +218,15 @@ proxy-groups:
     url: http://www.google.com  # 添加测试 URL
     interval: 300
       
-  - name: AUTO-J
-    type: url-test
-    proxies:
-      - NNR-J1
-      - NNR-J2
-      - NNR-J3
-      - NNR-J4
-    url: http://www.google.com  # 添加测试 URL
-    interval: 300
+  # - name: AUTO-J
+  #   type: url-test
+  #   proxies:
+  #     - NNR-J1
+  #     - NNR-J2
+  #     - NNR-J3
+  #     - NNR-J4
+  #   url: http://www.google.com  # 添加测试 URL
+  #   interval: 300
 
 
 rules:
