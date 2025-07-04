@@ -29,6 +29,8 @@ dns:
     - "+.bitbrowser.cn"
     - "+.110221.xyz"
     - "+.digis.cyou"
+    - "*.cloudflare.com"
+    - 'cloudflare-dns.com'
     # Windows网络出现小地球图标
     - "+.msftconnecttest.com"
     - "+.msftncsi.com"
