@@ -80,6 +80,10 @@ dns:
 
 # 代理配置
 proxies:
+  # 直连zerotier
+  - name: zerotier-direct
+    type: direct
+    interface-name: feth3024
   # DMIT
   - name: "Server-01"
     type: snell
@@ -147,7 +151,14 @@ rule-providers:
 
 # 规则配置
 rules:
-
+  # ZeroTier 强制走虚拟网卡
+  - IP-CIDR,10.30.55.0/24,zerotier-direct
+  - IP-CIDR,10.147.17.0/24,zerotier-direct
+  - IP-CIDR,10.147.20.0/24,zerotier-direct
+  - IP-CIDR,172.28.49.0/24,zerotier-direct
+  # 如有 IPv6：
+  - IP-CIDR,fc79:d207:2700::/40,zerotier-direct
+  - IP-CIDR,fdda:73c1:93a3:a1c6:b499:9300::/88,zerotier-direct
   
   # 自定义区
   # - DOMAIN-SUFFIX,todesk.com,DIRECT
@@ -155,15 +166,14 @@ rules:
   - DOMAIN-SUFFIX,digis.cyou,DIRECT
   - DOMAIN-KEYWORD,google,PROXY
   - DST-PORT,5900,DIRECT       # vnc 流量
-
   
-  # 网关流量IP指定
+  # 网关子机流量IP指定
   - SRC-IP,192.168.1.11,PROXY
   - SRC-IP,192.168.1.12,PROXY
   
   # ZeroTier 控制器和服务
-  # - IP-CIDR,175.178.53.0/24,DIRECT,no-resolve  # 自建控制器网段
-  # - DST-PORT,9993,DIRECT,no-resolve #zerotier 协议接口
+  - IP-CIDR,175.178.53.0/24,zerotier-direct  # 自建控制器网段
+  - DST-PORT,9993,DIRECT,no-resolve #zerotier 协议接口
 
   # 内网直连
   # - IP-CIDR,192.168.0.0/16,DIRECT,no-resolve
@@ -197,11 +207,6 @@ profile:
 
 tun:
   enable: true
-  # stack: system
-  # dns-hijack:
-  #   - 198.18.0.2:53
-  # auto-route: true
-  # auto-detect-interface: true
   # 排除 ZeroTier 接口
   exclude-interface:
     - "zt"
