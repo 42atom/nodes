@@ -563,7 +563,10 @@ dns:
 
 
 proxies:
-
+# 直连zerotier
+  - name: zerotier-direct
+    type: direct
+    interface-name: feth3024
   - name: US-LISA
     type: snell
     server: 154.21.193.179
