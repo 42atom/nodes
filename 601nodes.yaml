@@ -8,7 +8,7 @@ external-controller: 0.0.0.0:9090
 # 基础配置
 allow-lan: true
 # bind-address: "*"
-# mode: rule
+mode: rule
 log-level: info
 ipv6: true
 
