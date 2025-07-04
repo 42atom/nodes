@@ -6,7 +6,7 @@ log-level: info
 ipv6: true
 external-controller: :9090
 
-proxy-providers:
+# proxy-providers:
 # 服务提供商-1:
 # url: http://your-service-provider
 # interval: 600
@@ -523,11 +523,10 @@ rules:
   - DOMAIN-KEYWORD,whatsapp,PROXY
 
 
-
- 
+  - SCRIPT,quic,REJECT,no-track
   - GEOIP,CN,DIRECT,no-resolve
   - NETWORK,udp,PROXY
-  - MATCH, PROXY
+  - MATCH,PROXY
   
 rule-providers:
   YouTube:
