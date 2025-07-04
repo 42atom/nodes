@@ -47,6 +47,20 @@ proxy-groups:
 
 
 rules:
+# ZeroTier 强制走虚拟网卡
+  - IP-CIDR,10.30.55.0/24,zerotier-direct
+  - IP-CIDR,10.147.17.0/24,zerotier-direct
+  - IP-CIDR,10.147.20.0/24,zerotier-direct
+  - IP-CIDR,172.28.49.0/24,zerotier-direct
+  # 如有 IPv6：
+  - IP-CIDR,fc79:d207:2700::/40,zerotier-direct
+  - IP-CIDR,fdda:73c1:93a3:a1c6:b499:9300::/88,zerotier-direct
+  - DST-PORT,5900,DIRECT       # vnc 流量
+  - IP-CIDR,175.178.53.0/24,zerotier-direct  # 自建控制器网段
+  - DST-PORT,9993,DIRECT,no-resolve #zerotier 协议接口
+  - DST-PORT,3478,PROXY     # WebRTC 流量
+  - DST-PORT,5349,PROXY     # WebRTC 流量
+
   # gmail邮件需直连 注意
   - DOMAIN,smtp.gmail.com,DIRECT
   - DOMAIN,imap.gmail.com,DIRECT
@@ -721,4 +735,6 @@ proxies:
       mode: tls
       host: cn.bing.com  # 伪装域名
     tfo: true
-   
+  profile:
+    store-selected: true
+    store-fake-ip: true
