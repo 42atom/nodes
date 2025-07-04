@@ -160,11 +160,11 @@ rules:
   - SRC-IP,192.168.1.12,PROXY
   
   # ZeroTier 控制器和服务
-  - IP-CIDR,175.178.53.0/24,DIRECT,no-resolve  # 自建控制器网段
-  - DST-PORT,9993,DIRECT,no-resolve #zerotier 协议接口
+  # - IP-CIDR,175.178.53.0/24,DIRECT,no-resolve  # 自建控制器网段
+  # - DST-PORT,9993,DIRECT,no-resolve #zerotier 协议接口
 
   # 内网直连
-  - IP-CIDR,192.168.0.0/16,DIRECT,no-resolve
+  # - IP-CIDR,192.168.0.0/16,DIRECT,no-resolve
   
   # 局域网直连
   - DOMAIN-SUFFIX,local,DIRECT,no-resolve
@@ -193,15 +193,15 @@ profile:
   store-selected: true
   store-fake-ip: true
 
-tun:
-  enable: true
-  stack: system
-  dns-hijack:
-    - 198.18.0.2:53
-  auto-route: true
-  auto-detect-interface: true
-  # 排除 ZeroTier 接口
-  exclude-interface:
-    - "zt"
-    - "feth"
+# tun:
+#   enable: true
+#   stack: system
+#   dns-hijack:
+#     - 198.18.0.2:53
+#   auto-route: true
+#   auto-detect-interface: true
+#   # 排除 ZeroTier 接口
+#   exclude-interface:
+#     - "zt"
+#     - "feth"
 
