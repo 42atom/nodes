@@ -6,11 +6,6 @@ log-level: info
 ipv6: true
 external-controller: :9090
 
-# proxy-providers:
-# 服务提供商-1:
-# url: http://your-service-provider
-# interval: 600
-
 proxies:
 # 直连zerotier
   - name: zerotier-direct
@@ -191,9 +186,11 @@ proxies:
       mode: tls
       host: cn.bing.com  # 伪装域名
     tfo: true
-  profile:
-    store-selected: true
-    store-fake-ip: true
+
+    
+profile:
+  store-selected: true
+  store-fake-ip: true
     
 # 代理功能分组
 proxy-groups:
@@ -218,6 +215,7 @@ proxy-groups:
       - NNR-L2
       - NNR-L3
       - NNR-L4
+    url: http://www.google.com  # 添加测试 URL
     interval: 300
       
   - name: AUTO-J
@@ -227,6 +225,7 @@ proxy-groups:
       - NNR-J2
       - NNR-J3
       - NNR-J4
+    url: http://www.google.com  # 添加测试 URL
     interval: 300
 
 
@@ -248,7 +247,6 @@ rules:
   # gmail邮件需直连 注意
   - DOMAIN,smtp.gmail.com,DIRECT
   - DOMAIN,imap.gmail.com,DIRECT
-  # - DOMAIN,mail.google.com,PROXY
   - DOMAIN-SUFFIX,110221.xyz,DIRECT
   - DOMAIN-SUFFIX,workers.dev,DIRECT
   
@@ -282,7 +280,6 @@ rules:
   - RULE-SET,direct-app,DIRECT,no-resolve
   - RULE-SET,direct-domain,DIRECT,no-resolve
   
-  # - DOMAIN-SUFFIX,gmail.com,PROXY
   # 教育网站代理规则
   - DOMAIN,getepic.com,PROXY
   - DOMAIN-SUFFIX,getepic.com,PROXY
@@ -336,9 +333,8 @@ rules:
   - DOMAIN,*.posthog.com,PROXY
 
 
-  # - DOMAIN,eu-mobile.events.data.microsoft.com,PROXY
   # 域名后缀模式
-  # - DOMAIN-SUFFIX,events.data.microsoft.com,PROXY
+  - DOMAIN-SUFFIX,events.data.microsoft.com,PROXY
   - DOMAIN-SUFFIX,prod.do.dsp.mp.microsoft.com,PROXY
 
   # Apple
@@ -356,7 +352,7 @@ rules:
   - DOMAIN,itunes.apple.com,PROXY
   - DOMAIN-SUFFIX,apps.apple.com,PROXY
   - DOMAIN-SUFFIX,blobstore.apple.com,PROXY
-  # - DOMAIN,cvws.icloud-content.com,PROXY
+  - DOMAIN,cvws.icloud-content.com,PROXY
   - DOMAIN-SUFFIX,apple-dns.net,DIRECT
   - DOMAIN-SUFFIX,mzstatic.com,DIRECT
   - DOMAIN-SUFFIX,itunes.apple.com,DIRECT
@@ -509,7 +505,6 @@ rules:
   # 抗 DNS 污染
   - DOMAIN-KEYWORD,amazon,PROXY
   - DOMAIN-KEYWORD,google,PROXY
-  # - DOMAIN-KEYWORD,gmail,PROXY
   - DOMAIN-KEYWORD,youtube,PROXY
   - DOMAIN-KEYWORD,facebook,PROXY
   - DOMAIN-SUFFIX,fb.me,PROXY
@@ -619,14 +614,6 @@ script:
   shortcuts:
     quic: network == 'udp' and dst_port == 443
 
-# TUN 配置
-# tun:
-#   enable: true
-#   stack: system
-#   dns-hijack:
-#     - "any:53"
-#   auto-route: true
-#   auto-detect-interface: true
 
 dns:
   enable: true
@@ -661,7 +648,7 @@ dns:
     '+.jin10.com': 223.5.5.5
     '+.baidu.com': 223.5.5.5
     '+.cn': '223.5.5.5'
-    '+.internal.crop.com': system
+    # '+.internal.crop.com': system
     # '+.': 'https://cloudflare-dns.com/dns-query'  # 其他域名使用 Cloudflare DoH
   skip-cert-verify: true
   fallback:
