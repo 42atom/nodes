@@ -739,9 +739,11 @@ dns:
     - 'localhost.ptlogin2.qq.com'
     ## Golang
     - 'proxy.golang.org'
-    ## STUN Server
-    - 'stun.*.*'
-    - 'stun.*.*.*'
+    # Stun Services
+    - '+.stun.*.*'
+    - '+.stun.*.*.*'
+    - '+.stun.*.*.*.*'
+    - '+.stun.*.*.*.*.*'
     ## Bilibili CDN
     - '*.mcdn.bilivideo.cn'
 
