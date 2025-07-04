@@ -148,7 +148,9 @@ rule-providers:
 # 规则配置
 rules:
   # 网关流量IP指定
+  - SRC-IP,192.168.1.11,PROXY
   - SRC-IP,192.168.1.12,PROXY
+
   
   # 自定义区
   - DOMAIN-SUFFIX,todesk.com,DIRECT
