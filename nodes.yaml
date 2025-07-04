@@ -198,7 +198,6 @@ proxy-groups:
     type: select
     proxies: &proxies
       - AUTO-L
-      # - AUTO-J
       - HK
       - RackNerd-美国
       - US-LISA
@@ -206,7 +205,6 @@ proxy-groups:
       - 美国W
       - DIRECT
       - DMIT-Server-01
-      # - socksJ
 
   - name: AUTO-L
     type: url-test
