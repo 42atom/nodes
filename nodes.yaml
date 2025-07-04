@@ -632,7 +632,7 @@ dns:
     # 腾讯云 DoH
     - https://doh.pub/dns-query
     # Cloudflare DoH
-    - https://cloudflare-dns.com/dns-query
+    # - https://cloudflare-dns.com/dns-query
     # Google DoH
     # - https://dns.google/dns-query
   nameserver-policy:
@@ -655,8 +655,7 @@ dns:
     - tls://1.1.1.1:853
     - tls://8.8.8.8:853
   fallback-filter:
-    geoip: true
-    geoip-code: CN
+    geoip: false
     ipcidr:
       - 240.0.0.0/4
   enhanced-mode: fake-ip
