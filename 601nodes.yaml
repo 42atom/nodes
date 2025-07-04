@@ -46,8 +46,6 @@ dns:
     - "*.zerotier.com"
     - "planet.zerotier.com"
     - "*.local.zerotier.com"
-    # 添加你的Zerotier自建控制器域名（如果有）
-    - "175.178.53.201"
     # Stun Services
     - '+.stun.*.*'
     - '+.stun.*.*.*'
@@ -74,7 +72,6 @@ dns:
     '+.apple-dns.net': '223.5.5.5'
     '+.me.com': 'tls://8.8.8.8:853'
     '+.google.com': 'tls://8.8.8.8:853'
-    # '+.gmail.com': 'https://cloudflare-dns.com/dns-query'
     '+.cloudflare.com': 'tls://1.1.1.1:853'
     '+.arpa': '10.0.0.1'
     '+.internal.crop.com': system
