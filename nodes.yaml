@@ -1,10 +1,138 @@
-port: 7890
+#SUBSCRIBED https://conf.digis.cyou/nodes.yaml
+mixed-port: 7890
 socks-port: 7891
-allow-lan: true
-# mode: Rule
+# allow-lan: true
+mode: Rule
 log-level: info
 ipv6: true
 external-controller: :9090
+
+dns:
+  enable: true
+  cache: true
+  ipv6: true
+  listen: 0.0.0.0:53
+  enhanced-mode: fake-ip
+  fake-ip-range: 198.18.0.1/16
+  # 在以下列表的域名将不会被解析为 fake ip，这些域名相关的解析请求将会返回它们真实的 IP 地址
+  fake-ip-filter:
+    - "+.lan"
+    - "+.local"
+    - "+.localhost"
+    - "+.todesk.com"
+    - "+.bitbrowser.net"
+    - "+.bitbrowser.cn"
+    - "+.110221.xyz"
+    - "+.digis.cyou"
+    # 追加以下条目
+    - "+.in-addr.arpa"
+    - "+.ip6.arpa"
+    - "time.*.com"
+    - "time.*.gov"
+    - "pool.ntp.org"
+    - "*.zerotier.com"
+    - "planet.zerotier.com"
+    - "*.local.zerotier.com"
+    - '*.me.com'
+    - '*.outlook.com'
+    - '*.gmail.com'
+    - '*.nextmindedu.com'
+    - '*.apple.com'
+    - '*.larksuite.com'
+    - 'workers.dev'
+    - 'vps.sonnylab.com'
+    - "*.cloudflare.com"
+    - 'cloudflare-dns.com'
+    - 'dns.alidns.com'
+    - 'dns.msftncsi.com'
+    - 'www.msftncsi.com'
+    - 'www.msftconnecttest.com'
+    - 'wx.qq.com'
+    - 'res.wx.qq.com'
+    - 'time1.cloud.tencent.com'
+    # === Music Service ===
+    ## NetEase
+    - '+.music.163.com'
+    - '*.126.net'
+    ## Baidu
+    - 'musicapi.taihe.com'
+    - 'music.taihe.com'
+    ## Kuwo
+    - '*.kuwo.cn'
+    ## JOOX
+    - 'api-jooxtt.sanook.com'
+    - 'api.joox.com'
+    - 'joox.com'
+    ## QQ
+    - '+.y.qq.com'
+    - '+.music.tc.qq.com'
+    - 'aqqmusic.tc.qq.com'
+    - '+.stream.qqmusic.qq.com'
+    ## Xiami
+    - '*.xiami.com'
+    ## Migu
+    - '+.music.migu.cn'
+    # === Game Service ===
+    ## Nintendo Switch
+    - '+.srv.nintendo.net'
+    ## Sony PlayStation
+    - '+.stun.playstation.net'
+    ## Microsoft Xbox
+    - 'xbox.*.microsoft.com'
+    - '+.xboxlive.com'
+    # === Other ===
+    ## QQ Quick Login
+    - 'localhost.ptlogin2.qq.com'
+    ## Golang
+    - 'proxy.golang.org'
+    # Stun Services
+    - '+.stun.*.*'
+    - '+.stun.*.*.*'
+    - '+.stun.*.*.*.*'
+    - '+.stun.*.*.*.*.*'
+    ## Bilibili CDN
+    - '*.mcdn.bilivideo.cn'
+
+  default-nameserver:
+    # - 1.1.1.1
+    # - 8.8.8.8
+    - 223.5.5.5
+    - 119.29.29.29
+    # - system
+  nameserver:
+    - 'https://208.67.222.222/dns-query' #OpenDNS
+    - 'https://1.1.1.1/dns-query' #CloudflareDNS
+    - 'https://8.8.4.4/dns-query' #GoogleDNS
+    # 阿里云DoH
+#     - https://dns.alidns.com/dns-query
+    - 'https://doh.pub/dns-query' #腾讯云DoH
+  nameserver-policy:
+    '+.icloud.com': '223.5.5.5'  # iCloud 域名使用阿里云 DNS
+    '+.icloud-content.com': '223.5.5.5'
+    '+.apple.com': '223.5.5.5'
+    '+.apple-dns.net': '223.5.5.5'
+    # '+.me.com': 'tls://8.8.8.8:853'
+    '+.google.com': 'tls://8.8.8.8:853'
+    # '+.gmail.com': 'https://cloudflare-dns.com/dns-query'
+    '+.cloudflare.com': 'tls://1.1.1.1:853'
+    '+.arpa': '10.0.0.1'
+    '+.jin10.com': 223.5.5.5
+    '+.baidu.com': 223.5.5.5
+    '+.cn': '223.5.5.5'
+    '+.internal.crop.com': system
+#    '+.': 'https://1.1.1.1/dns-query'  #其他域名使用 Cloudflare DoH
+#  skip-cert-verify: true
+  fallback:
+    - tls://1.1.1.1:853
+    - tls://8.8.8.8:853
+  fallback-filter:
+    geoip: true
+    geoip-code: CN
+    ipcidr:
+      - 240.0.0.0/4
+
+
+
 
 proxies:
 # 直连zerotier
@@ -34,7 +162,7 @@ proxies:
     version: 3
     obfs-opts:
       mode: tls
-      host: www.bing.com  
+      host: www.bing.com
 
   - name: 美国W
     type: snell
@@ -45,7 +173,7 @@ proxies:
     version: 3
     obfs-opts:
       mode: tls
-      host: www.bing.com  
+      host: www.bing.com
 
   - name: RackNerd-美国
     type: snell
@@ -56,7 +184,7 @@ proxies:
     version: 3
     obfs-opts:
       mode: tls
-      host: www.bing.com  
+      host: www.bing.com
 
   - name: HK
     type: snell
@@ -67,7 +195,7 @@ proxies:
     version: 3
     obfs-opts:
       mode: tls
-      host: www.bing.com 
+      host: www.bing.com
 
 
   - name: NNR-L1
@@ -120,59 +248,8 @@ proxies:
     cipher: aes-256-gcm
     obfs-opts:
       mode: tls
-      host: www.bing.com 
-   
-  # - name: NNR-J1
-  #   type: snell
-  #   server: 33596250-29a8-431e-af9e-5e731b9e3d0a.110221.xyz
-  #   port: 45857
-  #   psk: 9Wn8e0WW0Vso2hntTOkxkqDBk6S5Mxa
-  #   udp: true
-  #   version: 3
-  #   multiplex: true
-  #   cipher: aes-256-gcm
-  #   obfs-opts:
-  #     mode: tls
-  #     host: www.bing.com
+      host: www.bing.com
 
-  # - name: NNR-J2
-  #   type: snell
-  #   server: 50045ba2-29c9-408c-86b5-976042645f52.110221.xyz
-  #   port: 10210
-  #   psk: 9Wn8e0WW0Vso2hntTOkxkqDBk6S5Mxa
-  #   udp: true
-  #   version: 3
-  #   multiplex: true
-  #   cipher: aes-256-gcm
-  #   obfs-opts:
-  #     mode: tls
-  #     host: www.bing.com
-      
-  # - name: NNR-J3
-  #   type: snell
-  #   server: 50045ba2-29c9-408c-86b5-976042645f52.110221.xyz
-  #   port: 10205
-  #   psk: 9Wn8e0WW0Vso2hntTOkxkqDBk6S5Mxa
-  #   udp: true
-  #   version: 3
-  #   multiplex: true
-  #   cipher: aes-256-gcm
-  #   obfs-opts:
-  #     mode: tls
-  #     host: www.bing.com
-
-  # - name: NNR-J4
-  #   type: snell
-  #   server: 0428c217-b76f-40f0-b9df-b5fef7be0a34.110221.xyz
-  #   port: 45450
-  #   psk: 9Wn8e0WW0Vso2hntTOkxkqDBk6S5Mxa
-  #   udp: true
-  #   version: 3
-  #   multiplex: true
-  #   cipher: aes-256-gcm
-  #   obfs-opts:
-  #     mode: tls
-  #     host: www.bing.com 
 
   # DMIT
   - name: "DMIT-Server-01"
@@ -198,6 +275,7 @@ proxy-groups:
     type: select
     proxies: &proxies
       - AUTO-L
+      # - AUTO-J
       - HK
       - RackNerd-美国
       - US-LISA
@@ -205,6 +283,7 @@ proxy-groups:
       - 美国W
       - DIRECT
       - DMIT-Server-01
+      # - socksJ
 
   - name: AUTO-L
     type: url-test
@@ -213,7 +292,7 @@ proxy-groups:
       - NNR-L2
       - NNR-L3
       - NNR-L4
-    url: http://www.google.com  # 添加测试 URL
+    url: http://www.apple.com  # 添加测试 URL
     interval: 300
       
   # - name: AUTO-J
@@ -236,29 +315,26 @@ rules:
   # 如有 IPv6：
   - IP-CIDR,fc79:d207:2700::/40,zerotier-direct
   - IP-CIDR,fdda:73c1:93a3:a1c6:b499:9300::/88,zerotier-direct
-  - DST-PORT,5900,DIRECT       # vnc 流量
+  # - DST-PORT,5900,DIRECT       # vnc 流量
   - IP-CIDR,175.178.53.0/24,zerotier-direct  # 自建控制器网段
   - DST-PORT,9993,DIRECT,no-resolve # zerotier 协议接口
   - DST-PORT,3478,PROXY     # WebRTC 流量
   - DST-PORT,5349,PROXY     # WebRTC 流量
 
   # gmail邮件需直连 注意
+  - RULE-SET,WeChat,DIRECT,no-resolve
   - DOMAIN,smtp.gmail.com,DIRECT
   - DOMAIN,imap.gmail.com,DIRECT
   - DOMAIN-SUFFIX,110221.xyz,DIRECT
   - DOMAIN-SUFFIX,workers.dev,DIRECT
-  
-  - SCRIPT,quic,REJECT,no-track
-  - RULE-SET,WeChat,DIRECT,no-resolve
   - DOMAIN-SUFFIX,identity.ess.apple.com,PROXY # 连续互通
   
   - DOMAIN-SUFFIX,factorio.com,PROXY
   - DOMAIN-SUFFIX,sonnylab.com,PROXY
-  - DOMAIN-SUFFIX,*.larksuite.com,PROXY
+  - DOMAIN-SUFFIX,larksuite.com,PROXY
   - DOMAIN-SUFFIX,adobe.io,REJECT # ADOBE检测
   - DOMAIN,lcs-cops.adobe.io,DIRECT # ADOBE
 
-  
   - RULE-SET,gfw-domain,PROXY
   - RULE-SET,YouTube,PROXY
   - RULE-SET,openai,PROXY
@@ -519,7 +595,7 @@ rules:
 
   - SCRIPT,quic,REJECT,no-track
   - GEOIP,CN,DIRECT,no-resolve
-  # - NETWORK,udp,PROXY
+#  - NETWORK,udp,PROXY
   - MATCH,PROXY
   
 rule-providers:
@@ -612,125 +688,5 @@ rule-providers:
 script:
   shortcuts:
     quic: network == 'udp' and dst_port == 443
-
-
-dns:
-  enable: true
-  cache: true
-  ipv6: true
-  listen: 0.0.0.0:53
-  default-nameserver:
-    # - 1.1.1.1
-    # - 8.8.8.8
-    - 223.5.5.5
-    - 119.29.29.29
-    # - system
-  nameserver:
-    # 阿里云 DoH
-    - https://dns.alidns.com/dns-query
-    # 腾讯云 DoH
-    - https://doh.pub/dns-query
-    # Cloudflare DoH
-    # - https://cloudflare-dns.com/dns-query
-    # Google DoH
-    # - https://dns.google/dns-query
-  nameserver-policy:
-    '+.icloud.com': '223.5.5.5'  # iCloud 域名使用阿里云 DNS
-    '+.icloud-content.com': '223.5.5.5'
-    '+.apple.com': '223.5.5.5'
-    '+.apple-dns.net': '223.5.5.5'
-    # '+.me.com': 'tls://8.8.8.8:853'
-    '+.google.com': 'tls://8.8.8.8:853'
-    # '+.gmail.com': 'https://cloudflare-dns.com/dns-query'
-    '+.cloudflare.com': 'tls://1.1.1.1:853'
-    '+.arpa': '10.0.0.1'
-    '+.jin10.com': 223.5.5.5
-    '+.baidu.com': 223.5.5.5
-    '+.cn': '223.5.5.5'
-    # '+.internal.crop.com': system
-    # '+.': 'https://cloudflare-dns.com/dns-query'  # 其他域名使用 Cloudflare DoH
-  skip-cert-verify: true
-  fallback:
-    - tls://1.1.1.1:853
-    - tls://8.8.8.8:853
-  fallback-filter:
-    geoip: false
-    ipcidr:
-      - 240.0.0.0/4
-  enhanced-mode: fake-ip
-  fake-ip-range: 198.18.0.1/16
-  # 在以下列表的域名将不会被解析为 fake ip，这些域名相关的解析请求将会返回它们真实的 IP 地址
-  fake-ip-filter:
-    - "+.lan"
-    - "+.local"
-    - "+.localhost"
-    - "+.todesk.com"
-    - "+.bitbrowser.net"
-    - "+.bitbrowser.cn"
-    - "+.110221.xyz"
-    - "+.digis.cyou"
-    - "*.zerotier.com"
-    - "planet.zerotier.com"
-    - "*.local.zerotier.com"
-    - '*'
-    - '*.me.com'
-    - '*.outlook.com'
-    - '*.gmail.com'
-    - '*.nextmindedu.com'
-    - '*.apple.com'
-    - '*.larksuite.com'
-    - 'workers.dev'
-    - 'vps.sonnylab.com'
-    - "*.cloudflare.com"
-    - 'cloudflare-dns.com'
-    - 'dns.alidns.com'
-    - 'dns.msftncsi.com'
-    - 'www.msftncsi.com'
-    - 'www.msftconnecttest.com'
-    - 'wx.qq.com'
-    - 'res.wx.qq.com'
-    - 'time1.cloud.tencent.com'
-    # === Music Service ===
-    ## NetEase
-    - '+.music.163.com'
-    - '*.126.net'
-    ## Baidu
-    - 'musicapi.taihe.com'
-    - 'music.taihe.com'
-    ## Kuwo
-    - '*.kuwo.cn'
-    ## JOOX
-    - 'api-jooxtt.sanook.com'
-    - 'api.joox.com'
-    - 'joox.com'
-    ## QQ
-    - '+.y.qq.com'
-    - '+.music.tc.qq.com'
-    - 'aqqmusic.tc.qq.com'
-    - '+.stream.qqmusic.qq.com'
-    ## Xiami
-    - '*.xiami.com'
-    ## Migu
-    - '+.music.migu.cn'
-    # === Game Service ===
-    ## Nintendo Switch
-    - '+.srv.nintendo.net'
-    ## Sony PlayStation
-    - '+.stun.playstation.net'
-    ## Microsoft Xbox
-    - 'xbox.*.microsoft.com'
-    - '+.xboxlive.com'
-    # === Other ===
-    ## QQ Quick Login
-    - 'localhost.ptlogin2.qq.com'
-    ## Golang
-    - 'proxy.golang.org'
-    # Stun Services
-    - '+.stun.*.*'
-    - '+.stun.*.*.*'
-    - '+.stun.*.*.*.*'
-    - '+.stun.*.*.*.*.*'
-    ## Bilibili CDN
-    - '*.mcdn.bilivideo.cn'
 
 
