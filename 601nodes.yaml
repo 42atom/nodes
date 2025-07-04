@@ -169,10 +169,10 @@ rules:
   - DOMAIN-SUFFIX,localhost,DIRECT,no-resolve
   
   # 强制代理所有 UDP 流量
-  - DST-PORT,53,PROXY       # DNS 请求
-  - DST-PORT,123,PROXY      # NTP 时间同步
-  - DST-PORT,443,PROXY      # HTTPS 流量
-  - DST-PORT,80,PROXY       # HTTP 流量
+  # - DST-PORT,53,PROXY       # DNS 请求
+  # - DST-PORT,123,PROXY      # NTP 时间同步
+  # - DST-PORT,443,PROXY      # HTTPS 流量
+  # - DST-PORT,80,PROXY       # HTTP 流量
   - DST-PORT,3478,PROXY     # WebRTC 流量
   - DST-PORT,5349,PROXY     # WebRTC 流量
   - NETWORK,udp,PROXY
