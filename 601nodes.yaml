@@ -167,6 +167,8 @@ proxy-groups:
       - DIRECT
       - Server-01
       - Server-02
+      - AUTO-NNR
+
       
   - name: AUTO-NNR
     type: url-test
