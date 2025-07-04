@@ -150,7 +150,7 @@ rules:
 
   
   # 自定义区
-  - DOMAIN-SUFFIX,todesk.com,DIRECT
+  # - DOMAIN-SUFFIX,todesk.com,DIRECT
   - DOMAIN-SUFFIX,110221.xyz,DIRECT
   - DOMAIN-SUFFIX,digis.cyou,DIRECT
   - DOMAIN-KEYWORD,google,PROXY
