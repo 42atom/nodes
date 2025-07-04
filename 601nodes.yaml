@@ -205,10 +205,10 @@ profile:
   store-selected: true
   store-fake-ip: true
 
-tun:
-  enable: true
-  # 排除 ZeroTier 接口
-  exclude-interface:
-    - "zt"
-    - "feth"
+# tun:
+#   enable: true
+#   # 排除 ZeroTier 接口
+#   exclude-interface:
+#     - "zt"
+#     - "feth"
 
