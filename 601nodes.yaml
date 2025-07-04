@@ -193,7 +193,7 @@ rules:
   
 
   # 国内流量
-  - RULE-SET,cn-ip,DIRECT,no-resolve
+  # - RULE-SET,cn-ip,DIRECT,no-resolve
   - GEOIP,CN,DIRECT,no-resolve
   - GEOIP,LAN,DIRECT,no-resolve
   
