@@ -36,16 +36,16 @@ dns:
     - "time.*.com"
     - "time.*.gov"
     - "pool.ntp.org"
-    # - "*.zerotier.com"
-    # - "planet.zerotier.com"
-    # - "*.local.zerotier.com"
+    - "*.zerotier.com"
+    - "planet.zerotier.com"
+    - "*.local.zerotier.com"
     # 添加你的Zerotier自建控制器域名（如果有）
     - "175.178.53.201"
     # Stun Services
-    # - '+.stun.*.*'
-    # - '+.stun.*.*.*'
-    # - '+.stun.*.*.*.*'
-    # - '+.stun.*.*.*.*.*'
+    - '+.stun.*.*'
+    - '+.stun.*.*.*'
+    - '+.stun.*.*.*.*'
+    - '+.stun.*.*.*.*.*'
     ## Bilibili CDN
     - '*.mcdn.bilivideo.cn'
   default-nameserver:
