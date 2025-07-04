@@ -177,7 +177,7 @@ rules:
   # - DST-PORT,80,PROXY       # HTTP 流量
   - DST-PORT,3478,PROXY     # WebRTC 流量
   - DST-PORT,5349,PROXY     # WebRTC 流量
-  - NETWORK,udp,PROXY
+  # - NETWORK,udp,PROXY
   
 
   # 国内流量
