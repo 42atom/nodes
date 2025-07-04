@@ -242,7 +242,9 @@ rules:
   # ZeroTier 控制器和服务
   - IP-CIDR,175.178.53.0/24,zerotier-direct  # 自建控制器网段
   - DST-PORT,9993,DIRECT,no-resolve #zerotier 协议接口
-
+  # 微软windows网络检测
+  - DOMAIN-SUFFIX,msftconnecttest.com,DIRECT
+  - DOMAIN-SUFFIX,msftncsi.com,DIRECT
   # 内网直连
   # - IP-CIDR,192.168.0.0/16,DIRECT,no-resolve
   
