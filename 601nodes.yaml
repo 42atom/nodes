@@ -229,11 +229,11 @@ rules:
   - IP-CIDR,fdda:73c1:93a3:a1c6:b499:9300::/88,zerotier-direct
   
   # 自定义区
-  # - DOMAIN-SUFFIX,todesk.com,DIRECT
+  - DOMAIN-SUFFIX,todesk.com,DIRECT
   - DOMAIN-SUFFIX,110221.xyz,DIRECT
   - DOMAIN-SUFFIX,digis.cyou,DIRECT
   - DOMAIN-KEYWORD,google,PROXY
-  - DST-PORT,5900,DIRECT       # vnc 流量
+  # - DST-PORT,5900,DIRECT       # vnc 流量
   
   # 网关子机流量IP指定
   - SRC-IP,192.168.1.11,PROXY
