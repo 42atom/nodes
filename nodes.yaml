@@ -116,8 +116,8 @@ dns:
     # '+.gmail.com': 'https://cloudflare-dns.com/dns-query'
     '+.cloudflare.com': 'tls://1.1.1.1:853'
     '+.arpa': '10.0.0.1'
-    '+.jin10.com': 223.5.5.5
-    '+.baidu.com': 223.5.5.5
+    '+.jin10.com': '223.5.5.5'
+    '+.baidu.com': '223.5.5.5'
     '+.cn': '223.5.5.5'
     '+.internal.crop.com': system
 #    '+.': 'https://1.1.1.1/dns-query'  #其他域名使用 Cloudflare DoH
